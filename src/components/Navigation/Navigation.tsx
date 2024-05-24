@@ -18,16 +18,20 @@ export default function Navigation() {
 }
 const NavigationStyled = styled.nav`
   /* background-color: #fff; */
-
+  background-color: #000205;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: #ffff;
+  /* position: relative;
+  z-index: 30; */
   h2 {
-    color: #8c6da9;
-    font-size: 1.8rem;
+    position: relative;
+    z-index: 30;
+    /* color: #8c6da9; */
+    font-size: 1.5rem;
     font-weight: 500;
     cursor: pointer;
   }
@@ -36,15 +40,14 @@ const NavigationStyled = styled.nav`
     display: flex;
     justify-content: space-around;
     li {
-      font-size: 1.15rem;
-      padding: 4px 25px;
-      border-radius: 15px;
+      position: relative;
+      z-index: 30;
+      font-size: 1rem;
+      /* padding: 4px 25px; */
       cursor: pointer;
-      transition: 200ms ease;
+      transition: 200ms;
       &:hover {
-        background: #4d088e;
-        color: #ffff;
-        transform: scale(1.1);
+        transform: scale(1.05);
       }
     }
   }

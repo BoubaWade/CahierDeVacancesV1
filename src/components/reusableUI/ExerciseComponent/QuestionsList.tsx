@@ -2,6 +2,7 @@ import { BlockMath } from "react-katex";
 import MathKeyboard from "../../MathKeyboard";
 import SolutionComponent from "./SolutionComponent";
 import { QuestionSolutions } from "../../../Types/dataTypes";
+import styled from "styled-components";
 
 type QuestionsListProps = {
   questionsSolutions: QuestionSolutions[];
@@ -11,7 +12,7 @@ export default function QuestionsList({
   questionsSolutions,
 }: QuestionsListProps) {
   return (
-    <div>
+    <QuestionsListStyled>
       {questionsSolutions.map(({ question, solution }, index) => (
         <div key={index}>
           <BlockMath>{question}</BlockMath>
@@ -19,6 +20,7 @@ export default function QuestionsList({
           <SolutionComponent solution={solution} />
         </div>
       ))}
-    </div>
+    </QuestionsListStyled>
   );
 }
+const QuestionsListStyled = styled.div``;

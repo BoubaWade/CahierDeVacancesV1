@@ -5,8 +5,8 @@ export default function SignUpForm() {
   return (
     <SignUpFormStyled>
       <h1>Créer un compte</h1>
-      <span>or use your email for registeration</span>
       <input type="text" placeholder="Nom" />
+      <input type="text" placeholder="Prénom" />
       <input type="email" placeholder="Email" />
       <input type="password" placeholder="Mot de passe" />
       <PrimaryButton
@@ -32,10 +32,6 @@ const SignUpFormStyled = styled.form`
   width: 50%;
   h1 {
     margin-bottom: 30px;
-  }
-  span {
-    font-size: 12px;
-    margin-bottom: 20px;
   }
   input {
     width: 100%;

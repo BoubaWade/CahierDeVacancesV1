@@ -1,6 +1,7 @@
 export const exercises = [
   {
-    statements: "Soit\\ A = (3x – 2)²\\ – \\ 64 \\\\ ",
+    statements:
+      "Soit\\ A = (3x – 2)²\\ – \\ 64 \\ Soit\\ A = (3x – 2)²\\ – \\ 64 \\ Soit\\ A = (3x – 2)²\\ – \\ 64 \\ Soit\\ A = (3x – 2)²\\ – \\ 64 \\\\ ",
     questionsSolutions: [
       {
         question:

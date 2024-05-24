@@ -5,17 +5,14 @@ import { exercises } from "../../Datas/Troisieme/exercises";
 export default function ExercisesList() {
   return (
     <ExercisesListStyled>
-      <div>
-        {exercises.map((exercise, index) => (
-          <ExerciseComponent key={index} exercise={exercise} />
-        ))}
-      </div>
+      {exercises.map((exercise, index) => (
+        <ExerciseComponent key={index} exercise={exercise} />
+      ))}
     </ExercisesListStyled>
   );
 }
 const ExercisesListStyled = styled.div`
   display: flex;
-  justify-content: center;
-  /* background-color: #7d7b7b20; */
-  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  flex-direction: column;
+  align-items: center;
 `;

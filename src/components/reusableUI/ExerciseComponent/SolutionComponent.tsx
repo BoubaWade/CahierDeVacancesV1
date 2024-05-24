@@ -10,7 +10,7 @@ type SolutionComponentProps = {
 export default function SolutionComponent({
   solution,
 }: SolutionComponentProps) {
-  const [displayHelp, setDisplayHelp] = useState(false);
+  const [displayHelp, setDisplayHelp] = useState(true);
 
   return (
     <SolutionComponentStyled>
@@ -19,21 +19,34 @@ export default function SolutionComponent({
           <BlockMath key={index}>{line}</BlockMath>
         ))}
       </div>
-      <>
-        <PrimaryButton label="Valider" onClick={() => {}} />
+      <div className="buttons-container">
+        <PrimaryButton
+          label="Valider"
+          //   className="validate"
+          onClick={() => {}}
+        />
         {!displayHelp ? (
           <PrimaryButton
             label="Aide-moi"
+            // className="help"
             onClick={() => setDisplayHelp(true)}
           />
         ) : (
-          <PrimaryButton label="Cacher" onClick={() => setDisplayHelp(false)} />
+          <PrimaryButton
+            label="Cacher"
+            // className="hidden"
+            onClick={() => setDisplayHelp(false)}
+          />
         )}
-      </>
+      </div>
     </SolutionComponentStyled>
   );
 }
 const SolutionComponentStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
   .help {
     display: none;
   }
@@ -45,4 +58,18 @@ const SolutionComponentStyled = styled.div`
       display: none;
     }
   } */
+  .buttons-container {
+    /* position: relative; */
+    button {
+      /* position: absolute; */
+      margin: 0 3px;
+    }
+    /* .validate {
+      left: -200px;
+    } */
+    /* .help,
+    .hidden {
+      left: 100px;
+    } */
+  }
 `;
