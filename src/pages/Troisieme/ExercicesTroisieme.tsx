@@ -6,7 +6,7 @@ export default function ExercicesTroisieme() {
   return (
     <ExercicesTroisiemeStyled>
       <ExercisesList />
-      <DotPattern className="dot-pattern" />
+      <DotPattern />
     </ExercicesTroisiemeStyled>
   );
 }

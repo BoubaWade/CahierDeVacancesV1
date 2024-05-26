@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { datas } from "../../data/datasHomePages";
+import BorderBeam from "../reusableUI/BorderBeam";
 
 export default function Navigation() {
   const navigate = useNavigate();
@@ -7,17 +9,17 @@ export default function Navigation() {
     <NavigationStyled>
       <h2>CAHIER DE VACANCES</h2>
       <ul>
-        <li onClick={() => navigate("/cm2")}>Cm2</li>
-        <li onClick={() => navigate("/quatrieme")}>4ème</li>
-        <li onClick={() => navigate("/troisieme")}>3ème</li>
-        <li onClick={() => navigate("/premiere")}>Première</li>
-        <li onClick={() => navigate("/terminale")}>Terminale</li>
+        {datas.map(({ id, level }) => (
+          <div key={id}>
+            <li onClick={() => navigate(`/${id}`)}>{level}</li>
+            <BorderBeam className="border-beam" />
+          </div>
+        ))}
       </ul>
     </NavigationStyled>
   );
 }
 const NavigationStyled = styled.nav`
-  /* background-color: #fff; */
   background-color: #000205;
   width: 100%;
   height: 80px;
@@ -25,12 +27,9 @@ const NavigationStyled = styled.nav`
   justify-content: space-around;
   align-items: center;
   color: #ffff;
-  /* position: relative;
-  z-index: 30; */
   h2 {
     position: relative;
     z-index: 30;
-    /* color: #8c6da9; */
     font-size: 1.5rem;
     font-weight: 500;
     cursor: pointer;
@@ -39,16 +38,21 @@ const NavigationStyled = styled.nav`
     width: 50%;
     display: flex;
     justify-content: space-around;
+    position: relative;
+    padding: 5px;
     li {
       position: relative;
       z-index: 30;
       font-size: 1rem;
-      /* padding: 4px 25px; */
+      letter-spacing: 0.5px;
       cursor: pointer;
       transition: 200ms;
       &:hover {
-        transform: scale(1.05);
+        transform: scale(1.1);
       }
+    }
+    .border-beam {
+      z-index: 0;
     }
   }
 `;
