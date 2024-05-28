@@ -15,6 +15,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-katex": "^3.0.1",
+    "react-latex": "^2.0.0",
     "react-math-keyboard": "^1.5.16",
     "react-router": "^6.23.1",
     "styled-components": "^6.1.11"
@@ -24,6 +25,7 @@
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@types/react-katex": "^3.0.4",
+    "@types/react-latex": "^2.0.3",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",

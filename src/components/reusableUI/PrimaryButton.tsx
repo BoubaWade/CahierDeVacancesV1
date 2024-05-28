@@ -4,15 +4,21 @@ type PrimaryButtonProps = {
   label: string;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 };
 
 export default function PrimaryButton({
   label,
   className,
   onClick,
+  disabled,
 }: PrimaryButtonProps) {
   return (
-    <PrimaryButtonStyled className={className} onClick={onClick}>
+    <PrimaryButtonStyled
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {label}
     </PrimaryButtonStyled>
   );
@@ -25,6 +31,7 @@ const PrimaryButtonStyled = styled.button`
   margin-top: 10px;
   background: #fde047;
   color: #070d1b;
+  border: 1.5px solid #070d1b;
   border-radius: 8px;
   font-weight: 600;
   letter-spacing: 0.5px;

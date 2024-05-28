@@ -18,10 +18,16 @@ export default function SecondaryButton({
   );
 }
 const SecondaryButtonStyled = styled.button`
-  border: none;
+  border: 1.5px solid #201f1f;
   padding: 8px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.9);
-  color: #fff;
+  background-color: #201f1f;
+  color: #f8f8fa;
   cursor: pointer;
+  transition: 0.2s ease-in;
+  &:hover {
+    background-color: #f8f8fa;
+    color: #201f1f;
+    border: 1.5px solid #201f1f;
+  }
 `;

@@ -51,7 +51,7 @@ const SignFormRightSideStyled = styled.div`
       padding: 20px;
     }
     img {
-      width: 50px;
+      width: 40px;
     }
   }
 `;
