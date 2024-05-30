@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { datas } from "../../data/datasHomePages";
+import { datas } from "../../data/dataLevelPages";
 import BorderBeam from "../reusableUI/BorderBeam";
 
 export default function Navigation() {

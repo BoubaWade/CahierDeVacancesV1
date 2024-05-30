@@ -1,46 +1,31 @@
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
 import BorderBeam from "../BorderBeam";
-import SecondaryButton from "../SecondaryButton";
+import CardTop from "./CardTop";
+import CardBottom from "./CardBottom";
+import CardButtons from "../../../pages/LevelHome/Main/CardButtons";
+import { lessonCard } from "../../../Types/layoutTypes";
 
-export default function Card({ children }: any) {
-  const navigate = useNavigate();
-  const { id } = useParams();
+type LessonCardProps = {
+  lesson: lessonCard;
+};
 
+export default function LessonCard({ lesson }: LessonCardProps) {
+  const { title, level, duration, tag, stars, lessonId } = lesson;
   return (
-    <CardStyled>
-      {children}
+    <LessonCardStyled>
+      <CardTop title={title} level={level} duration={duration} />
+      <CardBottom tag={tag} stars={stars} />
       <BorderBeam className="border-beam" size={100} />
-      <div className="buttons">
-        <SecondaryButton
-          label="Cours"
-          className=""
-          onClick={() => navigate(`/${id}/cours`)}
-        />
-        <SecondaryButton
-          label="Exercices"
-          className=""
-          onClick={() => navigate(`/${id}/exercices`)}
-        />
-      </div>
-    </CardStyled>
+      <CardButtons lessonId={lessonId} />
+    </LessonCardStyled>
   );
 }
-const CardStyled = styled.article`
-  min-width: 300px;
+const LessonCardStyled = styled.article`
   position: relative;
+  min-width: 300px;
   border-radius: 15px;
   .border-beam {
     transform: translate(2px, -2px);
     z-index: -1;
-  }
-  .buttons {
-    background: #f8f8fa;
-    display: flex;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    button {
-      width: 50%;
-    }
   }
 `;

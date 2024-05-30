@@ -5,21 +5,9 @@ import calc from "../../assets/calc.jpg";
 import tableImage from "../../assets/table.jpg";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-// import { useEffect, useRef } from "react";
 
 export default function MainHome() {
   const navigate = useNavigate();
-  // const cardsRef = useRef<any>();
-
-  // useEffect(() => {
-  //   const obs = new IntersectionObserver((entries) => {
-  //     if (entries[0].isIntersecting) {
-  //       cardsRef.current.classList.add("active");
-  //     }
-  //   });
-  //   obs.observe(cardsRef.current);
-  //   return () => obs.disconnect();
-  // }, []);
 
   return (
     <MainHomeStyled>
@@ -42,7 +30,6 @@ export default function MainHome() {
           />
         </div>
       </div>
-      {/* <div className="imgs-container" ref={cardsRef}> */}
       <div className="imgs-container">
         <div className="img-container">
           <div className="card-overlay">
@@ -122,6 +109,7 @@ const MainHomeStyled = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     h1 {
       width: 70%;
       font-weight: 500;
@@ -130,14 +118,9 @@ const MainHomeStyled = styled.main`
       position: relative;
       line-height: 50px;
       span {
-        /* color: #7dd3fc; */
-        /* color: #f9a8d4; */
         color: #fde047;
-        /* color: #8c6da9; */
         font-size: 3rem;
-        /* font-family: cursive; */
         font-weight: 700;
-        /* font-style: normal; */
       }
     }
   }
@@ -161,16 +144,8 @@ const MainHomeStyled = styled.main`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* padding: 40px 0; */
     margin: 60px 0;
 
-    /* transform: translateX(-100%); */
-    /* opacity: 1; */
-    /* transition: transform 500ms ease-out, opacity 500ms ease-out; */
-    /* .active {
-      transform: translateX(100px);
-      opacity: 1;
-    } */
     .img-container {
       position: relative;
       width: 300px;

@@ -33,9 +33,12 @@ const HeaderStyled = styled.header`
   background-position: 0 0, 15px 15px;
   h1 {
     font-size: 1.9rem;
+    position: relative;
+    z-index: 1;
   }
   .search {
     position: relative;
+    z-index: 1;
     width: 30%;
     min-width: 280px;
     margin-top: 10px;

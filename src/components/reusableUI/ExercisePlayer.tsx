@@ -1,21 +1,13 @@
 import play from "../../assets/icons/play.svg";
-import back from "../../assets/icons/backward.svg";
-import next from "../../assets/icons/nextward.svg";
 import pause from "../../assets/icons/pause.svg";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
 type ExercisePlayerProps = {
   time: number;
-  // displayNextExercise: () => void;
-  // displayPreviousExercise: () => void;
 };
 
-export default function ExercisePlayer({
-  time,
-}: // displayNextExercise,
-// displayPreviousExercise,
-ExercisePlayerProps) {
+export default function ExercisePlayer({ time }: ExercisePlayerProps) {
   const totalTime = time;
   const [timeLeft, setTimeLeft] = useState(totalTime);
   const [isRunning, setIsRunning] = useState(false);
@@ -59,15 +51,11 @@ ExercisePlayerProps) {
     <ExercisePlayerStyled>
       {timeLeft !== 0 && (
         <div className="controls">
-          {/* <img src={back} onClick={displayPreviousExercise} /> */}
-          <>
-            {!isRunning ? (
-              <img src={play} id="play" onClick={() => startCountdown()} />
-            ) : (
-              <img src={pause} id="pause" onClick={() => pauseCountdown()} />
-            )}
-          </>
-          {/* <img src={next} onClick={displayNextExercise} /> */}
+          {!isRunning ? (
+            <img src={play} id="play" onClick={() => startCountdown()} />
+          ) : (
+            <img src={pause} id="pause" onClick={() => pauseCountdown()} />
+          )}
         </div>
       )}
       {timeLeft !== 0 && (
@@ -75,7 +63,7 @@ ExercisePlayerProps) {
           {!isRunning ? (
             <p className="message">Play pour déclencher l'aide</p>
           ) : (
-            <p className="message">L'aide sera disponible dans :</p>
+            <p className="message">L'aide sera disponible dans</p>
           )}
           <div className="progress-bar">
             <div
@@ -107,45 +95,17 @@ const ExercisePlayerStyled = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    background-color: #a6a4a437;
-    /* background: linear-gradient(to right, #c2c1c1, #a6a4a4); */
-    border: 1.5px solid #a6a4a48a;
-    /* border: 1.5px solid #000; */
-    box-shadow: 0 3px 10px #c2c1c1;
-
-    width: 170px;
-    height: 45px;
     border-radius: 25px;
-    text-align: center;
     margin-bottom: 10px;
-
-    background-image: radial-gradient(#2d6a4f 0.75px, transparent 0.75px),
-      radial-gradient(#2d6a4f 0.75px, #ffffff 0.75px);
-    background-size: 30px 30px;
-    background-position: 0 0, 20px 20px;
-    /* img {
-      width: 40px;
-      height: 40px;
-      padding: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      &:hover {
-        background-color: #fff;
-      }
-    } */
     #play,
     #pause {
-      color: #fff;
       width: 35px;
       height: 35px;
       padding: 10px;
       border-radius: 50%;
       transition: all 0.3s ease;
-      /* border: 1.5px solid #a6a4a48a; */
       border: 1.5px solid #000;
       cursor: pointer;
-      transition: all 0.2s ease;
       &:hover {
         transform: scale(1.1);
       }
@@ -157,8 +117,7 @@ const ExercisePlayerStyled = styled.div`
       }
     }
     #pause {
-      background-color: #c2c1c1;
-      border: none;
+      background-color: #f8f6f6;
       &:hover {
         background: #ff0000;
       }

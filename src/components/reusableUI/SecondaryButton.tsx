@@ -1,19 +1,21 @@
 import styled from "styled-components";
 
 type SecondaryButtonProps = {
+  id?: string;
   label: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
 };
 
 export default function SecondaryButton({
+  id,
   label,
   onClick,
   className,
 }: SecondaryButtonProps) {
   return (
-    <SecondaryButtonStyled className={className} onClick={onClick}>
-      {label}
+    <SecondaryButtonStyled id={id} className={className} onClick={onClick}>
+      <span>{label}</span>
     </SecondaryButtonStyled>
   );
 }

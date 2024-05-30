@@ -1,33 +1,43 @@
-import styled from "styled-components";
-import CardTop from "../../../components/reusableUI/LessonCard/CardTop";
-import CardBottom from "../../../components/reusableUI/LessonCard/CardBottom";
+import styled, { keyframes } from "styled-components";
 import LessonCard from "../../../components/reusableUI/LessonCard/LessonCard";
+import { lessonCard } from "../../../Types/layoutTypes";
 
-type lesson = {
-  title: string;
-  level: string;
-  duration: string;
-  tag: string;
-  stars: string[];
-};
 type MainProps = {
-  lessons: lesson[] | undefined;
+  lessons: lessonCard[] | undefined;
 };
 
 export default function Main({ lessons }: MainProps) {
   return (
     <MainStyled>
       <div className="cards-container">
-        {lessons?.map(({ title, level, duration, tag, stars }, index) => (
-          <LessonCard key={index}>
-            <CardTop title={title} level={level} duration={duration} />
-            <CardBottom tag={tag} stars={stars} />
-          </LessonCard>
+        {lessons?.map((lesson, index) => (
+          <LessonCard key={index} lesson={lesson} />
         ))}
       </div>
     </MainStyled>
   );
 }
+
+const animCard = keyframes`
+0%{
+  opacity: 0;
+  transform:translateY(100px)
+}
+30%{
+  opacity: 0.3;
+
+}
+60%{
+  opacity: 0.6;
+
+}
+100%{
+  opacity:1 ;
+  transform:translateY(0)
+
+} 
+`;
+
 const MainStyled = styled.main`
   background-color: #f8f8fa;
   padding: 50px 0;
@@ -41,5 +51,6 @@ const MainStyled = styled.main`
     flex-wrap: wrap;
     position: relative;
     z-index: 1;
+    animation: ${animCard} 500ms ease;
   }
 `;

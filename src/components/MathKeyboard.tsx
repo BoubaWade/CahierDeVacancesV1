@@ -1,4 +1,3 @@
-// import "./styles.css";
 import MathInput from "react-math-keyboard";
 import { useRef, useState } from "react";
 import styled from "styled-components";
@@ -41,16 +40,9 @@ const MathKeyboardStyled = styled.div`
     border-radius: 5px;
     .react-math-keyboard-input {
       border: none;
-      /* .mq-textarea {
-        text-area {
-        }
-      } */
     }
   }
   .react-math-keyboard-keyboard-container {
-    /* position: absolute; */
-    /* width: 100%; */
-    /* position: relative; */
     width: 90vw;
     max-width: 1300px;
     min-width: 400px;
@@ -64,7 +56,6 @@ const MathKeyboardStyled = styled.div`
       overflow: hidden;
     }
     .react-math-keyboard-key-utility {
-      /* background: linear-gradient(to right, #6c389c, #4d088e); */
       background: #c2a205;
       color: #fff;
     }

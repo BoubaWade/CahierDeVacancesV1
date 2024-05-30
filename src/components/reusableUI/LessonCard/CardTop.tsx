@@ -5,6 +5,7 @@ type CardTopProps = {
   level?: string;
   duration?: string;
 };
+
 export default function CardTop({ title, level, duration }: CardTopProps) {
   return (
     <CardTopStyled>
@@ -15,7 +16,7 @@ export default function CardTop({ title, level, duration }: CardTopProps) {
   );
 }
 const CardTopStyled = styled.div`
-  background-color: #f3ebbf;
+  background: linear-gradient(to right, #fde047, #c2a205);
   font-size: 0.9rem;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
