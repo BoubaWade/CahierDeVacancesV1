@@ -1,5 +1,7 @@
 export const exercises = [
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 1,
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
@@ -27,6 +29,8 @@ export const exercises = [
   },
 
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 2,
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
@@ -48,6 +52,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 3,
     statements:
       "Développer, réduire et ordonner les expressions suivantes sans étape de calcul :",
@@ -80,6 +86,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 4,
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
@@ -102,6 +110,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 5,
     statements: "Compléter les expressions suivantes :",
     questionsSolutions: [
@@ -123,6 +133,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 6,
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
@@ -144,6 +156,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 7,
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
@@ -165,6 +179,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 8,
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
@@ -186,6 +202,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 9,
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
@@ -212,6 +230,8 @@ export const exercises = [
     ],
   },
   {
+    id: Date.now(),
+    lesson: "Calcul Littéral",
     number: 10,
     statements: "",
     questionsSolutions: [

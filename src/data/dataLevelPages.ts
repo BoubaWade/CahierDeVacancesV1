@@ -81,7 +81,6 @@ export const datas = [
     lessons: [
       {
         lessonId: "",
-
         title: "Polynômes du second degré",
         level: "Première",
         duration: "2h30",
@@ -99,7 +98,6 @@ export const datas = [
       },
       {
         lessonId: "",
-
         title: "Dérivation",
         level: "Première",
         duration: "2h30",
@@ -108,7 +106,6 @@ export const datas = [
       },
       {
         lessonId: "",
-
         title: "Fonction exponentielle",
         level: "Première",
         duration: "2h",
@@ -117,7 +114,6 @@ export const datas = [
       },
       {
         lessonId: "",
-
         title: "Probabilités",
         level: "Première",
         duration: "2h",

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 type CardBottomProps = {
-  tag: string;
-  stars: string[];
+  tag?: string;
+  stars?: string[];
 };
 
 export default function CardBottom({ tag, stars }: CardBottomProps) {
@@ -11,7 +11,7 @@ export default function CardBottom({ tag, stars }: CardBottomProps) {
       <div className="stars-container">
         <h5>Importance</h5>
         <div className="stars">
-          {stars.map((star, index) => (
+          {stars?.map((star, index) => (
             <p key={index}>{star}</p>
           ))}
         </div>

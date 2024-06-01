@@ -7,6 +7,7 @@ import Sign from "./pages/Sign/Sign";
 import PrivateRoutes from "./components/PrivateRoutes";
 import LevelHome from "./pages/LevelHome/LevelHome";
 import Exercises from "./pages/Troisieme/Exercises";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/:id" Component={LevelHome} />
         <Route path="/:id/cours" Component={Courses} />
         <Route Component={PrivateRoutes}>
+          <Route path="/dashboard" Component={Dashboard} />
           <Route path="/:id/exercices/:param" Component={Exercises} />
           <Route path="/:id/exercices/:param" Component={Exercises} />
           <Route path="/:id/exercices/:param" Component={Exercises} />
