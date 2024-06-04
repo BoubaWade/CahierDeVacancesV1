@@ -111,7 +111,7 @@ const ExercisePlayerStyled = styled.div`
       }
     }
     #play {
-      background-color: #1db954;
+      background-color: #4c7f43;
       &:hover {
         background: #189945;
       }
@@ -125,9 +125,9 @@ const ExercisePlayerStyled = styled.div`
   }
   .info {
     .message {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       text-align: center;
-      margin: 5px 0;
+      margin-bottom: 10px;
     }
     .progress-bar {
       background-color: #505050;
@@ -140,7 +140,7 @@ const ExercisePlayerStyled = styled.div`
     }
     .time {
       text-align: center;
-      font-size: 15px;
+      font-size: 0.9rem;
       margin: 5px 0;
     }
   }

@@ -4,6 +4,7 @@ import { Exercise } from "../../../Types/dataTypes";
 import QuestionsList from "./QuestionsList";
 import BorderBeam from "../BorderBeam";
 import ExerciseHeader from "./ExerciseHeader";
+import SecondaryButton from "../SecondaryButton";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -19,11 +20,7 @@ export default function ExerciseComponent({
   displayPreviousExercise,
 }: ExerciseComponentProps) {
   const { number, statements, questionsSolutions } = exercise;
-  // const [toggleExercise, setToggleExercise] = useState(false);
 
-  // const handleToggleExercise = (toggled: boolean) => {
-  //   setToggleExercise(toggled);
-  // };
   if (!isActive) {
     return null;
   }
@@ -35,24 +32,16 @@ export default function ExerciseComponent({
         displayNextExercise={displayNextExercise}
         displayPreviousExercise={displayPreviousExercise}
       />
-      {/* <h3>Exercice {number}</h3> */}
-
-      {/* {toggleExercise && ( */}
+      <SecondaryButton
+        label={` Ajouter à " Devoir à faire " `}
+        className="add-todo-button"
+      />
       <div className="main">
-        {/* <div className="statements"> */}
-        {/* <BlockMath>{statements}</BlockMath> */}
         <h3>
           <Latex>{statements}</Latex>
         </h3>
-        {/* </div> */}
         <QuestionsList questionsSolutions={questionsSolutions} />
-        {/* <ExercisePlayer
-          time={time}
-          displayNextExercise={displayNextExercise}
-          displayPreviousExercise={displayPreviousExercise}
-        /> */}
       </div>
-      {/* )} */}
       <BorderBeam className="border-beam" />
     </ExerciseComponentStyled>
   );
@@ -60,7 +49,7 @@ export default function ExerciseComponent({
 const ExerciseComponentStyled = styled.div`
   position: relative;
   width: 90vw;
-  max-width: 1300px;
+  /* max-width: 1300px; */
   min-width: 400px;
   display: flex;
   flex-direction: column;
@@ -70,11 +59,15 @@ const ExerciseComponentStyled = styled.div`
   border-radius: 15px;
   margin-bottom: 50px;
   background-color: #f8f8fa;
-
+  .add-todo-button {
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
   .main {
     width: 100%;
     border-radius: 0 0 10px 10px;
-    padding-top: 50px;
+    padding-top: 40px;
     h3 {
       min-width: 350px;
       display: flex;

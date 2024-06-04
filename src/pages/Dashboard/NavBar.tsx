@@ -34,6 +34,7 @@ const NavBarStyled = styled.nav`
   left: 230px;
   padding-left: 30px;
   z-index: 1000;
+  box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
   &::before {
     content: "";
     position: absolute;

@@ -15,9 +15,7 @@ export default function TableHead() {
   );
 }
 const TableHeadStyled = styled.thead`
-  background: #000;
-  border-bottom: 2px solid #000;
-  color: #fff;
+  background: #f1f2f3;
   th {
     padding-bottom: 12px;
     font-size: 13px;

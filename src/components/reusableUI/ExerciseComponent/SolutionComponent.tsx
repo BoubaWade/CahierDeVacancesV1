@@ -22,7 +22,11 @@ export default function SolutionComponent({
         ))}
       </div>
       <div className="buttons-container">
-        <SecondaryButton label="Valider" onClick={() => {}} />
+        <SecondaryButton
+          label="Valider"
+          className="validate-button"
+          onClick={() => {}}
+        />
         {!displayHelp ? (
           <SecondaryButton
             label="Aide-moi"
@@ -64,10 +68,27 @@ const SolutionComponentStyled = styled.div`
   .buttons-container {
     margin-top: 20px;
     button {
+      background-color: #ebeaea;
+      border-color: #949292;
+      color: #000;
+      border-radius: 5px;
       font-size: 0.9rem;
       font-weight: 500;
       padding: 8px 30px;
       margin: 0 3px;
+      box-shadow: 0 1px 2px #807f7f;
+      &:hover {
+        background: #fff;
+        box-shadow: none;
+      }
+    }
+    .validate-button {
+      background: #4c7f43;
+      border-color: #4c7f43;
+      color: #fcfcfc;
+      &:hover {
+        background: #416c39;
+      }
     }
   }
 `;

@@ -6,3 +6,21 @@ export type lessonCard = {
   stars: string[];
   lessonId: string;
 };
+export type LevelState = {
+  isCm2Active: boolean;
+  isTroisiemeActive: boolean;
+  isPremiereActive: boolean;
+  isTerminaleActive: boolean;
+};
+export type SideBarState = {
+  isHomeActive: boolean;
+  isClassesActive: boolean;
+  isToDoActive: boolean;
+  isSettingsActive: boolean;
+};
+export type SideBarItem = {
+  isActive: boolean;
+  stateKey: string;
+  icon: string;
+  label: string;
+};

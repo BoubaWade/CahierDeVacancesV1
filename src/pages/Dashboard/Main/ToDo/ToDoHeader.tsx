@@ -9,14 +9,14 @@ export default function ToDoHeader() {
   );
 }
 const ToDoHeaderStyled = styled.div`
+  background: #f1f2f3;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 500;
   padding: 10px 20px;
+  border-radius: 10px 10px 0 0;
   h4 {
-    background: #fff;
-    color: #000000c1;
     padding: 5px 20px;
     font-weight: 400;
     border-radius: 20px;

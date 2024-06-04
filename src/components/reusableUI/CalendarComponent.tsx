@@ -12,27 +12,34 @@ export default function CalendarComponent() {
 
   return (
     <CalendarComponentStyled>
-      <h3>Calendrier</h3>
-      <Calendar onChange={onChange} value={value} className="calendar" />
+      {/* <h3>Calendrier</h3> */}
+      <Calendar
+        onChange={onChange}
+        value={value}
+        className="calendar"
+        // showWeekNumbers={true}
+      />
     </CalendarComponentStyled>
   );
 }
 
 const CalendarComponentStyled = styled.div`
   max-width: 350px;
-  h3 {
+  /* h3 {
     text-align: center;
     margin-bottom: 10px;
     font-size: 1.5rem;
     font-weight: 500;
-  }
+  } */
   .calendar {
-    background: #fdefaa;
+    /* background: #fdefaa; */
+    background: #fff;
     width: 100%;
     min-height: 295px;
     height: 100%;
     border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 4px 15px -10px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    /* border: none; */
+    box-shadow: 0px 2px 10px -10px rgba(0, 0, 0, 0.8);
   }
 `;

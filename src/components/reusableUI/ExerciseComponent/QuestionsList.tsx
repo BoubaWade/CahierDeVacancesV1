@@ -33,13 +33,28 @@ export default function QuestionsList({
 }
 const QuestionsListStyled = styled.div`
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   .exercise-container {
-    width: 100%;
     display: flex;
+    flex-grow: 1;
     padding: 5px;
     border-radius: 15px;
+    max-width: 620px;
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+      .player-container {
+        border-right: none;
+      }
+    }
+    &:nth-child(odd) {
+      .player-container {
+        border-left: none;
+      }
+    }
     .exercise-statement {
-      width: calc(100% - 200px);
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -51,28 +66,11 @@ const QuestionsListStyled = styled.div`
     .player-container {
       background: linear-gradient(to right, #fde047, #c2a205);
       border-radius: 10px;
-      width: 200px;
+      width: 150px;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 1px solid #000;
-      border-left: none;
-    }
-    .difficulty {
-      width: 40px;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      &:hover {
-        color: #fff;
-        background-color: #000;
-      }
-      span {
-        font-size: 1rem;
-        display: inline-block;
-        transform: rotate(-90deg);
-      }
     }
   }
 `;

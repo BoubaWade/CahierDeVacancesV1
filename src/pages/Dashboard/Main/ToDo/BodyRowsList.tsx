@@ -44,24 +44,28 @@ const BodyRowsListStyled = styled.tr`
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 10px;
+  border-top: 1px solid #d5d6d7;
+  background: #fff;
   td {
     text-align: center;
     padding: 5px 0;
     font-size: 0.9rem;
     .book-open {
+      background: #d5d6d7;
       width: 18px;
+      margin-left: 10px;
       border-radius: 50%;
     }
     p {
       margin-top: 4px;
     }
   }
-  &:nth-child(even) {
+  /* &:nth-child(even) {
     background: #fff;
   }
   &:nth-child(odd) {
-    background: #f1f2f3;
-  }
+    background: #fff;
+  } */
   td {
     .status {
       max-width: 110px;
@@ -90,7 +94,8 @@ const BodyRowsListStyled = styled.tr`
     }
   }
   .delete-task {
-    width: 15px;
+    width: 13px;
+    margin-top: 5px;
     cursor: pointer;
     transition: 200ms ease;
     &:hover {

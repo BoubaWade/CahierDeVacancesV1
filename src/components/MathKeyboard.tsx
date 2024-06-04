@@ -36,7 +36,7 @@ const MathKeyboardStyled = styled.div`
   min-width: 300px;
   margin-top: 20px;
   .react-math-keyboard-input-container {
-    border: 1.3px solid #c2a205;
+    border: 1.3px solid #3c9a5d;
     border-radius: 5px;
     .react-math-keyboard-input {
       border: none;

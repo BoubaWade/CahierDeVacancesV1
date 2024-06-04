@@ -7,51 +7,27 @@ import bgCm2 from "../../../../assets/table.jpg";
 import bg3eme from "../../../../assets/workspace.jpg";
 import schooldesk from "../../../../assets/school-desk.jpg";
 import emc2 from "../../../../assets/emc2.jpg";
-import { useReducer } from "react";
 import PrimaryButton from "../../../../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import { LevelState } from "../../../../Types/layoutTypes";
 
-type State = {
-  isCm2Active: boolean;
-  isTroisiemeActive: boolean;
-  isPremiereActive: boolean;
-  isTerminaleActive: boolean;
-};
 type Action = {
   type: string;
   payload: string;
 };
-const initialState = {
-  isCm2Active: false,
-  isTroisiemeActive: false,
-  isPremiereActive: false,
-  isTerminaleActive: true,
+type LevelCardListProps = {
+  state: LevelState;
+  dispatch: React.Dispatch<Action>;
 };
 
-function reducer(state: State, action: Action) {
-  switch (action.type) {
-    case "SET_ACTIVE":
-      return {
-        isCm2Active: false,
-        isTroisiemeActive: false,
-        isPremiereActive: false,
-        isTerminaleActive: false,
-        [action.payload]: true,
-      };
-    default:
-      return state;
-  }
-}
-
-export default function LevelCardList() {
-  const navigate = useNavigate();
-  const [state, dispatch] = useReducer(reducer, initialState);
+export default function LevelCardList({ state, dispatch }: LevelCardListProps) {
   const {
     isCm2Active,
     isTroisiemeActive,
     isPremiereActive,
     isTerminaleActive,
   } = state;
+  const navigate = useNavigate();
 
   const handleClick = (section: string) => {
     dispatch({ type: "SET_ACTIVE", payload: section });
@@ -59,16 +35,12 @@ export default function LevelCardList() {
 
   return (
     <LevelCardListStyled>
-      <h3>Les classes</h3>
+      <h2>Les classes</h2>
       <div className="list-cards-container">
         <div
           className={`card ${isCm2Active ? "active" : ""}`}
           onClick={() => handleClick("isCm2Active")}
         >
-          {/* <div>
-          <p></p>
-          <p></p>
-        </div> */}
           <p className="title cm2">CM2</p>
           <img src={bgCm2} className="bg-image" />
           <div className="shadow"></div>
@@ -142,11 +114,11 @@ export default function LevelCardList() {
 }
 
 const LevelCardListStyled = styled.div`
-  h3 {
+  h2 {
+    font-size: 1.5rem;
     text-align: center;
     margin-bottom: 10px;
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
   }
   .list-cards-container {
     display: flex;

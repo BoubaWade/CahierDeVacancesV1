@@ -14,15 +14,7 @@ export default function Todo() {
             Complète(s) : <span>5</span>
           </p>
         </div>
-        <div className="todo-infos">
-          <h3>Énigme de la semaine</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-            suscipit voluptatem cum itaque excepturi error eos. Laudantium
-            molestias vel quas maxime est voluptatum, ut minima suscipit facere,
-            optio, non beatae.
-          </p>
-        </div>
+        <div className="quote-of-the-month"></div>
       </div>
       <ToDoList />
     </TodoStyled>
@@ -33,25 +25,30 @@ const TodoStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  background-image: radial-gradient(#2d6a4f 0.75px, transparent 0.75px),
+    radial-gradient(#2d6a4f 0.75px, #ffffff 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
   .todo-counter-container {
     display: flex;
     width: 90%;
-    height: 270px;
+    height: 110px;
     column-gap: 20px;
+    margin-top: 50px;
     .todo-counter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       background: #f1f2f3;
-      width: 40%;
+      width: 30%;
       padding: 10px;
       border-radius: 7px;
       border: 1px solid #d9d7d7;
-      box-shadow: 0px 4px 20px -10px rgba(0, 0, 0, 0.6);
+      box-shadow: 0px 2px 15px -10px rgba(0, 0, 0, 0.6);
       h3 {
-        background: #000;
-        color: #fff;
         font-size: 1rem;
-        font-weight: 500;
-        text-align: center;
+        font-weight: 400;
         margin-bottom: 15px;
         padding: 5px 0;
         border-radius: 6px;
@@ -66,21 +63,11 @@ const TodoStyled = styled.div`
         }
       }
     }
-    .todo-infos {
+    .quote-of-the-month {
       background: #f1f2f3;
-      width: 60%;
-      padding: 10px;
-      border-radius: 7px;
+      width: 70%;
       border: 1px solid #d9d7d7;
-      box-shadow: 0px 4px 20px -10px rgba(0, 0, 0, 0.6);
-      h3 {
-        margin: 15px 0 10px;
-        text-align: center;
-      }
-      p {
-        font-size: 0.9rem;
-        padding: 3px;
-      }
+      border-radius: 10px;
     }
   }
 `;

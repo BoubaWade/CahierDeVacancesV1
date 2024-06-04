@@ -28,7 +28,7 @@ export default function ExerciseHeader({
   );
 }
 const ExerciseHeaderStyled = styled.div`
-  background-color: #201f1f;
+  background-color: #201f1fe7;
   width: 100%;
   display: flex;
   justify-content: space-between;

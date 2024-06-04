@@ -1,14 +1,23 @@
 import styled from "styled-components";
 import PrimaryButton from "../../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+// import { useDispatch, useSelector } from "react-redux";
+// import { AppDispatch, RootState } from "../../app/store";
+// import { setMainDashboardActive } from "../../features/Dashboard/dashboardSettingsSlice";
 
 type HeaderProps = {
   level: string | undefined;
 };
 
 export default function Header({ level }: HeaderProps) {
-  const navigate = useNavigate();
+  // const state = useSelector((state: RootState) => state.dashboardSettings);
+  // const dispatch = useDispatch<AppDispatch>();
 
+  const navigate = useNavigate();
+  // const handleReturnDashboard = () => {
+  //   ;
+  //   dispatch(setMainDashboardActive(state.isHomeActive));
+  // };
   return (
     <HeaderStyled>
       <PrimaryButton
