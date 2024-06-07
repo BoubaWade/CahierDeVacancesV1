@@ -1,4 +1,4 @@
-export const datas = [
+export const datasOfChapters = [
   {
     id: "cm2",
     level: "Cm2",
@@ -174,7 +174,7 @@ export const datas = [
   },
   {
     id: "terminale",
-    level: "Terminale",
+    level: "Términale",
     lessons: [
       {
         lessonId: "",

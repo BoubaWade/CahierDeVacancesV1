@@ -1,10 +1,18 @@
 import styled from "styled-components";
 import Latex from "react-latex";
-import { Exercise } from "../../../Types/dataTypes";
+import { Exercise, DateValue } from "../../../Types/dataTypes";
 import QuestionsList from "./QuestionsList";
 import BorderBeam from "../BorderBeam";
 import ExerciseHeader from "./ExerciseHeader";
 import SecondaryButton from "../SecondaryButton";
+import Modal from "../Modal/Modal";
+import CalendarComponent from "../CalendarComponent";
+import { useState } from "react";
+import { exercises } from "../../../Datas/Troisieme/exercises";
+import { addToDoExercise } from "../../../features/Dashboard/dashboardSlice";
+import { useDispatch } from "react-redux";
+import PrimaryButton from "../PrimaryButton";
+import { formatDate } from "../../../utils/utilsFunctions";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -19,11 +27,42 @@ export default function ExerciseComponent({
   displayNextExercise,
   displayPreviousExercise,
 }: ExerciseComponentProps) {
-  const { number, statements, questionsSolutions } = exercise;
+  const { id, number, statements, questionsSolutions } = exercise;
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [addIsSuccessful, setAddIsSuccessful] = useState(false);
+  const dispatch = useDispatch();
+  const [value, onChange] = useState<DateValue>(new Date());
 
   if (!isActive) {
     return null;
   }
+
+  const getCurrentExercise = (id: string) => {
+    return exercises.find((exercise) => exercise.id === id);
+  };
+
+  const handleAddTodo = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const exercise = getCurrentExercise(e.currentTarget.id);
+    const deepCopyExercise = structuredClone(exercise);
+
+    if (deepCopyExercise && value) {
+      for (let key in deepCopyExercise) {
+        if (key === "limitDate") {
+          deepCopyExercise[key] = formatDate(value.toString());
+        }
+      }
+    }
+    dispatch(addToDoExercise(deepCopyExercise));
+    setAddIsSuccessful(true);
+
+    setTimeout(() => {
+      setIsOpenModal(false);
+      setAddIsSuccessful(false);
+    }, 1000);
+  };
 
   return (
     <ExerciseComponentStyled>
@@ -33,9 +72,23 @@ export default function ExerciseComponent({
         displayPreviousExercise={displayPreviousExercise}
       />
       <SecondaryButton
-        label={` Ajouter à " Devoir à faire " `}
+        label={`Ajouter à "Devoir à faire"`}
         className="add-todo-button"
+        onClick={() => setIsOpenModal(true)}
       />
+      <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
+        <CalendarComponent
+          className="calendar"
+          value={value}
+          onChange={onChange}
+        />
+        <PrimaryButton
+          id={id}
+          label={!addIsSuccessful ? "Valider" : "Ajouté !"}
+          onClick={(e) => handleAddTodo(e)}
+        />
+      </Modal>
+
       <div className="main">
         <h3>
           <Latex>{statements}</Latex>
@@ -49,7 +102,6 @@ export default function ExerciseComponent({
 const ExerciseComponentStyled = styled.div`
   position: relative;
   width: 90vw;
-  /* max-width: 1300px; */
   min-width: 400px;
   display: flex;
   flex-direction: column;
@@ -63,6 +115,8 @@ const ExerciseComponentStyled = styled.div`
     margin-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+  }
+  .calendar {
   }
   .main {
     width: 100%;

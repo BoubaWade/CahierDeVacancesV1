@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import Astro from "../../assets//astro.png";
-import { datas } from "../../data/dataLevelPages";
+import { datasOfChapters } from "../../data/dataLevelPages";
 import { useParams } from "react-router-dom";
 import Header from "./Header";
 import Main from "./Main/Main";
 
 export default function LevelHome() {
   const { id } = useParams();
-  const dataFiltered = datas?.find((data) => data.id === id);
+  const dataFiltered = datasOfChapters?.find((data) => data.id === id);
 
   return (
     <LevelHomeStyled>

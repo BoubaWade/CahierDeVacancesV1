@@ -1,15 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { datas } from "../../data/dataLevelPages";
+import { datasOfChapters } from "../../data/dataLevelPages";
 import BorderBeam from "../reusableUI/BorderBeam";
 
 export default function Navigation() {
   const navigate = useNavigate();
   return (
     <NavigationStyled>
-      <h2>CAHIER DE VACANCES</h2>
+      {/* <h2>CAHIER DE VACANCES</h2> */}
+      <h2>MATH.Max</h2>
       <ul>
-        {datas.map(({ id, level }) => (
+        {datasOfChapters.map(({ id, level }) => (
           <div key={id}>
             <li onClick={() => navigate(`/${id}`)}>{level}</li>
             <BorderBeam className="border-beam" />

@@ -1,27 +1,18 @@
 import styled from "styled-components";
 import PrimaryButton from "../../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { AppDispatch, RootState } from "../../app/store";
-// import { setMainDashboardActive } from "../../features/Dashboard/dashboardSettingsSlice";
 
 type HeaderProps = {
   level: string | undefined;
 };
 
 export default function Header({ level }: HeaderProps) {
-  // const state = useSelector((state: RootState) => state.dashboardSettings);
-  // const dispatch = useDispatch<AppDispatch>();
-
   const navigate = useNavigate();
-  // const handleReturnDashboard = () => {
-  //   ;
-  //   dispatch(setMainDashboardActive(state.isHomeActive));
-  // };
+
   return (
     <HeaderStyled>
       <PrimaryButton
-        label="Tableau de bord"
+        label="Retour au tableau de bord"
         className="dashboard-return-btn"
         onClick={() => navigate("/dashboard")}
       />

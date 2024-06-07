@@ -3,7 +3,7 @@ import percent from "../../../../assets/percent.svg";
 import racine from "../../../../assets/racine.svg";
 import infinity from "../../../../assets/infinity-solid.svg";
 import functionFI from "../../../../assets/functionFI.svg";
-import bgCm2 from "../../../../assets/table.jpg";
+import bgCm2 from "../../../../assets/fibonacci.jpg";
 import bg3eme from "../../../../assets/workspace.jpg";
 import schooldesk from "../../../../assets/school-desk.jpg";
 import emc2 from "../../../../assets/emc2.jpg";
@@ -114,6 +114,7 @@ export default function LevelCardList({ state, dispatch }: LevelCardListProps) {
 }
 
 const LevelCardListStyled = styled.div`
+  grid-area: 1 / 1 / 2 / 2;
   h2 {
     font-size: 1.5rem;
     text-align: center;

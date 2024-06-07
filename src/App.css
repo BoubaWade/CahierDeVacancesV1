@@ -10,12 +10,16 @@
 
 * {
     max-width: 1500px;
-    /* max-height: 900px; */
+    max-height: 900px;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     list-style-type: none;
     font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: auto;
 }
 
 .background-filter {

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 type PrimaryButtonProps = {
+  id?: string;
   label: string;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -8,6 +9,7 @@ type PrimaryButtonProps = {
 };
 
 export default function PrimaryButton({
+  id,
   label,
   className,
   onClick,
@@ -15,6 +17,7 @@ export default function PrimaryButton({
 }: PrimaryButtonProps) {
   return (
     <PrimaryButtonStyled
+      id={id}
       className={className}
       onClick={onClick}
       disabled={disabled}

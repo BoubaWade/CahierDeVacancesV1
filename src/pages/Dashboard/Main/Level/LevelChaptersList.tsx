@@ -28,4 +28,10 @@ export default function LevelChaptersList({ state }: LevelChaptersListProps) {
     </LevelChaptersListStyled>
   );
 }
-const LevelChaptersListStyled = styled.div``;
+const LevelChaptersListStyled = styled.div`
+  max-width: 600px;
+  width: 100%;
+  grid-area: 2 / 1 / 3 / 2;
+  border-radius: 12px;
+  box-shadow: 0px -3px 15px rgba(0, 0, 0, 0.1);
+`;

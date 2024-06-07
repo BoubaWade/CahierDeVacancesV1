@@ -1,23 +1,28 @@
 import "react-calendar/dist/Calendar.css";
 import styled from "styled-components";
-import { useState } from "react";
 import Calendar from "react-calendar";
+import { DateValue } from "../../Types/dataTypes";
 
-type ValuePiece = Date | null;
+type CalendarCompProps = {
+  className?: string;
+  onOpenModal?: React.Dispatch<React.SetStateAction<boolean>>;
+  value?: DateValue;
+  onChange?: React.Dispatch<React.SetStateAction<DateValue>>;
+};
 
-type Value = ValuePiece | [ValuePiece, ValuePiece];
-
-export default function CalendarComponent() {
-  const [value, onChange] = useState<Value>(new Date());
-
+export default function CalendarComponent({
+  className,
+  onOpenModal,
+  value,
+  onChange,
+}: CalendarCompProps) {
   return (
-    <CalendarComponentStyled>
-      {/* <h3>Calendrier</h3> */}
+    <CalendarComponentStyled className={className}>
       <Calendar
         onChange={onChange}
         value={value}
         className="calendar"
-        // showWeekNumbers={true}
+        onClickDay={() => onOpenModal && onOpenModal(true)}
       />
     </CalendarComponentStyled>
   );
@@ -25,21 +30,17 @@ export default function CalendarComponent() {
 
 const CalendarComponentStyled = styled.div`
   max-width: 350px;
-  /* h3 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    font-weight: 500;
-  } */
   .calendar {
-    /* background: #fdefaa; */
     background: #fff;
     width: 100%;
     min-height: 295px;
     height: 100%;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    /* border: none; */
-    box-shadow: 0px 2px 10px -10px rgba(0, 0, 0, 0.8);
+    box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
+    transition: all 300ms ease;
+    &:hover {
+      box-shadow: none;
+    }
   }
 `;

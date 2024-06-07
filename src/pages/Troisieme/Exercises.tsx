@@ -13,10 +13,10 @@ export default function Exercises() {
 }
 
 const ExercicesTroisiemeStyled = styled.div`
-  padding: 30px 0;
+  padding: 20px 0;
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-align: center;
-    margin: 30px 0;
+    margin: 20px 0;
   }
 `;

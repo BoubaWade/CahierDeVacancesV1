@@ -1,8 +1,11 @@
 export const exercises = [
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-1",
+    isCompleted: false,
+    level: "Troisième",
     lesson: "Calcul Littéral",
     number: 1,
+    limitDate: "",
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
@@ -29,9 +32,12 @@ export const exercises = [
   },
 
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-2",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 2,
+    limitDate: "",
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
@@ -52,9 +58,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-3",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 3,
+    limitDate: "",
     statements:
       "Développer, réduire et ordonner les expressions suivantes sans étape de calcul :",
     questionsSolutions: [
@@ -86,9 +95,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-4",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 4,
+    limitDate: "",
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
@@ -110,9 +122,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-5",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 5,
+    limitDate: "",
     statements: "Compléter les expressions suivantes :",
     questionsSolutions: [
       {
@@ -133,9 +148,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-6",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 6,
+    limitDate: "",
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
       {
@@ -156,9 +174,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-7",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 7,
+    limitDate: "",
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
       {
@@ -179,9 +200,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-8",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 8,
+    limitDate: "",
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
       {
@@ -202,9 +226,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-9",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 9,
+    limitDate: "",
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
       {
@@ -230,9 +257,12 @@ export const exercises = [
     ],
   },
   {
-    id: Date.now(),
+    id: "troisieme-calcul-litteral-10",
+    isCompleted: false,
     lesson: "Calcul Littéral",
+    level: "Troisième",
     number: 10,
+    limitDate: "",
     statements: "",
     questionsSolutions: [
       {

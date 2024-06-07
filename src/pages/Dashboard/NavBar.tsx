@@ -13,7 +13,6 @@ export default function NavBar() {
           <SecondaryButton label="Valider" className="search-btn" />
         </div>
       </form>
-      <span>Boubacar</span>
       <div className="notif">
         <span className="count">12</span>
         <img src={bell} />
@@ -23,6 +22,8 @@ export default function NavBar() {
 }
 const NavBarStyled = styled.nav`
   width: calc(100% - 230px);
+  /* width: 100vw; */
+  /* max-width: 1500px; */
   background: linear-gradient(to right, #fde047, #c2a205);
   height: 60px;
   padding: 0 30px;
@@ -30,6 +31,7 @@ const NavBarStyled = styled.nav`
   align-items: center;
   grid-gap: 24px;
   position: fixed;
+  /* position: sticky; */
   top: 0;
   left: 230px;
   padding-left: 30px;

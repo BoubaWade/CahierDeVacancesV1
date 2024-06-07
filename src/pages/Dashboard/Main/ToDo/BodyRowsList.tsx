@@ -3,7 +3,7 @@ import bookOpen from "../../../../assets/icons/bookOpen.svg";
 import styled from "styled-components";
 
 type BodyRow = {
-  id: number;
+  id: string;
   lesson: string;
   number: number;
   level: string;
@@ -17,7 +17,6 @@ type BodyRowsProps = {
 
 export default function BodyRowsList({ data }: BodyRowsProps) {
   const { lesson, number, level, limitDate, isCompleted } = data;
-
   return (
     <BodyRowsListStyled>
       <td>

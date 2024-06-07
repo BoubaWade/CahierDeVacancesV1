@@ -18,25 +18,6 @@ const dashboardSettingsSlice = createSlice({
       }
       state[payload as keyof SideBarState] = true;
     },
-
-    // setIsMainSwitchButtonActived: (state) => {
-    //   state.isMainSwitchButtonActived = !state.isMainSwitchButtonActived;
-    // },
-    // setIsPopUpDisplayed: (state, { payload }) => {
-    //   state.isPopUpDisplayed = payload;
-    // },
-    // setIsBasketDisplayed: (state, { payload }) => {
-    //   state.isBasketDisplayed = payload;
-    // },
-    // setIsButtonAddDisplayed: (state, { payload }) => {
-    //   state.isButtonAddDisplayed = payload;
-    // },
-    // setIsDisplayUpdateCardModal: (state, { payload }) => {
-    //   state.isDisplayUpdateCardModal = payload;
-    // },
-    // setIsAddSectionDisplayed: (state, { payload }) => {
-    //   state.isAddSectionDisplayed = payload;
-    // },
   },
 });
 

@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import PrimaryButton from "../reusableUI/PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 export default function SignInForm() {
+  const navigate = useNavigate();
   return (
     <SignInFormStyled>
       <h1>Connectez-vous</h1>
@@ -15,7 +17,7 @@ export default function SignInForm() {
       <PrimaryButton
         label="Se connecter"
         className="connexion-button"
-        onClick={() => {}}
+        onClick={() => navigate("/dashboard")}
       />
       <span>Mot de passe oublié ?</span>
     </SignInFormStyled>

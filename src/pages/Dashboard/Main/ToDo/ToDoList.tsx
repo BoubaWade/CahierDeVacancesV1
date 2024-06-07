@@ -1,18 +1,22 @@
 import styled from "styled-components";
 import ToDoHeader from "./ToDoHeader";
-import TableHead from "./TableHead";
-import TableBody from "./TableBody";
 import BorderBeam from "../../../../components/reusableUI/BorderBeam";
+import { useSelector } from "react-redux";
+import ToDoTable from "./ToDoTable";
+import { RootState } from "../../../../app/store";
 
 export default function ToDoList() {
+  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+
   return (
     <ToDoListStyled>
       <BorderBeam className="border-beam" />
       <ToDoHeader />
-      <table>
-        <TableHead />
-        <TableBody />
-      </table>
+      {toDoExercises.length !== 0 ? (
+        <ToDoTable />
+      ) : (
+        <p className="empty-todo">Pas de devoirs à faire !</p>
+      )}
     </ToDoListStyled>
   );
 }
@@ -27,9 +31,13 @@ const ToDoListStyled = styled.div`
   padding-bottom: 3px;
   border: 1px solid #d9d7d7;
   box-shadow: 0px 2px 15px -10px rgba(0, 0, 0, 0.8);
-  table {
-    width: 100%;
-    border-collapse: collapse;
+  .empty-todo {
+    font-size: 1rem;
+    font-style: italic;
+    background: #f1f2f3;
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
   }
   .border-beam {
     transform: translate(2px, -2px);
