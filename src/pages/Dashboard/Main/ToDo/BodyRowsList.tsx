@@ -1,6 +1,9 @@
-import deleteIcon from "../../../../assets/icons/delete.svg";
 import bookOpen from "../../../../assets/icons/bookOpen.svg";
 import styled from "styled-components";
+import { useState } from "react";
+import UpdateToDo from "./UpdateToDo";
+import ColumnLimitDate from "./ColumnLimitDate";
+import ColumnStatus from "./ColumnStatus";
 
 type BodyRow = {
   id: string;
@@ -12,35 +15,42 @@ type BodyRow = {
 };
 
 type BodyRowsProps = {
-  data: BodyRow;
+  toDo: BodyRow;
 };
 
-export default function BodyRowsList({ data }: BodyRowsProps) {
-  const { lesson, number, level, limitDate, isCompleted } = data;
+export default function BodyRowsList({ toDo }: BodyRowsProps) {
+  const { id, lesson, number, level, limitDate, isCompleted } = toDo;
+
+  const [inputValue, setInputValue] = useState<string | undefined>("");
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <BodyRowsListStyled>
       <td>
         <img src={bookOpen} className="book-open" />
-        <p>{lesson}</p>
+        <p className="lesson">{lesson}</p>
       </td>
       <td>{number}</td>
       <td>{level}</td>
-      <td>{limitDate}</td>
-      <td>
-        {isCompleted ? (
-          <span className="status completed">Complète</span>
-        ) : (
-          <span className="status pending">En attente</span>
-        )}
-      </td>
-      <td>
-        <img src={deleteIcon} className="delete-task" />
-      </td>
+      <ColumnLimitDate
+        id={id}
+        limitDate={limitDate}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+      />
+      <ColumnStatus isCompleted={isCompleted} />
+      <UpdateToDo
+        id={id}
+        isCompleted={isCompleted}
+        setInputValue={setInputValue}
+        setIsEditing={setIsEditing}
+      />
     </BodyRowsListStyled>
   );
 }
 const BodyRowsListStyled = styled.tr`
-  cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 10px;
   border-top: 1px solid #d5d6d7;
@@ -55,50 +65,14 @@ const BodyRowsListStyled = styled.tr`
       margin-left: 10px;
       border-radius: 50%;
     }
-    p {
+    .lesson {
       margin-top: 4px;
-    }
-  }
-  /* &:nth-child(even) {
-    background: #fff;
-  }
-  &:nth-child(odd) {
-    background: #fff;
-  } */
-  td {
-    .status {
-      max-width: 110px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: auto;
-      font-size: 10px;
-      padding: 6px 10px;
-      color: #fff;
-      border-radius: 20px;
-      font-weight: 700;
-    }
-    .status.completed {
-      background: green;
-    }
-    .status.pending {
-      background: #fde047;
-      color: #000;
     }
     &:first-child {
       display: flex;
       align-items: center;
       grid-gap: 12px;
       padding-left: 6px;
-    }
-  }
-  .delete-task {
-    width: 13px;
-    margin-top: 5px;
-    cursor: pointer;
-    transition: 200ms ease;
-    &:hover {
-      transform: scale(1.2);
     }
   }
 `;

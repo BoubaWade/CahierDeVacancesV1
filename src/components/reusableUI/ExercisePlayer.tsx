@@ -4,14 +4,18 @@ import styled from "styled-components";
 import { useEffect, useState } from "react";
 
 type ExercisePlayerProps = {
-  time: number;
+  totalTime: number;
+  timeLeft: number;
+  setTimeLeft: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function ExercisePlayer({ time }: ExercisePlayerProps) {
-  const totalTime = time;
-  const [timeLeft, setTimeLeft] = useState(totalTime);
+export default function ExercisePlayer({
+  totalTime,
+  timeLeft,
+  setTimeLeft,
+}: ExercisePlayerProps) {
   const [isRunning, setIsRunning] = useState(false);
-  const [booleanState, setBooleanState] = useState(true);
+  // const [booleanState, setBooleanState] = useState(true);
 
   useEffect(() => {
     let timer: number;
@@ -21,7 +25,7 @@ export default function ExercisePlayer({ time }: ExercisePlayerProps) {
       }, 1000);
     } else if (timeLeft === 0) {
       setIsRunning(false);
-      setBooleanState(false);
+      // setBooleanState(false);
     }
 
     return () => clearInterval(timer);
@@ -30,12 +34,12 @@ export default function ExercisePlayer({ time }: ExercisePlayerProps) {
   const startCountdown = () => {
     setIsRunning(true);
     setTimeLeft(timeLeft);
-    setBooleanState(true);
+    // setBooleanState(true);
   };
 
   const pauseCountdown = () => {
     setIsRunning(false);
-    setBooleanState(false);
+    // setBooleanState(false);
   };
 
   const formatTime = (seconds: number) => {
@@ -145,7 +149,7 @@ const ExercisePlayerStyled = styled.div`
     }
   }
   .help-message {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 500;
     text-align: center;
     margin-top: 5px;

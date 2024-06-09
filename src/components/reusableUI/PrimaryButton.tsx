@@ -35,7 +35,7 @@ const PrimaryButtonStyled = styled.button`
   background: #fde047;
   color: #070d1b;
   border: 1.5px solid #070d1b;
-  border-radius: 8px;
+  border-radius: 5px;
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;

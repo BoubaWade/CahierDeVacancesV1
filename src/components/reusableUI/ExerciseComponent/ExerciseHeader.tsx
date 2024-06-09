@@ -35,6 +35,7 @@ const ExerciseHeaderStyled = styled.div`
   align-items: center;
   padding: 13px;
   border-radius: 10px;
+  border-radius: 5px;
   h3 {
     color: #fff;
     font-weight: 500;
@@ -48,7 +49,7 @@ const ExerciseHeaderStyled = styled.div`
     align-items: center;
     padding: 5px 45px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 4px;
     transition: all 0.2s ease;
     img {
       width: 15px;

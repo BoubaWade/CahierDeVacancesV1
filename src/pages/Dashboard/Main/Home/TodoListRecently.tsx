@@ -1,36 +1,22 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { RootState } from "../../../../app/store";
 
 export default function TodoListRecently() {
-  const todoRecentlyDatas = [
-    {
-      chapter: "Théorème de Thalès",
-      numberOfExercise: 7,
-    },
-    {
-      chapter: "Trigonomètrie",
-      numberOfExercise: 1,
-    },
-    {
-      chapter: "Calcul d'aire et de Volume",
-      numberOfExercise: 3,
-    },
-    {
-      chapter: "Théorème de Pythagore",
-      numberOfExercise: 10,
-    },
-    {
-      chapter: "Calcul Littéral",
-      numberOfExercise: 9,
-    },
-  ];
+  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const todoRecentlyDatas = toDoExercises.slice(0, 5);
+
   return (
     <TodoListRecentlyStyled>
       <h3>Récents devoirs</h3>
+      {todoRecentlyDatas.length === 0 && (
+        <p className="empty-todoRecent">Pas de devoirs récents</p>
+      )}
       <ul>
         {todoRecentlyDatas.map((data, index) => (
           <li key={index}>
-            <span>{data.chapter}</span>
-            <span>Exercice: {data.numberOfExercise}</span>
+            <span>{data.lesson}</span>
+            <span>Exercice: {data.number}</span>
           </li>
         ))}
       </ul>
@@ -39,7 +25,7 @@ export default function TodoListRecently() {
 }
 const TodoListRecentlyStyled = styled.div`
   width: 460px;
-  height: 200px;
+  height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +42,11 @@ const TodoListRecentlyStyled = styled.div`
   h3 {
     font-weight: 700;
     font-size: 1rem;
-    margin: 0 0 20px;
+    position: absolute;
+    top: 40px;
+  }
+  .empty-todoRecent {
+    font-style: italic;
   }
   ul {
     width: 100%;

@@ -31,12 +31,12 @@ export default function CalendarComponent({
 const CalendarComponentStyled = styled.div`
   max-width: 350px;
   .calendar {
-    background: #fff;
+    background: #f9e893;
     width: 100%;
     min-height: 295px;
     height: 100%;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 2px solid #fde047;
     box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
     transition: all 300ms ease;
     &:hover {

@@ -2,8 +2,16 @@ import styled from "styled-components";
 import bell from "../../assets/icons/bell.svg";
 import bars from "../../assets/icons/bars.svg";
 import SecondaryButton from "../../components/reusableUI/SecondaryButton";
+import { useSelector } from "react-redux";
+import { getTodosIncompleted } from "../../utils/utilsFunctions";
+import { RootState } from "../../app/store";
 
 export default function NavBar() {
+  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+
+  const todosIncompleted = getTodosIncompleted(toDoExercises);
+  const numberOfTodosIncomp = todosIncompleted.length;
+
   return (
     <NavBarStyled>
       <img src={bars} className="bars" />
@@ -14,7 +22,9 @@ export default function NavBar() {
         </div>
       </form>
       <div className="notif">
-        <span className="count">12</span>
+        {numberOfTodosIncomp !== 0 ? (
+          <span className="count">{numberOfTodosIncomp}</span>
+        ) : null}
         <img src={bell} />
       </div>
     </NavBarStyled>

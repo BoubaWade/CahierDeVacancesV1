@@ -9,7 +9,7 @@ export default function TableHead() {
         <th>Classe</th>
         <th>Avant le :</th>
         <th>Status</th>
-        <th>Supprimer</th>
+        <th>Supp. / Modif.</th>
       </tr>
     </TableHeadStyled>
   );

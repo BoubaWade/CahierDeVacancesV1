@@ -2,14 +2,20 @@ import styled from "styled-components";
 import BodyRowsList from "./BodyRowsList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
+import { getSearchIncludesToDo } from "../../../../utils/utilsFunctions";
 
 export default function TableBody() {
-  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const { toDoExercises, searchToDoValue } = useSelector(
+    (state: RootState) => state.dashboard
+  );
+  const toDoExercisesToDisplay = toDoExercises.filter((todo) =>
+    getSearchIncludesToDo(todo, searchToDoValue)
+  );
 
   return (
     <TableBodyStyled>
-      {toDoExercises.map((data) => (
-        <BodyRowsList key={data.id} data={data} />
+      {toDoExercisesToDisplay.map((toDo) => (
+        <BodyRowsList key={toDo.id} toDo={toDo} />
       ))}
     </TableBodyStyled>
   );

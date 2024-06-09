@@ -4,23 +4,16 @@ import { setMainDashboardActive } from "../../../features/Dashboard/dashboardSet
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../app/store";
 
-type Action = {
-  type: string;
-  payload: string;
-};
-
 type MenuItemProps = {
   item: SideBarItem;
-  dispatch: React.Dispatch<Action>;
 };
 
-export default function MenuItem({ item, dispatch }: MenuItemProps) {
+export default function MenuItem({ item }: MenuItemProps) {
   const { isActive, stateKey, icon, label } = item;
-  const dispatchMainDashboard = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleClick = (section: string) => {
-    dispatch({ type: "SET_ACTIVE", payload: section });
-    dispatchMainDashboard(setMainDashboardActive(section));
+    dispatch(setMainDashboardActive(section));
   };
 
   return (

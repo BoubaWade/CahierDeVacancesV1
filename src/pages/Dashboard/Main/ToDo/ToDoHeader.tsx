@@ -1,10 +1,23 @@
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { AppDispatch } from "../../../../app/store";
+import { setSearchToDoValue } from "../../../../features/Dashboard/dashboardSlice";
 
 export default function ToDoHeader() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setSearchToDoValue(e.target.value));
+  };
+
   return (
     <ToDoHeaderStyled>
       <h4>Liste des devoirs</h4>
-      <input type="text" placeholder="Rechercher" />
+      <input
+        type="text"
+        placeholder="Rechercher"
+        onChange={(e) => handleChange(e)}
+      />
     </ToDoHeaderStyled>
   );
 }

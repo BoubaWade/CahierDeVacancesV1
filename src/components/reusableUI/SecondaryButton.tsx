@@ -5,6 +5,7 @@ type SecondaryButtonProps = {
   label: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
+  disabled?: boolean;
 };
 
 export default function SecondaryButton({
@@ -12,9 +13,15 @@ export default function SecondaryButton({
   label,
   onClick,
   className,
+  disabled,
 }: SecondaryButtonProps) {
   return (
-    <SecondaryButtonStyled id={id} className={className} onClick={onClick}>
+    <SecondaryButtonStyled
+      id={id}
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+    >
       <span>{label}</span>
     </SecondaryButtonStyled>
   );

@@ -14,6 +14,7 @@ export default function Exercises() {
 
 const ExercicesTroisiemeStyled = styled.div`
   padding: 20px 0;
+  overflow-x: hidden;
   h1 {
     font-size: 1.6rem;
     text-align: center;

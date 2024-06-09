@@ -4,11 +4,13 @@ import SecondaryButton from "../SecondaryButton";
 import Latex from "react-latex";
 
 type SolutionComponentProps = {
+  timeLeft: number;
   solution: string[];
 };
 
 export default function SolutionComponent({
   solution,
+  timeLeft,
 }: SolutionComponentProps) {
   const [displayHelp, setDisplayHelp] = useState(false);
 
@@ -30,9 +32,9 @@ export default function SolutionComponent({
         {!displayHelp ? (
           <SecondaryButton
             label="Aide-moi"
-            // className="help"
+            className={`${timeLeft !== 0 ? "inActive" : "active"}`}
             onClick={() => setDisplayHelp(true)}
-            // disabled={timeLeft !== 0 ? true : false}
+            disabled={timeLeft !== 0 ? true : false}
           />
         ) : (
           <SecondaryButton
@@ -60,11 +62,6 @@ const SolutionComponentStyled = styled.div`
   .help.visible {
     display: block;
   }
-  /* .help.visible {
-    &:nth-child(n + 3) {
-      display: none;
-    }
-  } */
   .buttons-container {
     margin-top: 20px;
     button {
@@ -76,11 +73,19 @@ const SolutionComponentStyled = styled.div`
       font-weight: 500;
       padding: 8px 30px;
       margin: 0 3px;
-      box-shadow: 0 1px 2px #807f7f;
+    }
+    .active {
+      background: #201f1fe7;
+      border-color: #889d84;
+      border: 1px solid #416c39;
+      color: #fcfcfc;
       &:hover {
-        background: #fff;
-        box-shadow: none;
+        background: #000;
       }
+    }
+    .inActive {
+      color: #cac9c9;
+      pointer-events: none;
     }
     .validate-button {
       background: #4c7f43;

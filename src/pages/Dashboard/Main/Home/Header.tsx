@@ -1,6 +1,17 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { RootState } from "../../../../app/store";
+import {
+  getTodosCompleted,
+  getTodosIncompleted,
+} from "../../../../utils/utilsFunctions";
 
 export default function Header() {
+  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+
+  const todosCompleted = getTodosCompleted(toDoExercises);
+  const todosIncompleted = getTodosIncompleted(toDoExercises);
+
   return (
     <HeaderStyled>
       <div className="welcome">
@@ -8,11 +19,11 @@ export default function Header() {
         <p>Content de vous voir.</p>
       </div>
       <div className="courses-inProgress">
-        <span>15</span>
+        <span>{todosIncompleted.length}</span>
         <p>Exercice(s) restant(s)</p>
       </div>
       <div className="courses-completed">
-        <span>12</span>
+        <span>{todosCompleted.length}</span>
         <p>Exercice(s) términé(s)</p>
       </div>
     </HeaderStyled>

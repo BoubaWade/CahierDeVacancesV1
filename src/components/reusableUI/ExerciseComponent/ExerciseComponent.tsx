@@ -1,18 +1,22 @@
 import styled from "styled-components";
-import Latex from "react-latex";
-import { Exercise, DateValue } from "../../../Types/dataTypes";
-import QuestionsList from "./QuestionsList";
+import { Exercise } from "../../../Types/dataTypes";
 import BorderBeam from "../BorderBeam";
 import ExerciseHeader from "./ExerciseHeader";
 import SecondaryButton from "../SecondaryButton";
 import Modal from "../Modal/Modal";
 import CalendarComponent from "../CalendarComponent";
-import { useState } from "react";
-import { exercises } from "../../../Datas/Troisieme/exercises";
-import { addToDoExercise } from "../../../features/Dashboard/dashboardSlice";
-import { useDispatch } from "react-redux";
 import PrimaryButton from "../PrimaryButton";
-import { formatDate } from "../../../utils/utilsFunctions";
+import MainExercise from "./MainExercise";
+import useExercise from "../../../hooks/useExercise";
+import { useDispatch, useSelector } from "react-redux";
+import { addToDoExercise } from "../../../features/Dashboard/dashboardSlice";
+import {
+  getCurrentExercise,
+  setIncompletedProperty,
+} from "../../../utils/utilsFunctions";
+import { exercises } from "../../../Datas/Troisieme/exercises";
+import { RootState } from "../../../app/store";
+import { useNavigate } from "react-router-dom";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -28,55 +32,62 @@ export default function ExerciseComponent({
   displayPreviousExercise,
 }: ExerciseComponentProps) {
   const { id, number, statements, questionsSolutions } = exercise;
-
-  const [isOpenModal, setIsOpenModal] = useState(false);
-  const [addIsSuccessful, setAddIsSuccessful] = useState(false);
+  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const navigate = useNavigate();
+  const {
+    isOpenModal,
+    setIsOpenModal,
+    addIsSuccessful,
+    value,
+    onChange,
+    addTodo,
+  } = useExercise();
   const dispatch = useDispatch();
-  const [value, onChange] = useState<DateValue>(new Date());
 
-  if (!isActive) {
-    return null;
-  }
+  if (!isActive) return null;
 
-  const getCurrentExercise = (id: string) => {
-    return exercises.find((exercise) => exercise.id === id);
+  const handleAddTodo = () => {
+    const currentExercise = getCurrentExercise(exercises, id);
+    if (currentExercise) addTodo(currentExercise);
   };
 
-  const handleAddTodo = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    const exercise = getCurrentExercise(e.currentTarget.id);
-    const deepCopyExercise = structuredClone(exercise);
+  const handleValidateExercise = () => {
+    const todoFinded = toDoExercises?.find((todo) => todo.id === id);
+    const deepCopyToDoFinded = structuredClone(todoFinded);
 
-    if (deepCopyExercise && value) {
-      for (let key in deepCopyExercise) {
-        if (key === "limitDate") {
-          deepCopyExercise[key] = formatDate(value.toString());
-        }
+    if (deepCopyToDoFinded) {
+      setIncompletedProperty(deepCopyToDoFinded, true);
+      dispatch(addToDoExercise(deepCopyToDoFinded));
+    } else {
+      const currentExercise = getCurrentExercise(exercises, id);
+      const deepCopyCurrentExercise = structuredClone(currentExercise);
+
+      if (deepCopyCurrentExercise) {
+        setIncompletedProperty(deepCopyCurrentExercise, true);
+        dispatch(addToDoExercise(deepCopyCurrentExercise));
       }
     }
-    dispatch(addToDoExercise(deepCopyExercise));
-    setAddIsSuccessful(true);
-
-    setTimeout(() => {
-      setIsOpenModal(false);
-      setAddIsSuccessful(false);
-    }, 1000);
   };
 
   return (
     <ExerciseComponentStyled>
+      <PrimaryButton
+        label="retour au tableau de bord"
+        className="return-dashboard-button"
+        onClick={() => navigate("/dashboard")}
+      />
       <ExerciseHeader
         number={number}
         displayNextExercise={displayNextExercise}
         displayPreviousExercise={displayPreviousExercise}
       />
       <SecondaryButton
-        label={`Ajouter à "Devoir à faire"`}
+        label={`Ajouter à " DEVOIR À FAIRE "`}
         className="add-todo-button"
         onClick={() => setIsOpenModal(true)}
       />
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
+        <p className="text-date-choice">Choisir une date</p>
         <CalendarComponent
           className="calendar"
           value={value}
@@ -84,17 +95,21 @@ export default function ExerciseComponent({
         />
         <PrimaryButton
           id={id}
-          label={!addIsSuccessful ? "Valider" : "Ajouté !"}
-          onClick={(e) => handleAddTodo(e)}
+          className="add-button"
+          label={!addIsSuccessful ? "Valider" : "Ajouté ✅"}
+          onClick={() => handleAddTodo()}
         />
       </Modal>
-
-      <div className="main">
-        <h3>
-          <Latex>{statements}</Latex>
-        </h3>
-        <QuestionsList questionsSolutions={questionsSolutions} />
-      </div>
+      <MainExercise
+        statements={statements}
+        questionsSolutions={questionsSolutions}
+      />
+      <SecondaryButton
+        id={id}
+        label="Valider l'éxercice"
+        className="validate-exercise-button"
+        onClick={() => handleValidateExercise()}
+      />
       <BorderBeam className="border-beam" />
     </ExerciseComponentStyled>
   );
@@ -111,26 +126,44 @@ const ExerciseComponentStyled = styled.div`
   border-radius: 15px;
   margin-bottom: 50px;
   background-color: #f8f8fa;
+  .return-dashboard-button {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
   .add-todo-button {
+    background-color: #201f1fe7;
+    font-weight: 500;
     margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    &:hover {
+      background-color: #fff;
+    }
+  }
+  .text-date-choice {
+    color: #fff;
+    font-weight: 500;
+    margin: 25px auto;
   }
   .calendar {
+    margin: 0 auto;
   }
-  .main {
-    width: 100%;
-    border-radius: 0 0 10px 10px;
-    padding-top: 40px;
-    h3 {
-      min-width: 350px;
-      display: flex;
-      justify-content: center;
-      font-size: 1.1rem;
-      font-weight: 400;
-      padding: 10px;
-      margin: 0 5px;
-      border-bottom: none;
+  .add-button {
+    width: 150px;
+    border-radius: 5px;
+    margin: 25px auto;
+  }
+  .validate-exercise-button {
+    background-color: #201f1fe7;
+    position: relative;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 70px 0 20px;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    &:hover {
+      background-color: #fff;
     }
   }
   .border-beam {
