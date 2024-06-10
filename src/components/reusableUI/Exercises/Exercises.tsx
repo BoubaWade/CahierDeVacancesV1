@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import ExercisesList from "./ExercisesList";
-import DotPattern from "../../components/reusableUI/DotPattern";
-
-export default function Exercises() {
+import DotPattern from "../DotPattern";
+import { Exercise } from "../../../Types/dataTypes";
+type ExercisesProps = {
+  exercises: Exercise[];
+};
+export default function Exercises({ exercises }: ExercisesProps) {
   return (
     <ExercicesTroisiemeStyled>
-      <h1>Exerices sur le Calcul Littéral</h1>
-      <ExercisesList />
+      <h1> Exercices : {exercises[0]?.lesson}</h1>
+      <ExercisesList exercises={exercises} />
       <DotPattern />
     </ExercicesTroisiemeStyled>
   );

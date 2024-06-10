@@ -5,12 +5,18 @@ type ModalProps = {
   children: any;
   open: boolean;
   onClose: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 };
 
-export default function Modal({ children, open, onClose }: ModalProps) {
+export default function Modal({
+  children,
+  open,
+  onClose,
+  className,
+}: ModalProps) {
   if (!open) return null;
   return (
-    <ModalStyled>
+    <ModalStyled className={className}>
       {children}
       <PrimaryButton label="Fermer" className="close-modal" onClick={onClose} />
     </ModalStyled>

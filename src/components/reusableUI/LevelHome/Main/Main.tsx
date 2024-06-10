@@ -1,17 +1,18 @@
 import styled, { keyframes } from "styled-components";
-import LessonCard from "../../../components/reusableUI/LessonCard/LessonCard";
-import { lessonCard } from "../../../Types/layoutTypes";
+import LessonCard from "../../LessonCard/LessonCard";
+import { lessonCard } from "../../../../Types/layoutTypes";
 
 type MainProps = {
   lessons: lessonCard[] | undefined;
+  id: string;
 };
 
-export default function Main({ lessons }: MainProps) {
+export default function Main({ lessons, id }: MainProps) {
   return (
     <MainStyled>
       <div className="cards-container">
         {lessons?.map((lesson, index) => (
-          <LessonCard key={index} lesson={lesson} />
+          <LessonCard key={index} lesson={lesson} id={id} />
         ))}
       </div>
     </MainStyled>

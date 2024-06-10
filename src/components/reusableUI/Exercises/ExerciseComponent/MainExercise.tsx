@@ -1,6 +1,6 @@
 import Latex from "react-latex";
 import QuestionsList from "./QuestionsList";
-import { QuestionSolutions } from "../../../Types/dataTypes";
+import { QuestionSolutions } from "../../../../Types/dataTypes";
 import styled from "styled-components";
 
 type MainExerciseProps = {

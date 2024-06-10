@@ -1,10 +1,10 @@
 import Latex from "react-latex";
-import MathKeyboard from "../../MathKeyboard";
 import SolutionComponent from "./SolutionComponent";
-import ExercisePlayer from "../ExercisePlayer";
 import styled from "styled-components";
-import { QuestionSolutions } from "../../../Types/dataTypes";
 import { useState } from "react";
+import { QuestionSolutions } from "../../../../Types/dataTypes";
+import MathKeyboard from "../../../MathKeyboard";
+import ExercisePlayer from "../../ExercisePlayer";
 
 type Props = {
   questionSolution: QuestionSolutions;
@@ -18,8 +18,15 @@ export default function QuestionSolution({ questionSolution }: Props) {
   return (
     <QuestionSolutionStyled>
       <div className="exercise-statement">
-        <p style={{ fontSize: "0.9rem" }}>
-          <Latex>{question}</Latex>
+        <p style={{ fontSize: "1rem", fontWeight: "400", lineHeight: "25px" }}>
+          {question.map((line, index) => (
+            <span
+              key={index}
+              style={{ display: "block", marginBottom: "10px" }}
+            >
+              <Latex>{line}</Latex>
+            </span>
+          ))}
         </p>
         <MathKeyboard />
         <SolutionComponent solution={solution} timeLeft={timeLeft} />

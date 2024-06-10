@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import PrimaryButton from "../../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../PrimaryButton";
 
 type HeaderProps = {
   level: string | undefined;

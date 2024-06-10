@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import SecondaryButton from "../SecondaryButton";
 import Latex from "react-latex";
+import SecondaryButton from "../../SecondaryButton";
 
 type SolutionComponentProps = {
   timeLeft: number;

@@ -22,7 +22,11 @@ export default function ToDoList() {
       ) : (
         <EmptyToDo setIsOpenModal={setIsOpenModal} />
       )}
-      <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
+      <Modal
+        open={isOpenModal}
+        onClose={() => setIsOpenModal(false)}
+        className="modal"
+      >
         <DropDown />
       </Modal>
     </ToDoListStyled>
@@ -42,5 +46,8 @@ const ToDoListStyled = styled.div`
   .border-beam {
     transform: translate(2px, -2px);
     z-index: -1;
+  }
+  .modal {
+    transform: translateX(115px);
   }
 `;

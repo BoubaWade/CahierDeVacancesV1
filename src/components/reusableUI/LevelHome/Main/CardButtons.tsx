@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import SecondaryButton from "../../../components/reusableUI/SecondaryButton";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SecondaryButton from "../../SecondaryButton";
 
 type CardButtonsProps = {
   lessonId: string;
+  id: string;
 };
-export default function CardButtons({ lessonId }: CardButtonsProps) {
-  const { id } = useParams();
+export default function CardButtons({ lessonId, id }: CardButtonsProps) {
   const navigate = useNavigate();
 
   return (

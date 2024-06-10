@@ -4,6 +4,8 @@ import { useState } from "react";
 import UpdateToDo from "./UpdateToDo";
 import ColumnLimitDate from "./ColumnLimitDate";
 import ColumnStatus from "./ColumnStatus";
+import { QuestionSolutions } from "../../../../Types/dataTypes";
+import PreviewToDoExercise from "./PreviewToDoExercise";
 
 type BodyRow = {
   id: string;
@@ -12,25 +14,37 @@ type BodyRow = {
   level: string;
   limitDate: string;
   isCompleted: boolean;
+  statements: string;
+  questionsSolutions: QuestionSolutions[];
 };
 
 type BodyRowsProps = {
-  toDo: BodyRow;
+  todo: BodyRow;
 };
 
-export default function BodyRowsList({ toDo }: BodyRowsProps) {
-  const { id, lesson, number, level, limitDate, isCompleted } = toDo;
+export default function BodyRowsList({ todo }: BodyRowsProps) {
+  const {
+    id,
+    lesson,
+    number,
+    level,
+    limitDate,
+    isCompleted,
+    statements,
+    questionsSolutions,
+  } = todo;
 
   const [inputValue, setInputValue] = useState<string | undefined>("");
   const [isEditing, setIsEditing] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <BodyRowsListStyled>
-      <td>
+      <td onClick={() => setIsOpenModal(true)}>
         <img src={bookOpen} className="book-open" />
         <p className="lesson">{lesson}</p>
       </td>
-      <td>{number}</td>
+      <td onClick={() => setIsOpenModal(true)}>{number}</td>
       <td>{level}</td>
       <ColumnLimitDate
         id={id}
@@ -46,6 +60,15 @@ export default function BodyRowsList({ toDo }: BodyRowsProps) {
         isCompleted={isCompleted}
         setInputValue={setInputValue}
         setIsEditing={setIsEditing}
+      />
+      <PreviewToDoExercise
+        questionsSolutions={questionsSolutions}
+        level={level}
+        lesson={lesson}
+        number={number}
+        isOpenModal={isOpenModal}
+        setIsOpenModal={setIsOpenModal}
+        statements={statements}
       />
     </BodyRowsListStyled>
   );
@@ -73,6 +96,10 @@ const BodyRowsListStyled = styled.tr`
       align-items: center;
       grid-gap: 12px;
       padding-left: 6px;
+      cursor: pointer;
+    }
+    &:nth-child(2) {
+      cursor: pointer;
     }
   }
 `;

@@ -1,6 +1,6 @@
 export type QuestionSolutions = {
   time: number;
-  question: string;
+  question: string[];
   solution: string[];
 };
 

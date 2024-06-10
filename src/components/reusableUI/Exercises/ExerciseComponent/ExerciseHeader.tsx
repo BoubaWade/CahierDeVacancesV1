@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import backward from "../../../assets/icons/backward.svg";
-import nextward from "../../../assets/icons/nextward.svg";
+import backward from "../../../../assets/icons/backward.svg";
+import nextward from "../../../../assets/icons/nextward.svg";
 
 type ExerciseHeaderProps = {
   number: number;

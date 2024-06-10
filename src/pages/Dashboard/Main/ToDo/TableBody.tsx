@@ -14,8 +14,8 @@ export default function TableBody() {
 
   return (
     <TableBodyStyled>
-      {toDoExercisesToDisplay.map((toDo) => (
-        <BodyRowsList key={toDo.id} toDo={toDo} />
+      {toDoExercisesToDisplay.map((todo) => (
+        <BodyRowsList key={todo.id} todo={todo} />
       ))}
     </TableBodyStyled>
   );

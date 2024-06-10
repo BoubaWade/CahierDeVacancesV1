@@ -1,22 +1,18 @@
 import styled from "styled-components";
-import { Exercise } from "../../../Types/dataTypes";
-import BorderBeam from "../BorderBeam";
 import ExerciseHeader from "./ExerciseHeader";
-import SecondaryButton from "../SecondaryButton";
-import Modal from "../Modal/Modal";
-import CalendarComponent from "../CalendarComponent";
-import PrimaryButton from "../PrimaryButton";
 import MainExercise from "./MainExercise";
-import useExercise from "../../../hooks/useExercise";
 import { useDispatch, useSelector } from "react-redux";
-import { addToDoExercise } from "../../../features/Dashboard/dashboardSlice";
-import {
-  getCurrentExercise,
-  setIncompletedProperty,
-} from "../../../utils/utilsFunctions";
-import { exercises } from "../../../Datas/Troisieme/exercises";
-import { RootState } from "../../../app/store";
 import { useNavigate } from "react-router-dom";
+import { Exercise } from "../../../../Types/dataTypes";
+import { RootState } from "../../../../app/store";
+import useExercise from "../../../../hooks/useExercise";
+import { setIncompletedProperty } from "../../../../utils/utilsFunctions";
+import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
+import PrimaryButton from "../../PrimaryButton";
+import SecondaryButton from "../../SecondaryButton";
+import Modal from "../../Modal/Modal";
+import CalendarComponent from "../../CalendarComponent";
+import BorderBeam from "../../BorderBeam";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -34,6 +30,7 @@ export default function ExerciseComponent({
   const { id, number, statements, questionsSolutions } = exercise;
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     isOpenModal,
     setIsOpenModal,
@@ -42,13 +39,12 @@ export default function ExerciseComponent({
     onChange,
     addTodo,
   } = useExercise();
-  const dispatch = useDispatch();
 
   if (!isActive) return null;
 
   const handleAddTodo = () => {
-    const currentExercise = getCurrentExercise(exercises, id);
-    if (currentExercise) addTodo(currentExercise);
+    // const currentExercise = getCurrentExercise(exercises, id);
+    addTodo(exercise);
   };
 
   const handleValidateExercise = () => {
@@ -59,13 +55,13 @@ export default function ExerciseComponent({
       setIncompletedProperty(deepCopyToDoFinded, true);
       dispatch(addToDoExercise(deepCopyToDoFinded));
     } else {
-      const currentExercise = getCurrentExercise(exercises, id);
-      const deepCopyCurrentExercise = structuredClone(currentExercise);
+      // const currentExercise = getCurrentExercise(exercises, id);
+      const deepCopyCurrentExercise = structuredClone(exercise);
 
-      if (deepCopyCurrentExercise) {
-        setIncompletedProperty(deepCopyCurrentExercise, true);
-        dispatch(addToDoExercise(deepCopyCurrentExercise));
-      }
+      // if (deepCopyCurrentExercise) {
+      setIncompletedProperty(deepCopyCurrentExercise, true);
+      dispatch(addToDoExercise(deepCopyCurrentExercise));
+      // }
     }
   };
 

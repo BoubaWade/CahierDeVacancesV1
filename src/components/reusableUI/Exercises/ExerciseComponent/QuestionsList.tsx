@@ -1,4 +1,4 @@
-import { QuestionSolutions } from "../../../Types/dataTypes";
+import { QuestionSolutions } from "../../../../Types/dataTypes";
 import styled from "styled-components";
 import QuestionSolution from "./QuestionSolution";
 
