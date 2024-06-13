@@ -11,9 +11,9 @@ type Action = {
 };
 const initialLevelState = {
   isCm2Active: false,
-  isTroisiemeActive: false,
+  isTroisiemeActive: true,
   isPremiereActive: false,
-  isTerminaleActive: true,
+  isTerminaleActive: false,
 };
 
 function levelReducer(state: LevelState, action: Action) {

@@ -1,18 +1,17 @@
-import styled from "styled-components";
-import ExerciseHeader from "./ExerciseHeader";
-import MainExercise from "./MainExercise";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 import { Exercise } from "../../../../Types/dataTypes";
 import { RootState } from "../../../../app/store";
+import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
 import useExercise from "../../../../hooks/useExercise";
 import { setIncompletedProperty } from "../../../../utils/utilsFunctions";
-import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
+import BorderBeam from "../../BorderBeam";
+import CalendarComponent from "../../CalendarComponent";
+import Modal from "../../Modal/Modal";
 import PrimaryButton from "../../PrimaryButton";
 import SecondaryButton from "../../SecondaryButton";
-import Modal from "../../Modal/Modal";
-import CalendarComponent from "../../CalendarComponent";
-import BorderBeam from "../../BorderBeam";
+import ExerciseHeader from "./ExerciseHeader";
+import MainExercise from "./MainExercise";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -29,7 +28,6 @@ export default function ExerciseComponent({
 }: ExerciseComponentProps) {
   const { id, number, statements, questionsSolutions } = exercise;
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
     isOpenModal,
@@ -67,18 +65,13 @@ export default function ExerciseComponent({
 
   return (
     <ExerciseComponentStyled>
-      <PrimaryButton
-        label="retour au tableau de bord"
-        className="return-dashboard-button"
-        onClick={() => navigate("/dashboard")}
-      />
       <ExerciseHeader
         number={number}
         displayNextExercise={displayNextExercise}
         displayPreviousExercise={displayPreviousExercise}
       />
       <SecondaryButton
-        label={`Ajouter à " DEVOIR À FAIRE "`}
+        label={`Ajouter à : DEVOIR À FAIRE `}
         className="add-todo-button"
         onClick={() => setIsOpenModal(true)}
       />
@@ -122,17 +115,13 @@ const ExerciseComponentStyled = styled.div`
   border-radius: 15px;
   margin-bottom: 50px;
   background-color: #f8f8fa;
-  .return-dashboard-button {
-    margin-top: 0;
-    margin-bottom: 20px;
-  }
   .add-todo-button {
     background-color: #201f1fe7;
+    font-size: 0.7rem;
     font-weight: 500;
     margin-top: 20px;
     border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 7px 10px;
     &:hover {
       background-color: #fff;
     }

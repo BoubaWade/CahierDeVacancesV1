@@ -41,7 +41,7 @@ const ToDoHeaderStyled = styled.div`
     padding: 0 10px;
     text-align: center;
     border-radius: 20px;
-    border: 1px solid #d9d7d7;
+    border: 1px solid #c2a205;
     outline: none;
   }
 `;

@@ -2,8 +2,8 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../../app/store";
 import MainHomeDashboard from "./Home/MainHomeDashboard";
-import Todo from "./ToDo/Todo";
 import Level from "./Level/Level";
+import Todo from "./ToDo/ToDo";
 
 export default function MainDashboard() {
   const { isHomeActive, isClassesActive, isToDoActive } = useSelector(

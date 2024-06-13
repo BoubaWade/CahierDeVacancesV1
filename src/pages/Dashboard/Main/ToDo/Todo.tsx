@@ -15,6 +15,15 @@ export default function Todo() {
           </p>
         </div>
         <div className="quote-of-the-month"></div>
+        <div className="quote-of-the-month">
+          <h3>Conseils pour être efficace</h3>
+          <ul>
+            <li>Réviser les notions fondamentales. </li>
+            <li>Planifier des sessions de travail régulières.</li>
+            <li>Faire des exercices variés.</li>
+            <li>Vérifier vos réponses. </li>
+          </ul>
+        </div>
       </div>
       <ToDoList />
     </TodoStyled>
@@ -32,7 +41,7 @@ const TodoStyled = styled.div`
   .todo-counter-container {
     display: flex;
     width: 90%;
-    height: 110px;
+    height: 200px;
     column-gap: 20px;
     margin-top: 50px;
     .todo-counter {
@@ -66,8 +75,30 @@ const TodoStyled = styled.div`
     .quote-of-the-month {
       background: #f1f2f3;
       width: 70%;
+      padding: 15px;
       border: 1px solid #d9d7d7;
       border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      /* align-items: center; */
+      /* text-align: center; */
+      h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        margin-left: 20px;
+      }
+      ul {
+        /* height: 70%; */
+        li {
+          font-size: 0.9rem;
+          font-weight: 500;
+          padding: 7px 0;
+          list-style-type: disc;
+          margin-left: 20px;
+        }
+      }
     }
   }
 `;

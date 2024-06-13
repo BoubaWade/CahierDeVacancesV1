@@ -5,11 +5,14 @@ import SignFormRightSide from "../../components/reusableUI/SignFormRightSide";
 import PrimaryButton from "../../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { BackgroundHome } from "../../components/BackgroundHome";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { setIsSignInForm } from "../../features/Sign/authSlice";
 
 export default function Sign() {
   const navigate = useNavigate();
-  const [isSignIn, setIsSignIn] = useState(true);
+  const dispatch = useDispatch();
+  const { isSignInForm } = useSelector((state: RootState) => state.auth);
 
   return (
     <SignStyled>
@@ -19,9 +22,9 @@ export default function Sign() {
         onClick={() => navigate("/")}
       />
       <PrimaryButton
-        label={isSignIn ? "inscription" : "Connexion"}
+        label={isSignInForm ? "inscription" : "Connexion"}
         className="switch-button"
-        onClick={() => setIsSignIn(!isSignIn)}
+        onClick={() => dispatch(setIsSignInForm(!isSignInForm))}
       />
       <div className="background-filter"></div>
       <BackgroundHome
@@ -30,7 +33,7 @@ export default function Sign() {
         columnClassName="column"
       />
       <div className="container">
-        {isSignIn ? (
+        {isSignInForm ? (
           <>
             <SignInForm />
             <SignFormRightSide

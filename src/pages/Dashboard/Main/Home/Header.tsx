@@ -8,6 +8,7 @@ import {
 
 export default function Header() {
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const { userName } = useSelector((state: RootState) => state.auth);
 
   const todosCompleted = getTodosCompleted(toDoExercises);
   const todosIncompleted = getTodosIncompleted(toDoExercises);
@@ -15,7 +16,7 @@ export default function Header() {
   return (
     <HeaderStyled>
       <div className="welcome">
-        <h3>Bonjour Boubacar !</h3>
+        <h3>Bonjour {userName} </h3>
         <p>Content de vous voir.</p>
       </div>
       <div className="courses-inProgress">

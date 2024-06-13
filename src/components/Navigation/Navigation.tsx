@@ -2,9 +2,25 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { datasOfChapters } from "../../data/dataLevelPages";
 import BorderBeam from "../reusableUI/BorderBeam";
+import PrimaryButton from "../reusableUI/PrimaryButton";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { setIsSignInForm } from "../../features/Sign/authSlice";
 
 export default function Navigation() {
+  const { user } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (user) {
+      navigate("/dashboard");
+    } else {
+      dispatch(setIsSignInForm(true));
+      navigate("/sign");
+    }
+  };
+
   return (
     <NavigationStyled>
       {/* <h2>CAHIER DE VACANCES</h2> */}
@@ -17,6 +33,11 @@ export default function Navigation() {
           </div>
         ))}
       </ul>
+      <PrimaryButton
+        label="Tableau de bord"
+        className="dashboard-button"
+        onClick={() => handleClick()}
+      />
     </NavigationStyled>
   );
 }
@@ -55,5 +76,9 @@ const NavigationStyled = styled.nav`
     .border-beam {
       z-index: 0;
     }
+  }
+  .dashboard-button {
+    margin-top: 0;
+    padding: 8px 20px;
   }
 `;

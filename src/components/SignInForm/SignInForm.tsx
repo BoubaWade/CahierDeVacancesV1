@@ -1,25 +1,95 @@
 import styled from "styled-components";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { supabase } from "../../supabase/config";
+import { setUserName } from "../../features/Sign/authSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../app/store";
+import Cookies from "js-cookie";
 
 export default function SignInForm() {
+  const [errorCredentials, setErrorCredentials] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedRememberMe = Cookies.get("rememberMe") === "true";
+    setRememberMe(storedRememberMe);
+    if (storedRememberMe && emailRef.current && passwordRef.current) {
+      const storedEmail = Cookies.get("email");
+      const storedPassWord = Cookies.get("password");
+      if (storedEmail && storedPassWord) {
+        emailRef.current.value = storedEmail;
+        passwordRef.current.value = storedPassWord;
+      }
+    }
+  }, []);
+
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const email = emailRef.current?.value;
+    const password = passwordRef.current?.value;
+
+    if (email && password) {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password,
+      });
+      if (error) {
+        setErrorCredentials("Email et/ou mot de passe non valide");
+      } else {
+        const name = data.user.user_metadata.name
+          ? data.user.user_metadata.name
+          : data.user.email?.split("@")[0];
+        dispatch(setUserName(name));
+        // dispatch(setAccessToken(data.session.access_token));
+        // localStorage.setItem("TOKEN", data.session.access_token);
+        navigate("/dashboard");
+        if (rememberMe) {
+          Cookies.set("rememberMe", "true", { expires: 7 });
+          Cookies.set("email", email, { expires: 7 });
+          Cookies.set("password", password, { expires: 7 });
+        } else {
+          Cookies.remove("rememberMe");
+          Cookies.remove("email");
+          Cookies.remove("password");
+        }
+      }
+    }
+  };
+
   return (
-    <SignInFormStyled>
+    <SignInFormStyled onSubmit={(e) => handleSignIn(e)}>
       <h1>Connectez-vous</h1>
       <span>Connexion avec email et mot de passe</span>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Mot de passe" />
-      <div className="remember-me-container">
-        <span>Se souvenir de moi</span>
-        <input type="checkbox" />
-      </div>
-      <PrimaryButton
-        label="Se connecter"
-        className="connexion-button"
-        onClick={() => navigate("/dashboard")}
+      <input
+        type="email"
+        placeholder="Email"
+        ref={emailRef}
+        onChange={() => setErrorCredentials("")}
       />
-      <span>Mot de passe oublié ?</span>
+      <input
+        type="password"
+        placeholder="Mot de passe"
+        ref={passwordRef}
+        onChange={() => setErrorCredentials("")}
+      />
+      <div className="remember-me-container">
+        <label htmlFor="rememberMe">Se souvenir de moi</label>
+        <input
+          type="checkbox"
+          id="rememberMe"
+          checked={rememberMe}
+          onChange={(e) => setRememberMe(e.target.checked)}
+        />
+      </div>
+      <PrimaryButton label="Se connecter" className="connexion-button" />
+      {errorCredentials && <span className="error">{errorCredentials}</span>}
+      <span className="forget-password">Mot de passe oublié ?</span>
     </SignInFormStyled>
   );
 }
@@ -58,7 +128,8 @@ const SignInFormStyled = styled.form`
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    span {
+    label {
+      font-size: 12px;
       margin: 8px 0;
     }
     input {
@@ -66,6 +137,13 @@ const SignInFormStyled = styled.form`
     }
   }
   .connexion-button {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+  }
+  .error {
+    color: red;
+    font-weight: 500;
+  }
+  .forget-password {
+    cursor: pointer;
   }
 `;

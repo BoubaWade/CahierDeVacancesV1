@@ -6,6 +6,7 @@ export type QuestionSolutions = {
 
 export type Exercise = {
   id: string;
+  chapterName: string;
   level: string;
   lesson: string;
   number: number;

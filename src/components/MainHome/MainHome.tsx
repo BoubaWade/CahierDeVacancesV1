@@ -5,9 +5,21 @@ import calc from "../../assets/calc.jpg";
 import tableImage from "../../assets/table.jpg";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsSignInForm } from "../../features/Sign/authSlice";
 
 export default function MainHome() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleClickSignInButton = () => {
+    dispatch(setIsSignInForm(true));
+    navigate("/sign");
+  };
+  const handleClickSignUpButton = () => {
+    dispatch(setIsSignInForm(false));
+    navigate("/sign");
+  };
 
   return (
     <MainHomeStyled>
@@ -21,12 +33,12 @@ export default function MainHome() {
           <PrimaryButton
             label="Connexion"
             className="signIn-button"
-            onClick={() => navigate("/sign")}
+            onClick={() => handleClickSignInButton()}
           />
           <PrimaryButton
             label="Inscription"
             className="signUp-button"
-            onClick={() => navigate("/sign")}
+            onClick={() => handleClickSignUpButton()}
           />
         </div>
       </div>

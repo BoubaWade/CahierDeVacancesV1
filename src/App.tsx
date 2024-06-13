@@ -15,14 +15,29 @@ import LevelHomeTerminale from "./pages/Terminale/LevelHomeTerminale";
 import LevelHomeCm2 from "./pages/Cm2/LevelHomeCm2";
 import LevelHomeTroisieme from "./pages/Troisieme/LevelHomeTroisieme";
 import TroisiemeExercises from "./pages/Troisieme/TroisiemeExercises";
+import { useEffect } from "react";
+import { supabase } from "./supabase/config";
+import { useDispatch } from "react-redux";
+import { setUser } from "./features/Sign/authSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_, session) => {
+      dispatch(setUser(session?.user));
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   return (
     <Router>
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/sign" Component={Sign} />
-        {/* <Route path="/troisieme" Component={LevelHome} /> */}
         <Route path="/troisieme" Component={LevelHomeTroisieme} />
         <Route path="/premiere" Component={LevelHomePremiere} />
         <Route path="/terminale" Component={LevelHomeTerminale} />
@@ -44,7 +59,6 @@ function App() {
             Component={TerminaleExercises}
           />
           <Route path="/cm2/exercices:param" Component={Cm2Exercises} />
-          {/* <Route path="/:id/exercices/" Component={Exercises} /> */}
         </Route>
         <Route path="*" Component={Error} />
       </Routes>

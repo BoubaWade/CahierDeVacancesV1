@@ -1,7 +1,9 @@
 import { Outlet, Navigate } from "react-router-dom";
+import { RootState } from "../app/store";
+import { useSelector } from "react-redux";
 
 export default function PrivateRoutes() {
-  const token = localStorage.getItem("token");
+  const { user } = useSelector((state: RootState) => state.auth);
 
-  return !token ? <Outlet /> : <Navigate to="/sign" />;
+  return user ? <Outlet /> : <Navigate to="/sign" />;
 }

@@ -1,13 +1,21 @@
 import styled from "styled-components";
 import logout from "../../../assets/icons/logout.svg";
 import MenuItemsList from "./MenuItemsList";
+import { supabase } from "../../../supabase/config";
+import { useNavigate } from "react-router-dom";
 
 export default function SideBar() {
+  const navigate = useNavigate();
+  const handleLogOut = async () => {
+    let { error } = await supabase.auth.signOut();
+    navigate("/");
+  };
+
   return (
     <SideBarStyled>
-      <h2>Cahier de Vacances</h2>
+      <h2 onClick={() => navigate("/")}>Math-Max</h2>
       <MenuItemsList />
-      <div className="logout">
+      <div className="logout" onClick={() => handleLogOut()}>
         <img src={logout} />
         Déconnexion
       </div>
@@ -34,7 +42,8 @@ const SideBarStyled = styled.div`
   h2 {
     font-size: 1.2rem;
     text-align: center;
-    margin: 15px 0 25px;
+    margin: 20px 0 25px;
+    cursor: pointer;
   }
   .logout {
     font-size: 0.9rem;

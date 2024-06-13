@@ -1,5 +1,5 @@
 {
-  "name": "cahierdevacances",
+  "name": "math-max",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.5",
+    "@supabase/supabase-js": "^2.43.4",
     "framer-motion": "^11.2.5",
+    "js-cookie": "^3.0.5",
     "katex": "^0.16.10",
     "react": "^18.2.0",
     "react-calendar": "^5.0.0",
@@ -26,6 +28,7 @@
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/katex": "^0.16.7",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

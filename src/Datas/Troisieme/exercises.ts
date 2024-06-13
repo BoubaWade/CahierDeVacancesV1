@@ -1,5 +1,4 @@
 export const exercisesTroisieme = [
-  // calcul littéral
   {
     chapterName: "calcul-litteral",
     id: "troisieme-calcul-litteral-1",
@@ -294,7 +293,6 @@ export const exercisesTroisieme = [
       },
     ],
   },
-  //Arithmétique
   {
     chapterName: "arithmetique",
     id: "troisieme-arithmetique-1",
