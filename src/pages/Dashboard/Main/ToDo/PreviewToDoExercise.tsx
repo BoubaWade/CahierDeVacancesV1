@@ -39,33 +39,35 @@ export default function PreviewToDoExercise({
 
   return (
     <PreviewToDoExerciseStyled>
-      <Modal
-        open={isOpenModal}
-        onClose={() => setIsOpenModal(false)}
-        className="modal"
-      >
-        <div className="exercise-container">
-          <h3>Aperçu de l'exércice</h3>
-          <p>{statements}</p>
-          <ul>
-            {previewTodo.map((question, index) => (
-              <li key={index}>
-                <Latex>{question[0]}</Latex>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <PrimaryButton
-          label="Vers l'exercice"
-          className="redirect-button"
-          onClick={() => handleRedirectToExercise(number)}
-        />
-      </Modal>
+      <>
+        <Modal
+          open={isOpenModal}
+          onClose={() => setIsOpenModal(false)}
+          className="modal"
+        >
+          <div className="exercise-container">
+            <h3>Aperçu de l'exércice</h3>
+            <p>{statements}</p>
+            <ul>
+              {previewTodo.map((question, index) => (
+                <li key={index}>
+                  <Latex>{question[0]}</Latex>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <PrimaryButton
+            label="Vers l'exercice"
+            className="redirect-button"
+            onClick={() => handleRedirectToExercise(number)}
+          />
+        </Modal>
+      </>
     </PreviewToDoExerciseStyled>
   );
 }
 
-const PreviewToDoExerciseStyled = styled.div`
+const PreviewToDoExerciseStyled = styled.td`
   .modal {
     transform: translateX(115px);
   }

@@ -1,4 +1,3 @@
-import bookOpen from "../../../../assets/icons/bookOpen.svg";
 import styled from "styled-components";
 import { useState } from "react";
 import UpdateToDo from "./UpdateToDo";
@@ -40,10 +39,7 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
 
   return (
     <BodyRowsListStyled>
-      <td onClick={() => setIsOpenModal(true)}>
-        <img src={bookOpen} className="book-open" />
-        <p className="lesson">{lesson}</p>
-      </td>
+      <td onClick={() => setIsOpenModal(true)}>{lesson}</td>
       <td onClick={() => setIsOpenModal(true)}>{number}</td>
       <td>{level}</td>
       <ColumnLimitDate
@@ -74,28 +70,28 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
   );
 }
 const BodyRowsListStyled = styled.tr`
+  position: relative;
   transition: all 0.3s ease;
   border-radius: 10px;
-  border-top: 1px solid #d5d6d7;
   background: #fff;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 95%;
+    height: 1px;
+    background-color: #d5d6d7;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   td {
     text-align: center;
     padding: 12px 0;
     font-size: 0.9rem;
-    .book-open {
-      background: #d5d6d7;
-      width: 18px;
-      margin-left: 10px;
-      border-radius: 50%;
-    }
-    .lesson {
-      margin-top: 4px;
-    }
     &:first-child {
       display: flex;
+      justify-content: center;
       align-items: center;
-      grid-gap: 12px;
-      padding-left: 6px;
       cursor: pointer;
     }
     &:nth-child(2) {
