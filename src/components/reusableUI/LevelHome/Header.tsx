@@ -12,7 +12,7 @@ export default function Header({ level }: HeaderProps) {
   return (
     <HeaderStyled>
       <PrimaryButton
-        label="Retour au tableau de bord"
+        label="Aller au tableau de bord"
         className="dashboard-return-btn"
         onClick={() => navigate("/dashboard")}
       />

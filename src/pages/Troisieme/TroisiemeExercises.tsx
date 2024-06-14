@@ -1,4 +1,3 @@
-// import { exercisesTroisieme } from "../../Datas/Troisieme/exercises";
 import { Exercise } from "../../Types/dataTypes";
 import Exercises from "../../components/reusableUI/Exercises/Exercises";
 import { useEffect, useState } from "react";

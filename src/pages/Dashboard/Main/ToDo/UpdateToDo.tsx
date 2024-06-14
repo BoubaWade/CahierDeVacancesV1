@@ -4,6 +4,7 @@ import pen from "../../../../assets/icons/pen.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { deleteToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
+import { deleteToDoFromDatabase } from "../../../../supabase/api";
 
 function convertToISODate(dateString: string | undefined) {
   if (dateString) {
@@ -27,16 +28,13 @@ export default function UpdateToDo({
   isCompleted,
 }: Props) {
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const { user } = useSelector((state: RootState) => state.auth);
+
   const dispatch = useDispatch();
 
-  const handleDeleteToDo = () => {
-    // const toDoFinded = exercises?.find((todo) => todo.id === id);
-    // const deepCopyToDoFinded = structuredClone(toDoFinded);
-
-    // if (deepCopyToDoFinded) {
-    //   setIncompletedProperty(deepCopyToDoFinded, true);
-    // }
+  const handleDeleteToDo = async () => {
     dispatch(deleteToDoExercise(id));
+    deleteToDoFromDatabase(user, id);
   };
 
   const handleUpdateToDoDate = () => {

@@ -1,7 +1,28 @@
 import styled from "styled-components";
 import ToDoList from "./ToDoList";
+import { useEffect } from "react";
+import { getToDosFromDatabase } from "../../../../supabase/api";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../../app/store";
+import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
 
 export default function Todo() {
+  // const { user } = useSelector((state: RootState) => state.auth);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const fetchTodos = async () => {
+  //     const todosFromDatabase = await getToDosFromDatabase(user);
+  //     if (todosFromDatabase) {
+  //       for (let todo of todosFromDatabase) {
+  //         dispatch(addToDoExercise(todo));
+  //       }
+  //     }
+  //   };
+
+  //   fetchTodos();
+  // }, []);
+
   return (
     <TodoStyled>
       <div className="todo-counter-container">

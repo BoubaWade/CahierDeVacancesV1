@@ -33,10 +33,10 @@ const ExerciseHeaderStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 13px;
-  border-radius: 10px;
+  padding: 3px 5px;
   border-radius: 5px;
   h3 {
+    font-size: 1rem;
     color: #fff;
     font-weight: 500;
   }

@@ -13,12 +13,12 @@ export default function Exercises({ exercises }: ExercisesProps) {
 
   return (
     <ExercicesTroisiemeStyled>
-      <h1> Exercices : {exercises[0]?.lesson}</h1>
       <PrimaryButton
         label="retour au tableau de bord"
         className="return-dashboard-button"
         onClick={() => navigate("/dashboard")}
       />
+      <h1> Exercices : {exercises[0]?.lesson}</h1>
       <ExercisesList exercises={exercises} />
       <DotPattern />
     </ExercicesTroisiemeStyled>
@@ -29,17 +29,15 @@ const ExercicesTroisiemeStyled = styled.div`
   padding: 20px 0;
   overflow-x: hidden;
   h1 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     text-align: center;
     margin: 20px 0;
   }
   .return-dashboard-button {
-    position: absolute;
-    top: 5px;
-    left: 15px;
     font-size: 0.7rem;
+    margin-left: 50%;
     margin-top: 0;
-    margin-bottom: 20px;
+    transform: translateX(-50%);
     padding: 8px 10px;
   }
 `;

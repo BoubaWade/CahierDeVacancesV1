@@ -80,7 +80,7 @@ const BodyRowsListStyled = styled.tr`
   background: #fff;
   td {
     text-align: center;
-    padding: 5px 0;
+    padding: 12px 0;
     font-size: 0.9rem;
     .book-open {
       background: #d5d6d7;

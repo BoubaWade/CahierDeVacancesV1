@@ -1,5 +1,4 @@
 import styled from "styled-components";
-// import { useState } from "react";
 import { Exercise } from "../../../Types/dataTypes";
 import ExerciseComponent from "./ExerciseComponent/ExerciseComponent";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,19 +10,14 @@ type ExercisesListProps = {
 };
 
 export default function ExercisesList({ exercises }: ExercisesListProps) {
-  // const [activeIndex, setActiveIndex] = useState(0);
   const { activeExercise } = useSelector((state: RootState) => state.exercises);
   const dispatch = useDispatch();
 
   const displayNextExercise = () => {
-    // setActiveIndex((prevIndex) => (prevIndex + 1) % exercises.length);
     dispatch(setActiveExercise((activeExercise + 1) % exercises.length));
   };
 
   const displayPreviousExercise = () => {
-    // setActiveIndex((prevIndex) =>
-    //   prevIndex === 0 ? exercises.length - 1 : prevIndex - 1
-    // );
     dispatch(
       setActiveExercise(
         activeExercise === 0 ? exercises.length - 1 : activeExercise - 1

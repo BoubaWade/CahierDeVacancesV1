@@ -27,11 +27,7 @@ export default function Sign() {
         onClick={() => dispatch(setIsSignInForm(!isSignInForm))}
       />
       <div className="background-filter"></div>
-      <BackgroundHome
-        svgClassName="svg"
-        rowClassName="row"
-        columnClassName="column"
-      />
+      <BackgroundHome />
       <div className="container">
         {isSignInForm ? (
           <>
@@ -79,22 +75,6 @@ const SignStyled = styled.div`
   }
   .home-return {
     margin-top: 30px;
-  }
-  .svg {
-    color: #a38802;
-  }
-  .row,
-  .column {
-    border: none;
-    &:nth-child(even) {
-      box-shadow: 3px 3px 5px #c2a305b6;
-    }
-  }
-  .row,
-  .column {
-    &:nth-child(odd) {
-      box-shadow: 3px 3px 5px #6a6868;
-    }
   }
   .container {
     background-color: #fff;

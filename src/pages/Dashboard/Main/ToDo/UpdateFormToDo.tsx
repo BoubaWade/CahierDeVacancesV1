@@ -4,6 +4,7 @@ import { RootState } from "../../../../app/store";
 import { setLimitDateProperty } from "../../../../utils/utilsFunctions";
 import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
 import SecondaryButton from "../../../../components/reusableUI/SecondaryButton";
+import { updateToDoDateFromDatabase } from "../../../../supabase/api";
 
 function formatDate(dateString: string) {
   if (dateString) {
@@ -27,6 +28,7 @@ export default function UpdateFormToDo({
   setIsEditing,
 }: UpdateFormToDoProps) {
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -41,8 +43,10 @@ export default function UpdateFormToDo({
       if (dateFormated) setLimitDateProperty(deepCopyToDoFinded, dateFormated);
 
       dispatch(addToDoExercise(deepCopyToDoFinded));
+      updateToDoDateFromDatabase(deepCopyToDoFinded, dateFormated, user);
     }
   };
+
   return (
     <UpdateFormToDoStyled>
       <form action="" onSubmit={(e) => handleSubmit(e)}>

@@ -24,11 +24,6 @@ export default function SolutionComponent({
         ))}
       </div>
       <div className="buttons-container">
-        <SecondaryButton
-          label="Valider"
-          className="validate-button"
-          onClick={() => {}}
-        />
         {!displayHelp ? (
           <SecondaryButton
             label="Aide-moi"
@@ -42,6 +37,11 @@ export default function SolutionComponent({
             onClick={() => setDisplayHelp(false)}
           />
         )}
+        <SecondaryButton
+          label="Valider"
+          className="validate-button"
+          onClick={() => {}}
+        />
       </div>
     </SolutionComponentStyled>
   );
@@ -70,13 +70,13 @@ const SolutionComponentStyled = styled.div`
       color: #000;
       border-radius: 5px;
       font-size: 0.9rem;
-      font-weight: 500;
-      padding: 8px 30px;
+      font-weight: 400;
+      padding: 5px 20px;
       margin: 0 3px;
     }
     .active {
       background: #201f1fe7;
-      border-color: #889d84;
+      border-color: #000;
       border: 1px solid #416c39;
       color: #fcfcfc;
       &:hover {

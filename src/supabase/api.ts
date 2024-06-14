@@ -9,7 +9,7 @@ export const fetchExercises = async (
   if (error) console.error(error);
   else setExercises(data);
 };
-
+//------------------------------------- À SUPPRIMER À LA FIN-------------
 export const insertData = async (exercises: Exercise[], tableName: string) => {
   for (const exercise of exercises) {
     const { data, error } = await supabase.from(tableName).insert([
@@ -42,7 +42,7 @@ export const deleteAllRows = async (tableName: string) => {
     console.log("Lignes supprimées :", data);
   }
 };
-
+//---------------------------------------------------------------
 export const handleSignUp = async (
   emailValue: string,
   passwordValue: string,
@@ -60,4 +60,69 @@ export const handleSignUp = async (
   if (error) {
     console.error(error);
   }
+};
+
+export const addToDoToDatabase = async (todo: Exercise, user: any) => {
+  const todoCloned = structuredClone(todo);
+  if (user) {
+    const { data: existingTodos, error: fetchError } = await supabase
+      .from("todo_exercises")
+      .select("*")
+      .eq("user_id", user.id)
+      .eq("id", todoCloned.id);
+
+    if (fetchError) {
+      console.error("Error fetching existing todos:", fetchError);
+      return;
+    }
+    if (existingTodos.length > 0) {
+      // Si le todo existe, on le met à jour
+      const existingTodoId = existingTodos[0].id;
+      const { error } = await supabase
+        .from("todo_exercises")
+        .update(todoCloned)
+        .eq("id", existingTodoId);
+      if (error) console.error("Error updating todo:", error);
+    } else {
+      // Si le todo n'existe pas, on l'ajoute
+      const { error } = await supabase
+        .from("todo_exercises")
+        .insert([{ ...todoCloned, user_id: user.id }]);
+      if (error) console.error("Error adding todo:", error);
+    }
+  }
+};
+
+export const getToDosFromDatabase = async (user: any) => {
+  if (user) {
+    const { data, error } = await supabase
+      .from("todo_exercises")
+      .select("*")
+      .eq("user_id", user.id);
+    if (error) console.error("Error geting todos:", error);
+    return data;
+  }
+};
+
+export const deleteToDoFromDatabase = async (user: any, todoId: string) => {
+  if (user) {
+    const { error } = await supabase
+      .from("todo_exercises")
+      .delete()
+      .eq("id", todoId)
+      .eq("user_id", user.id);
+    if (error) console.error("Error deleting todo:", error);
+  }
+};
+export const updateToDoDateFromDatabase = async (
+  todo: Exercise,
+  limitDate: string | undefined,
+  user: any
+) => {
+  const { error } = await supabase
+    .from("todo_exercises")
+    .update({ limitDate: limitDate })
+    .eq("id", todo.id)
+    .eq("user_id", user.id);
+  if (error) console.error("Error updating todo:", error);
 };

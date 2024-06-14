@@ -71,7 +71,7 @@ const QuestionSolutionStyled = styled.div`
   .player-container {
     background: linear-gradient(to right, #fde047, #c2a205);
     border-radius: 10px;
-    width: 150px;
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;

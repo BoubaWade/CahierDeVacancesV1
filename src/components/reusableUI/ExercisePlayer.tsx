@@ -15,17 +15,15 @@ export default function ExercisePlayer({
   setTimeLeft,
 }: ExercisePlayerProps) {
   const [isRunning, setIsRunning] = useState(false);
-  // const [booleanState, setBooleanState] = useState(true);
 
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout;
     if (isRunning && timeLeft > 0) {
       timer = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
     } else if (timeLeft === 0) {
       setIsRunning(false);
-      // setBooleanState(false);
     }
 
     return () => clearInterval(timer);
@@ -34,12 +32,10 @@ export default function ExercisePlayer({
   const startCountdown = () => {
     setIsRunning(true);
     setTimeLeft(timeLeft);
-    // setBooleanState(true);
   };
 
   const pauseCountdown = () => {
     setIsRunning(false);
-    // setBooleanState(false);
   };
 
   const formatTime = (seconds: number) => {
@@ -144,7 +140,7 @@ const ExercisePlayerStyled = styled.div`
     }
     .time {
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       margin: 5px 0;
     }
   }

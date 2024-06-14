@@ -46,8 +46,6 @@ export default function SignInForm() {
           ? data.user.user_metadata.name
           : data.user.email?.split("@")[0];
         dispatch(setUserName(name));
-        // dispatch(setAccessToken(data.session.access_token));
-        // localStorage.setItem("TOKEN", data.session.access_token);
         navigate("/dashboard");
         if (rememberMe) {
           Cookies.set("rememberMe", "true", { expires: 7 });
