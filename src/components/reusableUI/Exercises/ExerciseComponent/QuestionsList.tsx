@@ -12,7 +12,11 @@ export default function QuestionsList({
   return (
     <QuestionsListStyled>
       {questionsSolutions.map((questionSolution, index) => (
-        <QuestionSolution key={index} questionSolution={questionSolution} />
+        <QuestionSolution
+          key={index}
+          questionSolution={questionSolution}
+          index={index}
+        />
       ))}
     </QuestionsListStyled>
   );

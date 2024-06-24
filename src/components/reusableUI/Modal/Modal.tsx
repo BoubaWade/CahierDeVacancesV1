@@ -15,8 +15,18 @@ export default function Modal({
   className,
 }: ModalProps) {
   if (!open) return null;
+
+  const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <ModalStyled className={className}>
+    <ModalStyled
+      className={className}
+      onClick={(e) => handleBackgroundClick(e)}
+    >
       {children}
       <PrimaryButton label="Fermer" className="close-modal" onClick={onClose} />
     </ModalStyled>

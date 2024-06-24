@@ -32,14 +32,18 @@ export default function MathKeyboard() {
   );
 }
 const MathKeyboardStyled = styled.div`
-  max-width: 400px;
-  min-width: 300px;
-  margin-top: 20px;
+  max-width: 300px;
+  min-width: 190px;
+  width: 90%;
+  margin: 10px 0px 30px;
   .react-math-keyboard-input-container {
     border: 1.3px solid #3c9a5d;
     border-radius: 5px;
     .react-math-keyboard-input {
       border: none;
+      span {
+        padding: 0;
+      }
     }
   }
   .react-math-keyboard-keyboard-container {

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { setActiveExercise } from "../../../../features/Exercises/exercisesSlice";
 import { normalizeString } from "../../../../utils/utilsFunctions";
 import Modal from "../../../../components/reusableUI/Modal/Modal";
-import Latex from "react-latex";
 import PrimaryButton from "../../../../components/reusableUI/PrimaryButton";
 import styled from "styled-components";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
+import MathJaxComponent from "../../../../components/reusableUI/MathJaxComponent";
 
 type PreviewToDoExerciseProps = {
   questionsSolutions: QuestionSolutions[];
@@ -51,7 +51,7 @@ export default function PreviewToDoExercise({
             <ul>
               {previewTodo.map((question, index) => (
                 <li key={index}>
-                  <Latex>{question[0]}</Latex>
+                  <MathJaxComponent latex={question[0]} />
                 </li>
               ))}
             </ul>

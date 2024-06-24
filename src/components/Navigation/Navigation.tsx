@@ -43,12 +43,12 @@ export default function Navigation() {
 }
 const NavigationStyled = styled.nav`
   background-color: #000205;
+  color: #ffff;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  color: #ffff;
   h2 {
     position: relative;
     z-index: 30;

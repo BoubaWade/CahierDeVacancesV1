@@ -10,7 +10,7 @@ type Action = {
   payload: string;
 };
 const initialLevelState = {
-  isCm2Active: false,
+  isSixiemeActive: false,
   isTroisiemeActive: true,
   isPremiereActive: false,
   isTerminaleActive: false,
@@ -20,7 +20,7 @@ function levelReducer(state: LevelState, action: Action) {
   switch (action.type) {
     case "SET_ACTIVE":
       return {
-        isCm2Active: false,
+        isSixiemeActive: false,
         isTroisiemeActive: false,
         isPremiereActive: false,
         isTerminaleActive: false,

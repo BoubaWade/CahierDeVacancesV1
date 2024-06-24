@@ -4,21 +4,21 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchExercises } from "../../supabase/api";
 import Loader from "../../components/reusableUI/Loader";
+import { exercisesTroisieme as exercises } from "../../Datas/Troisieme/exercises";
 
 export default function TroisiemeExercises() {
-  const [exercises, setExercises] = useState<Exercise[]>([]);
+  // const [exercises, setExercises] = useState<Exercise[]>([]);
   const { param } = useParams();
 
-  useEffect(() => {
-    fetchExercises("troisieme_exercises", setExercises);
-  }, []);
+  // useEffect(() => {
+  //   fetchExercises("troisieme_exercises", setExercises);
+  // }, []);
 
   if (exercises.length === 0) return <Loader />;
 
   const datasExercise = exercises.filter(
     (exercise) => exercise.chapterName === param
   );
-
   return (
     <div>
       <Exercises exercises={datasExercise} />

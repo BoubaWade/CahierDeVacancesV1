@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
-import Latex from "react-latex";
 import SecondaryButton from "../../SecondaryButton";
+import ReactPlayer from "react-player/youtube";
+import Modal from "../../Modal/Modal";
+import MathJaxComponent from "../../MathJaxComponent";
 
 type SolutionComponentProps = {
   timeLeft: number;
@@ -13,13 +15,14 @@ export default function SolutionComponent({
   timeLeft,
 }: SolutionComponentProps) {
   const [displayHelp, setDisplayHelp] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
     <SolutionComponentStyled>
       <div className={displayHelp ? "help visible" : "help"}>
         {solution.map((line, index) => (
           <p key={index} style={{ fontSize: "1rem" }}>
-            <Latex>{line}</Latex>
+            <MathJaxComponent latex={line} />
           </p>
         ))}
       </div>
@@ -34,22 +37,34 @@ export default function SolutionComponent({
         ) : (
           <SecondaryButton
             label="Cacher"
-            onClick={() => setDisplayHelp(false)}
+            onClick={() => {
+              setDisplayHelp(false);
+              setIsOpenModal(true);
+            }}
           />
         )}
         <SecondaryButton
           label="Valider"
           className="validate-button"
-          onClick={() => {}}
+          onClick={() => {
+            setIsOpenModal(true);
+          }}
         />
       </div>
+      <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=LXb3EKWsInQ"
+          controls={true}
+          style={{ margin: "0 auto" }}
+        />
+      </Modal>
     </SolutionComponentStyled>
   );
 }
 const SolutionComponentStyled = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   margin-bottom: 20px;
   margin-top: 20px;
   .help {
@@ -63,7 +78,6 @@ const SolutionComponentStyled = styled.div`
     display: block;
   }
   .buttons-container {
-    margin-top: 20px;
     button {
       background-color: #ebeaea;
       border-color: #949292;

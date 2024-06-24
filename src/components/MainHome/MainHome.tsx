@@ -3,6 +3,8 @@ import fibonacci from "../../assets/fibonacci.jpg";
 import emc2 from "../../assets/emc2.jpg";
 import calc from "../../assets/calc.jpg";
 import tableImage from "../../assets/table.jpg";
+import dashboard from "../../assets/dashboard.png";
+import exercise from "../../assets/exercise.png";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -26,8 +28,8 @@ export default function MainHome() {
       <div className="title-container">
         <h1>
           Rejoindre
-          <br /> <span> " Les mathématiques de Vacances " </span> <br />
-          c'est préparer votre prochaine classe avec sérénité !
+          <br /> <span> Les mathématiques de Math.Max </span> <br />
+          c'est préparer votre avenir avec sérénité !
         </h1>
         <div className="buttons-container">
           <PrimaryButton
@@ -42,16 +44,48 @@ export default function MainHome() {
           />
         </div>
       </div>
-      <div className="imgs-container">
+      <div className="philosophy-container">
+        <div className="texts-container">
+          <div className="texts">
+            <h2>
+              Responsabiliser les esprits,
+              <br /> transformer l’avenir :
+            </h2>
+            <p>
+              {/* Sur notre plateforme d'apprentissage en ligne, nous pensons que
+              chaque élève a le potentiel d'exceller en mathématiques. Notre
+              programme complet  */}
+              Mise en disposition d'un tableau de bord pour pouvoir plannifier
+              et suivre les devoirs de l'élève.
+            </p>
+          </div>
+          <img src={dashboard} />
+        </div>
+        <div className="texts-container">
+          <img src={exercise} />
+          <div className="texts">
+            <h2>
+              Élevez votre niveau en mathématiques : débloquez votre plein
+              potentiel
+            </h2>
+            <p>
+              Plongez-vous dans un monde d'exploration et de découverte des
+              mathématiques. Notre plateforme e-learning combine technologie de
+              pointe et cours interactifs
+            </p>
+            <button>bouton</button>
+          </div>
+        </div>
+      </div>
+      {/* <div className="imgs-container">
         <div className="img-container">
           <div className="card-overlay">
-            <span>CM2</span>
+            <span>Sixieme</span>
             <div className="labels">
-              <span onClick={() => navigate("/cm2/cours")}>COURS</span>
-              <span onClick={() => navigate("/cm2/exercices")}>EXERCICES</span>
+              <span onClick={() => navigate("/sixieme/cours")}>COURS</span>
+              <span onClick={() => navigate("/sixieme/exercices")}>EXERCICES</span>
             </div>
           </div>
-          <img src={calc} className="fibonacci-img" />
         </div>
         <div className="img-container">
           <div className="card-overlay">
@@ -63,7 +97,6 @@ export default function MainHome() {
               </span>
             </div>
           </div>
-          <img src={tableImage} className="fibonacci-img" />
         </div>
         <div className="img-container">
           <div className="card-overlay">
@@ -75,8 +108,6 @@ export default function MainHome() {
               </span>
             </div>
           </div>
-
-          <img src={tableImage} className="fibonacci-img" />
         </div>
         <div className="img-container">
           <div className="card-overlay">
@@ -88,8 +119,6 @@ export default function MainHome() {
               </span>
             </div>
           </div>
-
-          <img src={fibonacci} className="fibonacci-img" />
         </div>
         <div className="img-container">
           <div className="card-overlay">
@@ -101,9 +130,8 @@ export default function MainHome() {
               </span>
             </div>
           </div>
-          <img src={emc2} className="fibonacci-img" />
         </div>
-      </div>
+      </div> */}
     </MainHomeStyled>
   );
 }
@@ -121,7 +149,6 @@ const MainHomeStyled = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     h1 {
       width: 70%;
       font-weight: 500;
@@ -135,29 +162,60 @@ const MainHomeStyled = styled.main`
         font-weight: 700;
       }
     }
-  }
-  .buttons-container {
-    margin-top: 80px;
-    .signIn-button,
-    .signUp-button {
-      font-size: 0.8rem;
-      padding: 13px 30px;
-      margin: 0 5px;
-      border-color: #070d1b;
+    .buttons-container {
+      margin-top: 80px;
+      .signIn-button,
+      .signUp-button {
+        font-size: 0.8rem;
+        padding: 13px 30px;
+        margin: 0 5px;
+        border-color: #070d1b;
+      }
+      .signUp-button {
+        background: #fff;
+      }
     }
-    .signUp-button {
-      background: #fff;
+  }
+  .philosophy-container {
+    background: #fff;
+    color: #000;
+    padding: 50px 20px;
+    .texts-container {
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto 100px;
+    }
+    .texts {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      h2 {
+        width: 70%;
+      }
+      p {
+        width: 70%;
+      }
+    }
+    img {
+      width: 45%;
+      height: 300px;
+      max-width: 520px;
+      /* border-radius: 7px 100px 100px 7px; */
+      border-radius: 5px;
+      box-shadow: 0px -2px 2px 5px rgba(237, 236, 236, 0.806);
     }
   }
-  .imgs-container {
-    width: 80%;
+  /* .imgs-container {
+    background: #cbcbcb;
+    width: 100%;
     position: absolute;
     top: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 60px 0;
-
     .img-container {
       position: relative;
       width: 300px;
@@ -200,5 +258,5 @@ const MainHomeStyled = styled.main`
         height: 100%;
       }
     }
-  }
+  } */
 `;

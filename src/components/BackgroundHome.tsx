@@ -78,8 +78,8 @@ export const Boxes = React.memo(BackgroundHome);
 
 const ContainerStyled = styled.div`
   position: absolute;
-  left: 25%;
-  top: -25%;
+  /* left: 25%;
+  top: -25%; */
   padding: 1rem;
   display: flex;
   transform: translate(-40%, -60%) skewX(-48deg) skewY(14deg) scale(0.675)

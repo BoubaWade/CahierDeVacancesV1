@@ -1,4 +1,4 @@
-import Latex from "react-latex";
+import MathJaxComponent from "../../../../components/reusableUI/MathJaxComponent";
 
 export default function ExampleTroisieme() {
   const examplesDatasTroisieme = [
@@ -21,8 +21,8 @@ export default function ExampleTroisieme() {
       "Résoudre les équations (donner les solutions):",
       "$ 4x-2+(5 x-1)=-3(7-x)$",
       "$4(2+3 x)-(x-5)=0$",
-      "$\\quad-2(2 x-4)=6 x-(-3+x)$",
-      "$\\quad(9 x-4)(-2+5 x)-(9 x-4)(3 x-5)=0$",
+      "$-2(2 x-4)=6 x-(-3+x)$",
+      "$(9 x-4)(-2+5 x)-(9 x-4)(3 x-5)=0$",
     ],
   ];
   return (
@@ -30,9 +30,7 @@ export default function ExampleTroisieme() {
       {examplesDatasTroisieme.map((datas, index) => (
         <div key={index} className="exercise">
           {datas.map((data, index) => (
-            <p key={index}>
-              <Latex>{data}</Latex>
-            </p>
+            <MathJaxComponent latex={data} key={index} />
           ))}
         </div>
       ))}

@@ -1,12 +1,12 @@
 export const datasOfChapters = [
   {
-    id: "cm2",
-    level: "Cm2",
+    id: "sixieme",
+    level: "Sixieme",
     lessons: [
       {
         lessonId: "",
         title: "Calcul de pourcentage",
-        level: "Cm2",
+        level: "Sixieme",
         duration: "2h30",
         tag: "Calcul",
         stars: ["✦", "✦", "✦", "✦"],

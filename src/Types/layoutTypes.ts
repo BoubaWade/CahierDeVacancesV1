@@ -7,7 +7,7 @@ export type lessonCard = {
   lessonId: string;
 };
 export type LevelState = {
-  isCm2Active: boolean;
+  isSixiemeActive: boolean;
   isTroisiemeActive: boolean;
   isPremiereActive: boolean;
   isTerminaleActive: boolean;

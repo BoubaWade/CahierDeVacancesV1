@@ -3,7 +3,7 @@ import percent from "../../../../assets/percent.svg";
 import racine from "../../../../assets/racine.svg";
 import infinity from "../../../../assets/infinity-solid.svg";
 import functionFI from "../../../../assets/functionFI.svg";
-import bgCm2 from "../../../../assets/fibonacci.jpg";
+import bgSixieme from "../../../../assets/fibonacci.jpg";
 import bg3eme from "../../../../assets/workspace.jpg";
 import schooldesk from "../../../../assets/school-desk.jpg";
 import emc2 from "../../../../assets/emc2.jpg";
@@ -22,7 +22,7 @@ type LevelCardListProps = {
 
 export default function LevelCardList({ state, dispatch }: LevelCardListProps) {
   const {
-    isCm2Active,
+    isSixiemeActive,
     isTroisiemeActive,
     isPremiereActive,
     isTerminaleActive,
@@ -38,19 +38,19 @@ export default function LevelCardList({ state, dispatch }: LevelCardListProps) {
       <h2>Les classes</h2>
       <div className="list-cards-container">
         <div
-          className={`card ${isCm2Active ? "active" : ""}`}
-          onClick={() => handleClick("isCm2Active")}
+          className={`card ${isSixiemeActive ? "active" : ""}`}
+          onClick={() => handleClick("isSixiemeActive")}
         >
-          <p className="title cm2">CM2</p>
-          <img src={bgCm2} className="bg-image" />
+          <p className="title sixieme">Sixième</p>
+          <img src={bgSixieme} className="bg-image" />
           <div className="shadow"></div>
           <div className="label">
             <img src={percent} className="icon" />
-            <p className="level">CM2</p>
+            <p className="level">Sixième</p>
             <PrimaryButton
               label="Vers la page"
               className="primary-button"
-              onClick={() => navigate("/cm2")}
+              onClick={() => navigate("/sixieme")}
             />
           </div>
         </div>
@@ -147,8 +147,8 @@ const LevelCardListStyled = styled.div`
         font-weight: 500;
         transform: rotate(-90deg);
       }
-      .cm2 {
-        left: 3px;
+      .sixieme {
+        left: -13px;
       }
       .troisieme,
       .premiere {

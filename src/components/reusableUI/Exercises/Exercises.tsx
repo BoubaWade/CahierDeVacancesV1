@@ -10,6 +10,7 @@ type ExercisesProps = {
 };
 export default function Exercises({ exercises }: ExercisesProps) {
   const navigate = useNavigate();
+  const exercicesSorted = exercises.sort((a, b) => a.number - b.number);
 
   return (
     <ExercicesTroisiemeStyled>
@@ -18,8 +19,8 @@ export default function Exercises({ exercises }: ExercisesProps) {
         className="return-dashboard-button"
         onClick={() => navigate("/dashboard")}
       />
-      <h1> Exercices : {exercises[0]?.lesson}</h1>
-      <ExercisesList exercises={exercises} />
+      <h1> Exercices : {exercicesSorted[0]?.lesson}</h1>
+      <ExercisesList exercises={exercicesSorted} />
       <DotPattern />
     </ExercicesTroisiemeStyled>
   );

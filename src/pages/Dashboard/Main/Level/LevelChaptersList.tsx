@@ -6,14 +6,14 @@ type LevelChaptersListProps = {
 };
 export default function LevelChaptersList({ state }: LevelChaptersListProps) {
   const {
-    isCm2Active,
+    isSixiemeActive,
     isTroisiemeActive,
     isPremiereActive,
     isTerminaleActive,
   } = state;
 
   const levels = [
-    { name: "cm2", isActive: isCm2Active, title: "CM2" },
+    { name: "sixieme", isActive: isSixiemeActive, title: "Sixieme" },
     { name: "troisieme", isActive: isTroisiemeActive, title: "Troisième" },
     { name: "premiere", isActive: isPremiereActive, title: "Première" },
     { name: "terminale", isActive: isTerminaleActive, title: "Términale" },
