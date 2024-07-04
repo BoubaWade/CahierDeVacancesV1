@@ -4,7 +4,7 @@ import PrimaryButton from "../PrimaryButton";
 type ModalProps = {
   children: any;
   open: boolean;
-  onClose: React.MouseEventHandler<HTMLButtonElement>;
+  onClose: () => void;
   className?: string;
 };
 

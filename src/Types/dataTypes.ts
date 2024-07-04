@@ -2,6 +2,7 @@ export type QuestionSolutions = {
   time: number;
   question: string[];
   imgName: string;
+  graph?: boolean;
   solution: string[];
 };
 

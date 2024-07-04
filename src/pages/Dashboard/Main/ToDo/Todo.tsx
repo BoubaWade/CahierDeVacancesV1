@@ -1,28 +1,7 @@
 import styled from "styled-components";
 import ToDoList from "./ToDoList";
-import { useEffect } from "react";
-import { getToDosFromDatabase } from "../../../../supabase/api";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../../app/store";
-import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
 
 export default function Todo() {
-  // const { user } = useSelector((state: RootState) => state.auth);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   const fetchTodos = async () => {
-  //     const todosFromDatabase = await getToDosFromDatabase(user);
-  //     if (todosFromDatabase) {
-  //       for (let todo of todosFromDatabase) {
-  //         dispatch(addToDoExercise(todo));
-  //       }
-  //     }
-  //   };
-
-  //   fetchTodos();
-  // }, []);
-
   return (
     <TodoStyled>
       <div className="todo-counter-container">
@@ -102,8 +81,6 @@ const TodoStyled = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      /* align-items: center; */
-      /* text-align: center; */
       h3 {
         font-size: 1rem;
         font-weight: 600;
@@ -111,7 +88,6 @@ const TodoStyled = styled.div`
         margin-left: 20px;
       }
       ul {
-        /* height: 70%; */
         li {
           font-size: 0.9rem;
           font-weight: 500;

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import BodyRowsList from "./BodyRowsList";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
@@ -25,11 +24,10 @@ export default function TableBody() {
   );
 
   return (
-    <TableBodyStyled>
+    <tbody>
       {toDoExercisesToDisplay.map((todo) => (
         <BodyRowsList key={todo.id} todo={todo} />
       ))}
-    </TableBodyStyled>
+    </tbody>
   );
 }
-const TableBodyStyled = styled.tbody``;

@@ -19,7 +19,7 @@ export default function ExerciseHeader({
         <img src={backward} />
         <span>préc.</span>
       </div>
-      <h3>Exercice {number}</h3>
+      <h3>Devoir {number}</h3>
       <div className="next" onClick={displayNextExercise}>
         <span>suiv.</span>
         <img src={nextward} />

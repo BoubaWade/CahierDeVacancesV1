@@ -86,9 +86,9 @@ export default function ExercisePlayer({
 }
 const ExercisePlayerStyled = styled.div`
   position: relative;
-  padding: 10px;
+  padding-top: 10px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
   .controls {
@@ -96,7 +96,8 @@ const ExercisePlayerStyled = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    margin-left: 20px;
     #play,
     #pause {
       width: 35px;
@@ -127,7 +128,10 @@ const ExercisePlayerStyled = styled.div`
     .message {
       font-size: 0.7rem;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+      .message.dispo {
+        margin-bottom: 20px;
+      }
     }
     .progress-bar {
       background-color: #505050;
@@ -148,6 +152,5 @@ const ExercisePlayerStyled = styled.div`
     font-size: 0.7rem;
     font-weight: 500;
     text-align: center;
-    margin-top: 5px;
   }
 `;

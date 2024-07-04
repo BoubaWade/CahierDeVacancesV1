@@ -23,8 +23,7 @@ export default function Navigation() {
 
   return (
     <NavigationStyled>
-      {/* <h2>CAHIER DE VACANCES</h2> */}
-      <h2>MATH.Max</h2>
+      <h2>Math.max</h2>
       <ul>
         {datasOfChapters.map(({ id, level }) => (
           <div key={id}>

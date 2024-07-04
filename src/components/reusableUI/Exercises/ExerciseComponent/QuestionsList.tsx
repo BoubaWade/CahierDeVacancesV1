@@ -26,4 +26,6 @@ const QuestionsListStyled = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  column-gap: 10px;
+  row-gap: 40px;
 `;

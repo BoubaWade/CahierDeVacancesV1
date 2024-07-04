@@ -1,7 +1,6 @@
 import QuestionsList from "./QuestionsList";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
 import styled from "styled-components";
-import { useEffect } from "react";
 
 type MainExerciseProps = {
   statements: string;
@@ -12,14 +11,8 @@ export default function MainExercise({
   statements,
   questionsSolutions,
 }: MainExerciseProps) {
-  // useEffect(()=>{
-  //   if(typeof window?.MathJax !== "undefined"){
-  //     window.MathJax.typeset()
-  //   }
-  // },[])
   return (
     <MainExerciseStyled>
-      {/* {statements && <h3>Énoncé :</h3>} */}
       {statements && <p className="statement">{statements}</p>}
       <QuestionsList questionsSolutions={questionsSolutions} />
     </MainExerciseStyled>
@@ -30,11 +23,7 @@ const MainExerciseStyled = styled.div`
   /* position: sticky; */
   overflow-y: scroll;
   border-radius: 0 0 10px 10px;
-  padding-top: 40px;
-  /* h3 {
-    text-align: center;
-    font-weight: 500;
-  } */
+  padding-top: 30px;
   .statement {
     min-width: 350px;
     max-width: 90%;

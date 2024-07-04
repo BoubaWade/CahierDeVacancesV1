@@ -83,7 +83,7 @@ export default function ExerciseComponent({
         <PrimaryButton
           id={id}
           className="add-button"
-          label={!addIsSuccessful ? "Valider" : "Ajouté ✅"}
+          label={!addIsSuccessful ? "Ajouter" : "Ajouté ✅"}
           onClick={() => handleAddTodo()}
         />
       </Modal>
@@ -93,7 +93,7 @@ export default function ExerciseComponent({
       />
       <SecondaryButton
         id={id}
-        label={!addIsSuccessful ? "Valider l'éxercice" : "Ajouté ✅"}
+        label={!addIsSuccessful ? "Valider le devoir" : "Validé ✅"}
         className="validate-exercise-button"
         onClick={() => handleValidateExercise()}
       />

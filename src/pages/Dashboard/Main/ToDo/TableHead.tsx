@@ -5,7 +5,7 @@ export default function TableHead() {
     <TableHeadStyled>
       <tr>
         <th>Chapitre</th>
-        <th>N° de l'exercice</th>
+        <th>N° du devoir</th>
         <th>Classe</th>
         <th>Avant le :</th>
         <th>Status</th>

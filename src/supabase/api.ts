@@ -1,4 +1,5 @@
 import { Exercise } from "../Types/dataTypes";
+import { addToDoExercise } from "../features/Dashboard/dashboardSlice";
 import { supabase } from "./config";
 
 export const fetchExercises = async (
@@ -125,4 +126,13 @@ export const updateToDoDateFromDatabase = async (
     .eq("id", todo.id)
     .eq("user_id", user.id);
   if (error) console.error("Error updating todo:", error);
+};
+
+export const fetchTodos = async (user: any, dispatch: any) => {
+  const todosFromDatabase = await getToDosFromDatabase(user);
+  if (todosFromDatabase) {
+    for (let todo of todosFromDatabase) {
+      dispatch(addToDoExercise(todo));
+    }
+  }
 };

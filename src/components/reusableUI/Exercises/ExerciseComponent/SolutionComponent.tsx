@@ -4,6 +4,7 @@ import SecondaryButton from "../../SecondaryButton";
 import ReactPlayer from "react-player/youtube";
 import Modal from "../../Modal/Modal";
 import MathJaxComponent from "../../MathJaxComponent";
+import MathKeyboard from "../../MathKeyboard/MathKeyboard";
 
 type SolutionComponentProps = {
   timeLeft: number;
@@ -26,6 +27,7 @@ export default function SolutionComponent({
           </p>
         ))}
       </div>
+      <MathKeyboard />
       <div className="buttons-container">
         {!displayHelp ? (
           <SecondaryButton
@@ -62,11 +64,10 @@ export default function SolutionComponent({
   );
 }
 const SolutionComponentStyled = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 40px;
   .help {
     display: none;
     p {
@@ -78,6 +79,9 @@ const SolutionComponentStyled = styled.div`
     display: block;
   }
   .buttons-container {
+    max-width: 480px;
+    display: flex;
+    justify-content: flex-end;
     button {
       background-color: #ebeaea;
       border-color: #949292;

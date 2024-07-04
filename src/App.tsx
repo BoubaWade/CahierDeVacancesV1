@@ -19,6 +19,7 @@ import { useEffect } from "react";
 import { supabase } from "./supabase/config";
 import { useDispatch } from "react-redux";
 import { setUser } from "./features/Sign/authSlice";
+import StripeContainer from "./stripe/StripeContainer";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/sign" Component={Sign} />
+        <Route path="/payment" Component={StripeContainer} />
         <Route path="/troisieme" Component={LevelHomeTroisieme} />
         <Route path="/premiere" Component={LevelHomePremiere} />
         <Route path="/terminale" Component={LevelHomeTerminale} />
