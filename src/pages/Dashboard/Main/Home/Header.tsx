@@ -8,7 +8,10 @@ import {
 
 export default function Header() {
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-  const { userName } = useSelector((state: RootState) => state.auth);
+  const { user } = useSelector((state: RootState) => state.auth);
+  const userName = user?.user_metadata?.name
+    ? user?.user_metadata?.name
+    : user?.email?.split("@")[0];
 
   const todosCompleted = getTodosCompleted(toDoExercises);
   const todosIncompleted = getTodosIncompleted(toDoExercises);
@@ -16,8 +19,7 @@ export default function Header() {
   return (
     <HeaderStyled>
       <div className="welcome">
-        <h3>Bonjour {userName} </h3>
-        <p>Content de vous voir.</p>
+        <h3>{userName}</h3>
       </div>
       <div className="courses-inProgress">
         <span>{todosIncompleted.length}</span>
@@ -44,6 +46,7 @@ const HeaderStyled = styled.header`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     border-radius: 8px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);

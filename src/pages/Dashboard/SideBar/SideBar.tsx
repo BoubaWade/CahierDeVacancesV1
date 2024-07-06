@@ -3,11 +3,19 @@ import logout from "../../../assets/icons/logout.svg";
 import MenuItemsList from "./MenuItemsList";
 import { supabase } from "../../../supabase/config";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../../app/store";
+import { setUser } from "../../../features/Sign/authSlice";
 
 export default function SideBar() {
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
   const handleLogOut = async () => {
     let { error } = await supabase.auth.signOut();
+    if (error) throw Error;
+    dispatch(setUser(null));
+    localStorage.removeItem("user");
     navigate("/");
   };
 

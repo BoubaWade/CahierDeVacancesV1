@@ -2,7 +2,20 @@ import { supabase } from "../supabase/config";
 const SECRET_KEY = import.meta.env.VITE_STRIPE_SECRET_KEY;
 const stripeURL = "https://api.stripe.com/v1";
 
+const searchAllCustomersEmail = async () => {
+  const { data, error } = await supabase
+    .from("stripe_customers")
+    .select("email");
+  if (error) throw error;
+  return data;
+};
+
 export const createStripeCustomer = async (email: string) => {
+  const results = await searchAllCustomersEmail();
+  if (results.find((result) => result.email === email)) {
+    throw new Error("Email déja utilisé");
+  }
+
   const response = await fetch(`${stripeURL}/customers`, {
     method: "POST",
     headers: {
@@ -98,3 +111,11 @@ export const checkSubscriptionStatus = async (userId: string) => {
 // if (!hasAccess) {
 //   // Rediriger ou afficher un message d'erreur
 // }
+
+export const deleteStripeCustomer = async (email: string) => {
+  await supabase.from("stripe_customers").delete().eq("email", email);
+};
+
+export const deleteSubscription = async (userId: string) => {
+  await supabase.from("subscriptions").delete().eq("user_id", userId);
+};

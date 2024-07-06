@@ -2,6 +2,12 @@ import { Exercise } from "../Types/dataTypes";
 import { addToDoExercise } from "../features/Dashboard/dashboardSlice";
 import { supabase } from "./config";
 
+export const getUser = async () => {
+  const { data, error } = await supabase.auth.getUser();
+  if (error) console.error(error);
+  return data;
+};
+
 export const fetchExercises = async (
   tableName: string,
   setExercises: React.Dispatch<React.SetStateAction<Exercise[]>>
@@ -60,6 +66,51 @@ export const handleSignUp = async (
   });
   if (error) {
     console.error(error);
+  }
+};
+
+export const updateUserEmail = async (newEmail: string) => {
+  const { error } = await supabase.auth.updateUser({
+    email: newEmail,
+  });
+
+  if (error) {
+    console.error("Erreur lors de la mise à jour de l'email:", error.message);
+  }
+};
+
+export const updateUserPassword = async (newPassword: string) => {
+  const { error } = await supabase.auth.updateUser({
+    password: newPassword,
+  });
+
+  if (error) {
+    console.error(
+      "Erreur lors de la mise à jour du mot de passe:",
+      error.message
+    );
+  }
+};
+
+export const updateUserName = async (newName: string) => {
+  const { error } = await supabase.auth.updateUser({
+    data: { name: newName },
+  });
+
+  if (error) {
+    console.error("Erreur lors de la mise à jour du nom:", error.message);
+  }
+};
+
+export const passwordRecovery = async (email: string) => {
+  let { data, error } = await supabase.auth.resetPasswordForEmail(email);
+  if (error) {
+    console.error(
+      "Erreur lors de la récuperartion du mot de passe:",
+      error.message
+    );
+  } else {
+    console.log("Récuperartion du mot de passe avec succès:", data);
   }
 };
 

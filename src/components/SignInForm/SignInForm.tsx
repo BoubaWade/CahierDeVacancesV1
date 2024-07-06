@@ -3,14 +3,17 @@ import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "../../supabase/config";
-import { setUserName } from "../../features/Sign/authSlice";
+import { setUser } from "../../features/Sign/authSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../app/store";
 import Cookies from "js-cookie";
+import { fetchTodos } from "../../supabase/api";
+import PasswordRecovery from "./PasswordRecovery";
 
 export default function SignInForm() {
   const [errorCredentials, setErrorCredentials] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [isPasswordRecovery, setIsPasswordRecovery] = useState(false);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useDispatch<AppDispatch>();
@@ -42,10 +45,9 @@ export default function SignInForm() {
       if (error) {
         setErrorCredentials("Email et/ou mot de passe non valide");
       } else {
-        const name = data.user.user_metadata.name
-          ? data.user.user_metadata.name
-          : data.user.email?.split("@")[0];
-        dispatch(setUserName(name));
+        dispatch(setUser(data.user));
+        fetchTodos(data.user, dispatch);
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
         if (rememberMe) {
           Cookies.set("rememberMe", "true", { expires: 7 });
@@ -62,32 +64,45 @@ export default function SignInForm() {
 
   return (
     <SignInFormStyled onSubmit={(e) => handleSignIn(e)}>
-      <h1>Connectez-vous</h1>
-      <span>Connexion avec email et mot de passe</span>
-      <input
-        type="email"
-        placeholder="Email"
-        ref={emailRef}
-        onChange={() => setErrorCredentials("")}
-      />
-      <input
-        type="password"
-        placeholder="Mot de passe"
-        ref={passwordRef}
-        onChange={() => setErrorCredentials("")}
-      />
-      <div className="remember-me-container">
-        <label htmlFor="rememberMe">Se souvenir de moi</label>
-        <input
-          type="checkbox"
-          id="rememberMe"
-          checked={rememberMe}
-          onChange={(e) => setRememberMe(e.target.checked)}
-        />
-      </div>
-      <PrimaryButton label="Se connecter" className="connexion-button" />
-      {errorCredentials && <span className="error">{errorCredentials}</span>}
-      <span className="forget-password">Mot de passe oublié ?</span>
+      {!isPasswordRecovery ? (
+        <>
+          <h1>Connectez-vous</h1>
+          <span>Connexion avec email et mot de passe</span>
+          <input
+            type="email"
+            placeholder="Email"
+            ref={emailRef}
+            onChange={() => setErrorCredentials("")}
+          />
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            ref={passwordRef}
+            onChange={() => setErrorCredentials("")}
+          />
+          <div className="remember-me-container">
+            <label htmlFor="rememberMe">Se souvenir de moi</label>
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+            />
+          </div>
+          <PrimaryButton label="Se connecter" className="connexion-button" />
+          {errorCredentials && (
+            <span className="error">{errorCredentials}</span>
+          )}
+          <span
+            className="forget-password"
+            onClick={() => setIsPasswordRecovery(true)}
+          >
+            Mot de passe oublié ?
+          </span>
+        </>
+      ) : (
+        <PasswordRecovery />
+      )}
     </SignInFormStyled>
   );
 }

@@ -1,15 +1,13 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 type AuthState = {
   isSignInForm: boolean;
   user: any;
-  userName: string | null;
 };
 
 const initialState: AuthState = {
   isSignInForm: true,
   user: null,
-  userName: null,
 };
 
 const authSlice = createSlice({
@@ -22,11 +20,8 @@ const authSlice = createSlice({
     setUser(state, { payload }) {
       state.user = payload;
     },
-    setUserName(state, { payload }: PayloadAction<string | null>) {
-      state.userName = payload;
-    },
   },
 });
 
-export const { setIsSignInForm, setUser, setUserName } = authSlice.actions;
+export const { setIsSignInForm, setUser } = authSlice.actions;
 export default authSlice.reducer;

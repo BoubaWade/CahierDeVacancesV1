@@ -46,7 +46,7 @@ const ModalStyled = styled.div`
   align-content: center;
   .close-modal {
     width: 120px;
-    padding: 8px;
+    padding: 6px;
     margin: 0 auto;
     position: absolute;
     top: 70px;

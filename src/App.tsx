@@ -20,6 +20,7 @@ import { supabase } from "./supabase/config";
 import { useDispatch } from "react-redux";
 import { setUser } from "./features/Sign/authSlice";
 import StripeContainer from "./stripe/StripeContainer";
+import ResetPassword from "./pages/ResetCredentials/ResetPassword";
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/sign" Component={Sign} />
+        <Route path="/sign/reset-password" Component={ResetPassword} />
         <Route path="/payment" Component={StripeContainer} />
         <Route path="/troisieme" Component={LevelHomeTroisieme} />
         <Route path="/premiere" Component={LevelHomePremiere} />

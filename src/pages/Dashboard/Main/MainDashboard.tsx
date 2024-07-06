@@ -4,17 +4,18 @@ import { RootState } from "../../../app/store";
 import MainHomeDashboard from "./Home/MainHomeDashboard";
 import Level from "./Level/Level";
 import Todo from "./ToDo/ToDo";
+import Settings from "./Settings/Settings";
 
 export default function MainDashboard() {
-  const { isHomeActive, isClassesActive, isToDoActive } = useSelector(
-    (state: RootState) => state.dashboardSettings
-  );
+  const { isHomeActive, isClassesActive, isToDoActive, isSettingsActive } =
+    useSelector((state: RootState) => state.dashboardSettings);
 
   return (
     <MainDashboardStyled>
       {isHomeActive && <MainHomeDashboard />}
       {isClassesActive && <Level />}
       {isToDoActive && <Todo />}
+      {isSettingsActive && <Settings />}
     </MainDashboardStyled>
   );
 }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/config";
 import { fetchTodos } from "../supabase/api";
+import { setUser } from "../features/Sign/authSlice";
 
 export default function PrivateRoutes() {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -21,8 +22,12 @@ export default function PrivateRoutes() {
   }, []);
 
   useEffect(() => {
-    fetchTodos(user, dispatch);
-  }, [session]);
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatch(setUser(JSON.parse(storedUser)));
+      fetchTodos(JSON.parse(storedUser), dispatch);
+    }
+  }, []);
 
   return user || session ? <Outlet /> : <Navigate to="/sign" />;
 }

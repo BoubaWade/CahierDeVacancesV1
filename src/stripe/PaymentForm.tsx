@@ -12,7 +12,7 @@ import {
   createSubscription,
   saveSubscription,
 } from "./api";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
@@ -23,6 +23,7 @@ import {
   StripeCardCvcElementChangeEvent,
 } from "@stripe/stripe-js";
 import ConfirmSubscription from "./ConfirmSubscription";
+import MiniLoader from "../components/reusableUI/MiniLoader";
 
 type Event =
   | StripeCardNumberElementChangeEvent
@@ -89,7 +90,7 @@ export default function PaymentForm() {
           }
         );
         if (error) {
-          setIsLoading(false);
+          // setIsLoading(false);
           console.error("Error confirming card payment:", error);
           return;
         }
@@ -100,15 +101,18 @@ export default function PaymentForm() {
           paymentMethodId
         );
         saveSubscription(user.id, subscriptionId);
-        setIsLoading(false);
         setIsSubscripted(true);
         setTimeout(() => {
           setIsSubscripted(false);
         }, 2000);
         // navigate("/dashboard");
       } catch (error) {
-        setIsLoading(false);
         console.error("Error subscription:", error);
+      } finally {
+        setIsLoading(false);
+        setCardNumberComplete(false);
+        setExpiryComplete(false);
+        setCvcComplete(false);
       }
     } else {
       navigate("/sign");
@@ -182,20 +186,12 @@ export default function PaymentForm() {
         disabled={isButtonDisabled}
         className="submit-button"
       >
-        {!isLoading ? "Payer et s'abonner" : <span className="loader"></span>}
+        {!isLoading ? "Payer et s'abonner" : <MiniLoader />}
       </button>
     </PaymentFormStyled>
   );
 }
 
-const spin = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-}
-`;
 const PaymentFormStyled = styled.form`
   max-width: 400px;
   margin: 0 auto;
@@ -270,16 +266,6 @@ const PaymentFormStyled = styled.form`
       background-color: #bbb;
       color: rgb(255, 255, 255);
       cursor: not-allowed;
-    }
-    .loader {
-      display: block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid #efeeee;
-      border-top: 3px solid #000;
-      border-radius: 50%;
-      margin: 0 auto;
-      animation: ${spin} 1s linear infinite;
     }
   }
 `;
