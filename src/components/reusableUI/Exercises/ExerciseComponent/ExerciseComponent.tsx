@@ -1,21 +1,18 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { DateValue, Exercise } from "../../../../Types/dataTypes";
+import { Exercise } from "../../../../Types/dataTypes";
 import { RootState } from "../../../../app/store";
 import useExercise from "../../../../hooks/useExercise";
-import {
-  formatDate,
-  setIncompletedProperty,
-  setLimitDateProperty,
-} from "../../../../utils/utilsFunctions";
+import { setIncompletedProperty } from "../../../../utils/utilsFunctions";
 import BorderBeam from "../../BorderBeam";
-import CalendarComponent from "../../CalendarComponent";
 import Modal from "../../Modal/Modal";
-import PrimaryButton from "../../PrimaryButton";
 import SecondaryButton from "../../SecondaryButton";
 import ExerciseHeader from "./ExerciseHeader";
 import MainExercise from "./MainExercise";
 import { useState } from "react";
+import { checkSubscriptionStatus } from "../../../../stripe/api";
+import { getUser } from "../../../../supabase/api";
+import ModalContent from "./ModalContent";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -32,24 +29,16 @@ export default function ExerciseComponent({
 }: ExerciseComponentProps) {
   const { id, number, statements, questionsSolutions } = exercise;
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-  const [value, onChange] = useState<DateValue>(new Date());
+  const [isSubsribted, setIsSubsribted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { isOpenModal, setIsOpenModal, addIsSuccessful, addTodo } =
     useExercise();
 
   if (!isActive) return null;
 
-  const handleAddTodo = () => {
-    const deepCopyExercise = structuredClone(exercise);
-    if (value) {
-      setLimitDateProperty(deepCopyExercise, formatDate(value.toString()));
-      addTodo(deepCopyExercise);
-    }
-  };
-
   const handleValidateExercise = () => {
     const todoFinded = toDoExercises?.find((todo) => todo.id === id);
     const deepCopyToDoFinded = structuredClone(todoFinded);
-
     if (deepCopyToDoFinded) {
       setIncompletedProperty(deepCopyToDoFinded, true);
       addTodo(deepCopyToDoFinded);
@@ -58,6 +47,23 @@ export default function ExerciseComponent({
 
       setIncompletedProperty(deepCopyCurrentExercise, true);
       addTodo(deepCopyCurrentExercise);
+    }
+  };
+
+  const handleOpenModal = async () => {
+    setIsLoading(true);
+    try {
+      const user = await getUser();
+      if (user && user.user) {
+        setIsOpenModal(true);
+        const hasAccess = await checkSubscriptionStatus(user.user.id);
+        setIsLoading(false);
+        setIsSubsribted(hasAccess);
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -71,20 +77,15 @@ export default function ExerciseComponent({
       <SecondaryButton
         label={`Ajouter à : DEVOIR À FAIRE `}
         className="add-todo-button"
-        onClick={() => setIsOpenModal(true)}
+        onClick={() => handleOpenModal()}
       />
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
-        <p className="text-date-choice">Choisir une date</p>
-        <CalendarComponent
-          className="calendar"
-          value={value}
-          onChange={onChange}
-        />
-        <PrimaryButton
-          id={id}
-          className="add-button"
-          label={!addIsSuccessful ? "Ajouter" : "Ajouté ✅"}
-          onClick={() => handleAddTodo()}
+        <ModalContent
+          exercise={exercise}
+          addTodo={addTodo}
+          isSubsribted={isSubsribted}
+          isLoading={isLoading}
+          addIsSuccessful={addIsSuccessful}
         />
       </Modal>
       <MainExercise

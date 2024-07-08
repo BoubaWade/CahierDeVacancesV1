@@ -36,7 +36,7 @@ const ToDoHeaderStyled = styled.div`
     border: 1px solid #d9d7d7;
   }
   input {
-    width: 20%;
+    width: 15%;
     height: 30px;
     padding: 0 10px;
     text-align: center;

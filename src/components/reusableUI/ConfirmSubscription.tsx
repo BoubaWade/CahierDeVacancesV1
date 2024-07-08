@@ -1,9 +1,13 @@
 import styled from "styled-components";
 
-export default function ConfirmSubscription() {
+type Props = {
+  label: string;
+};
+export default function ConfirmSubscription({ label }: Props) {
   return (
     <ConfirmSubscriptionStyled>
-      Abonnement enregistré !<br /> <i className="fa-solid fa-check"></i>
+      {label}
+      <br /> <i className="fa-solid fa-check"></i>
     </ConfirmSubscriptionStyled>
   );
 }
@@ -20,6 +24,7 @@ const ConfirmSubscriptionStyled = styled.div`
   font-size: 16px;
   text-align: center;
   border-radius: 8px;
+  margin: 0 auto;
   i {
     color: green;
     font-size: 20px;

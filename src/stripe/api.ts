@@ -101,16 +101,9 @@ export const checkSubscriptionStatus = async (userId: string) => {
     .eq("user_id", userId)
     .single();
 
-  if (error) throw error;
-
+  if (error) throw Error;
   return data.status === "active";
 };
-
-// const userId = supabase.auth.getUser().id;
-// const hasAccess = await checkSubscriptionStatus(userId);
-// if (!hasAccess) {
-//   // Rediriger ou afficher un message d'erreur
-// }
 
 export const deleteStripeCustomer = async (email: string) => {
   await supabase.from("stripe_customers").delete().eq("email", email);

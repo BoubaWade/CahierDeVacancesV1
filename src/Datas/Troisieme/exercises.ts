@@ -47,19 +47,19 @@ export const exercisesTroisieme = [
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
-        time: 200,
+        time: 300,
         question: ["", "$\\mathrm{E}=(2 x+3)(5 x-8)-(2 x-4)(5 x-1)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 200,
+        time: 300,
         question: ["", "$\\mathrm{F}=(5 x-2)(5 x-8)-(3 x-5)(x+7)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 250,
+        time: 300,
         question: ["", "$\\mathrm{G}=2(x+7)(3-2 x)+(5 x-2)(4 x+1)$"],
         imgName: "",
         solution: [],
@@ -120,13 +120,13 @@ export const exercisesTroisieme = [
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{N}=\\left(3 x-\\frac{2}{3}\\right)^{2}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: [
           "",
           "$\\mathrm{P}=\\left(\\frac{5}{2}+\\frac{1}{3} x\\right)\\left(\\frac{1}{3} x-\\frac{5}{2}\\right)$",
@@ -135,7 +135,7 @@ export const exercisesTroisieme = [
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{Q}=(x+2)^{2}-6(3 x-5)^{2}$"],
         imgName: "",
         solution: [],
@@ -153,19 +153,19 @@ export const exercisesTroisieme = [
     statements: "Compléter les expressions suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\quad( \\ldots-\\ldots)^{2}=16 x^{2}-72 x+\\ldots$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$(5 x- \\ldots)^{2}=\\ldots-\\ldots+36$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$(\\ldots+\\ldots)^{2}=\\ldots+70 x+25$"],
         imgName: "",
         solution: [],
@@ -183,19 +183,19 @@ export const exercisesTroisieme = [
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{A}=(x+2)(2 x-1)+(x+2)(3 x+2)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{B}=(3 x+7)(2 x-9)-(3 x+7)(5 x-7)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{C}=(8 y+3)(5 y+7)-3(8 y+3)(2 y-1)$"],
         imgName: "",
         solution: [],
@@ -213,19 +213,19 @@ export const exercisesTroisieme = [
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{D}=(2 x+3)^{2}+(x-2)(2 x+3)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{E}=(2 t-7)-(5 t+1)(2 t-7)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\mathrm{G}=(2 t-5)^{2}+(2 t-5)(x-1)+2 t-5$"],
         imgName: "",
         solution: [],
@@ -243,19 +243,19 @@ export const exercisesTroisieme = [
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\quad-2(2 x-4)=6 x-(-3+x)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$4 x-2+(5 x-1)=-3(7-x)$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\frac{x+5}{2}-\\frac{2 x-7}{5}=2+\\frac{3 x}{10}$"],
         imgName: "",
         solution: [],
@@ -273,25 +273,25 @@ export const exercisesTroisieme = [
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "$4(2+3 x)-(x-5)=0$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$50 x^{2}=8$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$4 x^{2}+4 x=-1$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "$\\quad(9 x-4)(-2+5 x)-(9 x-4)(3 x-5)=0$"],
         imgName: "",
         solution: [],
@@ -309,19 +309,19 @@ export const exercisesTroisieme = [
     statements: "",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "Factoriser $\\ 4 x^{2}-12 x+9.$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Factoriser $\\ (2 x-3)^{2}-4.$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "En déduire une factorisation de $\\ 4 x^{2}-12 x+5.$"],
         imgName: "",
         solution: [],
@@ -375,25 +375,25 @@ export const exercisesTroisieme = [
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "Donner cinq multiples du nombre : 8"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Donner cinq multiples du nombre : 11"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Donner cinq multiples du nombre : 12"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Donner cinq multiples du nombre : 15"],
         imgName: "",
         solution: [],
@@ -411,25 +411,25 @@ export const exercisesTroisieme = [
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "Citer tous les diviseurs du nombre : 6"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Citer tous les diviseurs du nombre : 17"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Citer tous les diviseurs du nombre : 25"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Citer tous les diviseurs du nombre : 35"],
         imgName: "",
         solution: [],
@@ -447,7 +447,7 @@ export const exercisesTroisieme = [
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: [
           "Je suis un nombre entier compris entre 100 et 400. Je suis pair. Je suis divisible par 11. J’ai aussi 3 et 5 comme diviseurs.",
           "Qui suis-je ?",
@@ -456,7 +456,7 @@ export const exercisesTroisieme = [
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: [
           "Un livreur range 752 DVD dans des caisses qui peuvent en contenir 40.",
           "Combien faut-il de caisses pour ranger tous les DVD ? ",
@@ -466,7 +466,7 @@ export const exercisesTroisieme = [
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: [
           "6 798 supporters d’un club de rugby doivent faire un déplacement en car pour soutenir leur équipe. Chaque car dispose de 55 places.",
           "Combien de cars faut-il réserver ?",
@@ -487,25 +487,25 @@ export const exercisesTroisieme = [
     statements: "Nombres premiers et fractions irréductibles.",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "Rendre irréductible : $\\frac{55}{15}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Rendre irréductible : $\\frac{14}{16}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Rendre irréductible : $\\frac{270}{120}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Rendre irréductible : $\\frac{14}{49}$"],
         imgName: "",
         solution: [],
@@ -523,25 +523,25 @@ export const exercisesTroisieme = [
     statements: "Nombres premiers et fractions irréductibles.",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "Écrire trois diviseurs de 12."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Écrire quatre diviseurs de 18."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Écrire quatre diviseurs de 75."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Écrire trois diviseurs de 64."],
         imgName: "",
         solution: [],
@@ -559,37 +559,37 @@ export const exercisesTroisieme = [
     statements: "Nombres premiers et fractions irréductibles.",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "Décomposer 25 en produits de facteurs premiers."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Décomposer 125 en produits de facteurs premiers."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Décomposer 456 en produits de facteurs premiers."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Décomposer 2018 en produits de facteurs premiers."],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Rendre irréductible la fraction : $\\frac{25}{125}$ "],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "Rendre irréductible la fraction : $\\frac{2018}{456}$"],
         imgName: "",
         solution: [],
@@ -608,25 +608,25 @@ export const exercisesTroisieme = [
       "Rendre irréductible les fractions suivantes en décomposant leur numérateur et dénominateur en produit de facteurs premiers :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: ["", "A = $\\frac{128}{244}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "B = $\\frac{1404}{3 465}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "C = $\\frac{408}{578}$"],
         imgName: "",
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: ["", "D = $\\frac{845}{1 235}$"],
         imgName: "",
         solution: [],
@@ -644,7 +644,7 @@ export const exercisesTroisieme = [
     statements: "",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: [
           "",
           " Rendre irréductible la fraction $\\frac{425}{100}$",
@@ -654,7 +654,7 @@ export const exercisesTroisieme = [
         solution: [],
       },
       {
-        time: 30,
+        time: 300,
         question: [
           "Flavien veut répartir 760 dragées au chocolat et 1 045 dragées aux amandes dans des sachets ayant la même répartition de dragées au chocolat et aux amandes.",
           "Peut-il faire 76 sachets ? Justifier.",
@@ -675,7 +675,7 @@ export const exercisesTroisieme = [
     statements: "",
     questionsSolutions: [
       {
-        time: 30,
+        time: 300,
         question: [
           "Une ouvrière dispose de plaques de métal de 110 cm de longueur et de 88 cm de largeur. Elle a reçu la consigne suivante : « Découpez dans ces plaques des carrés tous identiques, dont les longueurs des côtés sont un nombre entier de cm, et de façon à ne pas avoir de perte. »",
           "Peut-elle choisir de découper des plaques de 10 cm de côté ?",
@@ -1078,7 +1078,7 @@ export const exercisesTroisieme = [
       {
         time: 300,
         question: [
-          "Pour gravir de très fortes pentes, un funiculaire utilise une traction par câble. Ci-dessous, un croquis d’une telle voie. La longueur DA de la voie est de 125 m.",
+          "Pour gravir de très fortes pentes, un funiculaire utilise une traction par câble. Ci-dessus, un croquis d’une telle voie. La longueur DA de la voie est de 125 m.",
           "1) a) Que peux-tu dire des droites (PM) et (AH) ?",
           "1) b) Calculer MP",
           "2) a) Lorsque le funiculaire a parcouru 1 m, de quelle hauteur s’est-il élevé ?",

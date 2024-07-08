@@ -13,7 +13,7 @@ import {
   saveSubscription,
 } from "./api";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +22,7 @@ import {
   StripeCardExpiryElementChangeEvent,
   StripeCardCvcElementChangeEvent,
 } from "@stripe/stripe-js";
-import ConfirmSubscription from "./ConfirmSubscription";
+import ConfirmSubscription from "../components/reusableUI/ConfirmSubscription";
 import MiniLoader from "../components/reusableUI/MiniLoader";
 
 type Event =
@@ -40,9 +40,12 @@ export default function PaymentForm() {
   const [cvcComplete, setCvcComplete] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [isSubscripted, setIsSubscripted] = useState(false);
   const { user } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const handleChange = (e: Event) => {
     switch (e.elementType) {
@@ -102,12 +105,14 @@ export default function PaymentForm() {
         );
         saveSubscription(user.id, subscriptionId);
         setIsSubscripted(true);
-        setTimeout(() => {
-          setIsSubscripted(false);
-        }, 2000);
         // navigate("/dashboard");
+        navigate(-1);
       } catch (error) {
         console.error("Error subscription:", error);
+        if (error === "Email déja utilisé") return true;
+        setError(true);
+        setErrorMessage("Le paiement n'a pas abouti");
+        // if (formRef.current) formRef.current.reset();
       } finally {
         setIsLoading(false);
         setCardNumberComplete(false);
@@ -136,9 +141,11 @@ export default function PaymentForm() {
       },
     },
   };
-  if (isSubscripted) return <ConfirmSubscription />;
+  if (isSubscripted)
+    return <ConfirmSubscription label="Abonnement enregistré !" />;
+
   return (
-    <PaymentFormStyled onSubmit={handleSubmit}>
+    <PaymentFormStyled onSubmit={handleSubmit} ref={formRef}>
       <h1>
         <span>S'abonner à Premium</span> <br /> 15,90 € <span>par mois</span>
       </h1>
@@ -158,6 +165,7 @@ export default function PaymentForm() {
             options={cardElementOptions}
             className="stripeElement"
             onChange={handleChange}
+            onFocus={() => setErrorMessage("")}
           />
         </label>
       </div>
@@ -168,6 +176,7 @@ export default function PaymentForm() {
             options={cardElementOptions}
             className="stripeElement"
             onChange={handleChange}
+            onFocus={() => setErrorMessage("")}
           />
         </label>
         <label>
@@ -176,6 +185,7 @@ export default function PaymentForm() {
             options={cardElementOptions}
             className="stripeElement"
             onChange={handleChange}
+            onFocus={() => setErrorMessage("")}
           />
         </label>
       </div>
@@ -188,19 +198,20 @@ export default function PaymentForm() {
       >
         {!isLoading ? "Payer et s'abonner" : <MiniLoader />}
       </button>
+      {error && <p className="error">{errorMessage} </p>}
     </PaymentFormStyled>
   );
 }
 
 const PaymentFormStyled = styled.form`
-  max-width: 400px;
+  max-width: 450px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 30px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  background: linear-gradient(to right, #fde047, #c2a205);
-
+  background-color: #fde047;
+  /* background: linear-gradient(to right, #fde047, #c2a205); */
   h1 {
     font-size: 30px;
     text-align: center;
@@ -267,5 +278,10 @@ const PaymentFormStyled = styled.form`
       color: rgb(255, 255, 255);
       cursor: not-allowed;
     }
+  }
+  .error {
+    font-size: 13px;
+    text-align: center;
+    color: #fa755a;
   }
 `;
