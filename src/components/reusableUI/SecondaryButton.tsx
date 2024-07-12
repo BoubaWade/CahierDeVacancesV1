@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 type SecondaryButtonProps = {
+  type?: "button" | "submit" | "reset" | undefined;
   id?: string;
   label: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -9,6 +10,7 @@ type SecondaryButtonProps = {
 };
 
 export default function SecondaryButton({
+  type,
   id,
   label,
   onClick,
@@ -17,6 +19,7 @@ export default function SecondaryButton({
 }: SecondaryButtonProps) {
   return (
     <SecondaryButtonStyled
+      type={type}
       id={id}
       className={className}
       onClick={onClick}

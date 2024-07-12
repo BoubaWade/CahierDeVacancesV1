@@ -36,6 +36,14 @@ export default function ExerciseComponent({
 
   if (!isActive) return null;
 
+  const ArrayOfTotalQuestions = questionsSolutions
+    .map((item) => item.question)
+    .map((res) => res.length - 1);
+  const totalQuestions = ArrayOfTotalQuestions.reduce(
+    (curr, acc) => curr + acc
+  );
+  console.log(totalQuestions);
+
   const handleValidateExercise = () => {
     const todoFinded = toDoExercises?.find((todo) => todo.id === id);
     const deepCopyToDoFinded = structuredClone(todoFinded);

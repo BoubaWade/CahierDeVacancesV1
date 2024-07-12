@@ -124,7 +124,7 @@ const SignInFormStyled = styled.form`
   }
   span {
     font-size: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   input {
     width: 100%;

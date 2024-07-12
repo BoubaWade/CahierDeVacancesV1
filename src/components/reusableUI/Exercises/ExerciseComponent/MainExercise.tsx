@@ -1,6 +1,6 @@
-import QuestionsList from "./QuestionsList";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
 import styled from "styled-components";
+import ExercisesList from "./ExercisesList";
 
 type MainExerciseProps = {
   statements: string;
@@ -14,7 +14,7 @@ export default function MainExercise({
   return (
     <MainExerciseStyled>
       {statements && <p className="statement">{statements}</p>}
-      <QuestionsList questionsSolutions={questionsSolutions} />
+      <ExercisesList questionsSolutions={questionsSolutions} />
     </MainExerciseStyled>
   );
 }

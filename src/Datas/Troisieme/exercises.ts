@@ -10,16 +10,24 @@ export const exercisesTroisieme = [
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
-        time: 30,
+        time: 3,
         question: ["", "$\\mathrm{A}=3(4x+7)+4(2x-9)$"],
         imgName: "",
-        solution: [],
+        solution: [
+          "$\\mathrm{A}= 3 × 4x + 3 × 7 + 4 × 2x + 4 × (-9)$",
+          "$\\mathrm{A}= 12x + 21 + 8x - 36$",
+          "$\\mathrm{A}= 20x - 15$",
+        ],
       },
       {
-        time: 300,
+        time: 3,
         question: ["", "$\\mathrm{B}=7x(2x-5)-x(2x-5)$"],
         imgName: "",
-        solution: [],
+        solution: [
+          "$\\mathrm{B}=7x × 2x + 7x × (-5) -x × 2x -x × (-5)$",
+          "$\\mathrm{B}= 14x^2 - 35x -2x^2 + 5x$",
+          "$\\mathrm{B}= 12x^2 - 30x$",
+        ],
       },
       {
         time: 300,
@@ -310,19 +318,12 @@ export const exercisesTroisieme = [
     questionsSolutions: [
       {
         time: 300,
-        question: ["", "Factoriser $\\ 4 x^{2}-12 x+9.$"],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "Factoriser $\\ (2 x-3)^{2}-4.$"],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "En déduire une factorisation de $\\ 4 x^{2}-12 x+5.$"],
+        question: [
+          "",
+          "Factoriser $\\ 4 x^{2}-12x+9.$",
+          "Factoriser $\\ (2 x-3)^{2}-4.$",
+          "En déduire une factorisation de $\\ 4 x^{2}-12 x+5.$",
+        ],
         imgName: "",
         solution: [],
       },
@@ -560,37 +561,15 @@ export const exercisesTroisieme = [
     questionsSolutions: [
       {
         time: 300,
-        question: ["", "Décomposer 25 en produits de facteurs premiers."],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "Décomposer 125 en produits de facteurs premiers."],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "Décomposer 456 en produits de facteurs premiers."],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "Décomposer 2018 en produits de facteurs premiers."],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "Rendre irréductible la fraction : $\\frac{25}{125}$ "],
-        imgName: "",
-        solution: [],
-      },
-      {
-        time: 300,
-        question: ["", "Rendre irréductible la fraction : $\\frac{2018}{456}$"],
+        question: [
+          "",
+          "Décomposer 25 en produits de facteurs premiers.",
+          "Décomposer 125 en produits de facteurs premiers.",
+          "Décomposer 456 en produits de facteurs premiers.",
+          "Décomposer 2018 en produits de facteurs premiers.",
+          "Rendre irréductible la fraction : $\\frac{25}{125}$ ",
+          "Rendre irréductible la fraction : $\\frac{2018}{456}$",
+        ],
         imgName: "",
         solution: [],
       },

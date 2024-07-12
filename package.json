@@ -28,7 +28,8 @@
     "react-router": "^6.23.1",
     "react-transition-group": "^4.4.5",
     "redux": "^5.0.1",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "supabase": "^1.183.5"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",

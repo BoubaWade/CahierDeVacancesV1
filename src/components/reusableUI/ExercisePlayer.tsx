@@ -126,7 +126,7 @@ const ExercisePlayerStyled = styled.div`
   }
   .info {
     .message {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       text-align: center;
       margin-bottom: 5px;
       .message.dispo {
@@ -149,8 +149,9 @@ const ExercisePlayerStyled = styled.div`
     }
   }
   .help-message {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 500;
     text-align: center;
+    margin-bottom: 5px;
   }
 `;

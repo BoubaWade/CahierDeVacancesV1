@@ -7,7 +7,7 @@ export default function NotSubscribedMessage() {
 
   return (
     <NotSubscribedMessageStyled>
-      <p>Nous devez vous abonner pour ajouter des " DEVOIRS À FAIRE "</p>
+      <p>Abonnez-vous pour ajouter des " DEVOIRS À FAIRE "</p>
       <PrimaryButton
         label="Abonnez-vous"
         onClick={() => navigate("/payment")}
