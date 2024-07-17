@@ -10,7 +10,7 @@ export default function Section() {
   return (
     <SectionStyled>
       <LeftSection setIsOpenModal={setIsOpenModal} />
-      <CalendarComponent />
+      <CalendarComponent className="calendar" />
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <DropDown />
       </Modal>
@@ -19,15 +19,19 @@ export default function Section() {
 }
 const SectionStyled = styled.section`
   position: relative;
-  background: #f1f2f3;
   display: flex;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: center;
   border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
   transition: all 200ms ease;
   &:hover {
     box-shadow: none;
+  }
+  @media (max-width: 1150px) {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    .calendar {
+      max-width: 500px;
+    }
   }
 `;

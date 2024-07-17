@@ -3,27 +3,28 @@ import racine from "../../assets/racine.svg";
 import infinity from "../../assets/infinity-solid.svg";
 import percent from "../../assets/percent.svg";
 import functionFI from "../../assets/functionFI.svg";
+import SignInWithGoogle from "../SignInForm/SignInWithGoogle";
 
-type SignFormRightSideProps = {
+type Props = {
   title: string;
   text: string;
 };
 
-export default function SignFormRightSide({
-  title,
-  text,
-}: SignFormRightSideProps) {
+export default function SignFormRightSide({ title, text }: Props) {
+  const imgFields = [functionFI, infinity, percent, racine];
+
   return (
     <SignFormRightSideStyled>
       <div className="left">
         <h1>{title}</h1>
         <p>{text}</p>
         <div>
-          <img src={functionFI} />
-          <img src={infinity} />
-          <img src={percent} />
-          <img src={racine} />
+          {imgFields.map((imgField, index) => (
+            <img key={index} src={imgField} />
+          ))}
         </div>
+        <p className="or"> OU</p>
+        <SignInWithGoogle />
       </div>
     </SignFormRightSideStyled>
   );
@@ -51,7 +52,8 @@ const SignFormRightSideStyled = styled.div`
       padding: 20px;
     }
     img {
-      width: 40px;
+      width: 35px;
+      margin: 0 3px;
     }
   }
 `;

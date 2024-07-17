@@ -1,8 +1,22 @@
 import styled from "styled-components";
 import Header from "./Header";
 import Section from "./Section";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setUser } from "../../../../features/Sign/authSlice";
+import { fetchTodos } from "../../../../supabase/api";
 
 export default function MainHomeDashboard() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatch(setUser(JSON.parse(storedUser)));
+      fetchTodos(JSON.parse(storedUser), dispatch);
+    }
+  }, []);
+
   return (
     <MainHomeDashboardStyled>
       <h1>TABLEAU DE BORD</h1>
@@ -19,5 +33,8 @@ const MainHomeDashboardStyled = styled.div`
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 40px;
+  }
+  @media (max-width: 1386px) {
+    max-width: 100%;
   }
 `;

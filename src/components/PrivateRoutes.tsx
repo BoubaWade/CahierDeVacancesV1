@@ -3,8 +3,9 @@ import { AppDispatch, RootState } from "../app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/config";
-import { fetchTodos } from "../supabase/api";
-import { setUser } from "../features/Sign/authSlice";
+import { getUser } from "../supabase/api";
+import { checkSubscriptionStatus } from "../stripe/api";
+import { setIsSubsribted } from "../features/Dashboard/dashboardSlice";
 
 export default function PrivateRoutes() {
   const { user } = useSelector((state: RootState) => state.auth);
@@ -26,12 +27,24 @@ export default function PrivateRoutes() {
     return () => subscription.unsubscribe();
   }, []);
 
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem("user");
+  //   if (storedUser) {
+  //     dispatch(setUser(JSON.parse(storedUser)));
+  //     fetchTodos(JSON.parse(storedUser), dispatch);
+  //   }
+  // }, []);
+
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      dispatch(setUser(JSON.parse(storedUser)));
-      fetchTodos(JSON.parse(storedUser), dispatch);
-    }
+    const checkSubscription = async () => {
+      const user = await getUser();
+      if (user && user.user) {
+        const hasAccess = await checkSubscriptionStatus(user.user.id);
+        dispatch(setIsSubsribted(hasAccess));
+      }
+    };
+
+    checkSubscription();
   }, []);
 
   return user || session ? <Outlet /> : <Navigate to="/sign" />;

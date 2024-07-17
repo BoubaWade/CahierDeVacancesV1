@@ -4,24 +4,22 @@ import {
   setLimitDateProperty,
 } from "../../../../utils/utilsFunctions";
 import CalendarComponent from "../../CalendarComponent";
-import MiniLoader from "../../MiniLoader";
 import NotSubscribedMessage from "../../NotSubscribedMessage";
 import PrimaryButton from "../../PrimaryButton";
 import { DateValue, Exercise } from "../../../../Types/dataTypes";
+import styled from "styled-components";
 
 type ModalContentProps = {
   exercise: Exercise;
-  addTodo: (exercise: Exercise) => void;
   isSubsribted: boolean;
-  isLoading: boolean;
   addIsSuccessful: boolean;
+  addTodo: (exercise: Exercise) => void;
 };
 
 export default function ModalContent({
   exercise,
   addTodo,
   isSubsribted,
-  isLoading,
   addIsSuccessful,
 }: ModalContentProps) {
   const [value, onChange] = useState<DateValue>(new Date());
@@ -34,9 +32,8 @@ export default function ModalContent({
     }
   };
 
-  if (isLoading) return <MiniLoader />;
   return (
-    <>
+    <ModalContentStyled>
       {isSubsribted ? (
         <>
           <p className="text-date-choice">Choisir une date</p>
@@ -48,13 +45,30 @@ export default function ModalContent({
           <PrimaryButton
             id={exercise.id}
             className="add-button"
-            label={!addIsSuccessful ? "Ajouter" : "Ajouté ✅"}
+            label={!addIsSuccessful ? "Ajouter le devoir" : "Ajouté !"}
             onClick={() => handleAddTodo()}
           />
         </>
       ) : (
         <NotSubscribedMessage />
       )}
-    </>
+    </ModalContentStyled>
   );
 }
+const ModalContentStyled = styled.div`
+  margin: 0 auto;
+  .text-date-choice {
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    margin: 25px auto;
+  }
+  .calendar {
+    margin: 0 auto;
+  }
+  .add-button {
+    display: block;
+    border-radius: 5px;
+    margin: 25px auto;
+  }
+`;

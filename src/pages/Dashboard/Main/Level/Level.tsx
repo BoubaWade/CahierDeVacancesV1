@@ -11,7 +11,10 @@ type Action = {
 };
 const initialLevelState = {
   isSixiemeActive: false,
+  isCinquiemeActive: false,
+  isQuatriemeActive: false,
   isTroisiemeActive: true,
+  isSecondeActive: false,
   isPremiereActive: false,
   isTerminaleActive: false,
 };
@@ -21,7 +24,10 @@ function levelReducer(state: LevelState, action: Action) {
     case "SET_ACTIVE":
       return {
         isSixiemeActive: false,
+        isCinquiemeActive: false,
+        isQuatriemeActive: false,
         isTroisiemeActive: false,
+        isSecondeActive: false,
         isPremiereActive: false,
         isTerminaleActive: false,
         [action.payload]: true,
@@ -45,11 +51,6 @@ export default function Level() {
 const LevelStyled = styled.div`
   width: 90%;
   margin: 30px auto;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  grid-template-rows: 0.8fr 1.2fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 40px;
   background-image: radial-gradient(#2d6a4f 0.75px, transparent 0.75px),
     radial-gradient(#2d6a4f 0.75px, #ffffff 0.75px);
   background-size: 30px 30px;

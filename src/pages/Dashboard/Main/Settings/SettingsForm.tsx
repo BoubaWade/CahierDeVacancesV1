@@ -39,6 +39,7 @@ export default function SettingsForm() {
       setIsLoading(false);
     }
   };
+
   return (
     <SettingsFormStyled onSubmit={(e) => handleSubmit(e)}>
       <div>

@@ -4,17 +4,22 @@ import { Exercise } from "../../Types/dataTypes";
 type DashboardState = {
   toDoExercises: Exercise[];
   searchToDoValue: string;
+  isSubsribted: boolean;
 };
 
 const initialState: DashboardState = {
   toDoExercises: [],
   searchToDoValue: "",
+  isSubsribted: false,
 };
 
 const dashboardSlice = createSlice({
   name: "dashboard",
   initialState,
   reducers: {
+    setIsSubsribted(state, { payload }) {
+      state.isSubsribted = payload;
+    },
     addToDoExercise(state, { payload }) {
       const index = state.toDoExercises.findIndex(
         (todo) => todo.id === payload.id
@@ -39,7 +44,11 @@ const dashboardSlice = createSlice({
   },
 });
 
-export const { addToDoExercise, deleteToDoExercise, setSearchToDoValue } =
-  dashboardSlice.actions;
+export const {
+  setIsSubsribted,
+  addToDoExercise,
+  deleteToDoExercise,
+  setSearchToDoValue,
+} = dashboardSlice.actions;
 
 export default dashboardSlice.reducer;

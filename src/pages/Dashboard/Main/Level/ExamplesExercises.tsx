@@ -23,7 +23,6 @@ export default function ExamplesExercises({ state }: ExamplesExercisesProps) {
 
 const ExamplesExercisesStyled = styled.div`
   background: #fbfafa;
-  grid-area: 1 / 2 / 3 / 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +35,7 @@ const ExamplesExercisesStyled = styled.div`
     margin-bottom: 40px;
   }
   .exercise {
+    font-size: 14px;
     margin-bottom: 40px;
     p {
       margin-bottom: 5px;

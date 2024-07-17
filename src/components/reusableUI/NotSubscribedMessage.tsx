@@ -19,7 +19,6 @@ export default function NotSubscribedMessage() {
 const NotSubscribedMessageStyled = styled.div`
   color: #fff;
   text-align: center;
-
   p {
     margin-bottom: 20px;
   }

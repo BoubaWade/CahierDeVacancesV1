@@ -25,7 +25,7 @@ export default function SideBar() {
       <MenuItemsList />
       <div className="logout" onClick={() => handleLogOut()}>
         <img src={logout} />
-        Déconnexion
+        <span>Déconnexion</span>
       </div>
     </SideBarStyled>
   );
@@ -54,13 +54,49 @@ const SideBarStyled = styled.div`
     cursor: pointer;
   }
   .logout {
-    font-size: 0.9rem;
-    font-weight: 700;
-    padding: 14px;
     margin: 120px 0 0 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 14px;
     cursor: pointer;
     img {
+      height: 18px;
       margin-right: 10px;
+    }
+  }
+  @media (max-width: 1024px) {
+    width: 180px;
+    h2 {
+      font-size: 1.1rem;
+    }
+    .logout {
+      font-size: 0.8rem;
+      img {
+        height: 17px;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    background: linear-gradient(to right, #fde047, #c2a205);
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+    h2 {
+      width: 150px;
+      margin: 0;
+    }
+    .logout {
+      font-size: 0.8rem;
+      margin: 0;
+      padding: 5px;
+      img {
+        height: 17px;
+        margin-top: 5px;
+      }
+      span {
+        display: none;
+      }
     }
   }
 `;

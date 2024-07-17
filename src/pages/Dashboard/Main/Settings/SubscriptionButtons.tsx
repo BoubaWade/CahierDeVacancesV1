@@ -3,31 +3,19 @@ import styled from "styled-components";
 import PrimaryButton from "../../../../components/reusableUI/PrimaryButton";
 import SecondaryButton from "../../../../components/reusableUI/SecondaryButton";
 import { RootState } from "../../../../app/store";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkSubscriptionStatus } from "../../../../stripe/api";
 
 type Props = {
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function SubscriptionButtons({ setOpenModal }: Props) {
-  const { user } = useSelector((state: RootState) => state.auth);
-  const [status, setStatus] = useState(false);
+  const { isSubsribted } = useSelector((state: RootState) => state.dashboard);
   const navigate = useNavigate();
-
-  const handleCheckSubscriptionStatus = async () => {
-    const hasAccess = await checkSubscriptionStatus(user.id);
-    setStatus(hasAccess);
-  };
-
-  useEffect(() => {
-    handleCheckSubscriptionStatus();
-  }, []);
 
   return (
     <SubscriptionButtonsStyled>
-      {status ? (
+      {isSubsribted ? (
         <SecondaryButton
           label="Résilier mon abonnement"
           className="unsubscribe-button"

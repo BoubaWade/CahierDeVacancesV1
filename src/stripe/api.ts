@@ -101,7 +101,10 @@ export const checkSubscriptionStatus = async (userId: string) => {
     .eq("user_id", userId)
     .single();
 
-  if (error) throw Error;
+  if (error) {
+    return false;
+    // throw Error;
+  }
   return data.status === "active";
 };
 

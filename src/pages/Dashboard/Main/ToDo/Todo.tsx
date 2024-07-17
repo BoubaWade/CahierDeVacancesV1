@@ -1,7 +1,21 @@
 import styled from "styled-components";
 import ToDoList from "./ToDoList";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setUser } from "../../../../features/Sign/authSlice";
+import { fetchTodos } from "../../../../supabase/api";
 
 export default function Todo() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      dispatch(setUser(JSON.parse(storedUser)));
+      fetchTodos(JSON.parse(storedUser), dispatch);
+    }
+  }, []);
+
   return (
     <TodoStyled>
       <div className="todo-counter-container">

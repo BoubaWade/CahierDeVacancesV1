@@ -8,7 +8,10 @@ export type lessonCard = {
 };
 export type LevelState = {
   isSixiemeActive: boolean;
+  isCinquiemeActive: boolean;
+  isQuatriemeActive: boolean;
   isTroisiemeActive: boolean;
+  isSecondeActive: boolean;
   isPremiereActive: boolean;
   isTerminaleActive: boolean;
 };

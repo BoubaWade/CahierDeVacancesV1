@@ -23,9 +23,9 @@ const ColumnStatusStyled = styled.td`
     align-items: center;
     margin: auto;
     font-size: 10px;
-    padding: 6px 10px;
+    padding: 6px 8px;
     color: #fff;
-    border-radius: 20px;
+    border-radius: 8px;
     font-weight: 700;
   }
   .status.completed {
@@ -40,5 +40,13 @@ const ColumnStatusStyled = styled.td`
     align-items: center;
     grid-gap: 12px;
     padding-left: 6px;
+  }
+  @media (max-width: 1130px) {
+    .status {
+      font-size: 0;
+      border-radius: 20px;
+      width: 20px;
+      height: 20px;
+    }
   }
 `;

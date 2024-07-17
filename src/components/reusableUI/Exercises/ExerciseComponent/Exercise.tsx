@@ -4,7 +4,7 @@ import { QuestionSolutions } from "../../../../Types/dataTypes";
 import ExercisePlayer from "../../ExercisePlayer";
 import ExerciseStatement from "./ExerciseStatement";
 
-type Props = {
+type ExerciseProps = {
   questionSolution: QuestionSolutions;
   exerciseNumber: number;
   handleUpdateScore: (scoreToAdd: number) => void;
@@ -14,7 +14,7 @@ export default function Exercise({
   questionSolution,
   exerciseNumber,
   handleUpdateScore,
-}: Props) {
+}: ExerciseProps) {
   const totalTime = questionSolution.time;
   const [timeLeft, setTimeLeft] = useState(totalTime);
 

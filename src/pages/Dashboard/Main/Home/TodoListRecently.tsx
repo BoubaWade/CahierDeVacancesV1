@@ -24,13 +24,14 @@ export default function TodoListRecently() {
   );
 }
 const TodoListRecentlyStyled = styled.div`
-  width: 460px;
+  /* width: 460px; */
+  width: 500px;
   height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #fff;
+  background: #f1f2f3;
   border-radius: 8px;
   margin-right: 20px;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -60,5 +61,8 @@ const TodoListRecentlyStyled = styled.div`
         font-weight: 500;
       }
     }
+  }
+  @media (max-width: 1150px) {
+    margin: 0;
   }
 `;

@@ -28,4 +28,9 @@ const LeftSectionStyled = styled.div`
       box-shadow: none;
     }
   }
+  @media (max-width: 1150px) {
+    .indication {
+      width: 500px;
+    }
+  }
 `;

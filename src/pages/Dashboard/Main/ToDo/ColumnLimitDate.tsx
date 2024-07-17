@@ -20,7 +20,7 @@ export default function ColumnLimitDate({
   return (
     <>
       {!isEditing ? (
-        <td>{limitDate}</td>
+        <td style={{ fontWeight: "500" }}>{limitDate}</td>
       ) : (
         <UpdateFormToDo
           id={id}

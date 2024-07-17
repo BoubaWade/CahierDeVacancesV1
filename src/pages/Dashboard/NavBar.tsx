@@ -8,7 +8,6 @@ import { RootState } from "../../app/store";
 
 export default function NavBar() {
   const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-
   const todosIncompleted = getTodosIncompleted(toDoExercises);
   const numberOfTodosIncomp = todosIncompleted.length;
 
@@ -68,12 +67,14 @@ const NavBarStyled = styled.nav`
       display: flex;
       align-items: center;
       height: 38px;
+      border-radius: 15px;
+      box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
       input {
         flex-grow: 1;
         padding: 0 16px;
         height: 100%;
         border: none;
-        border-radius: 36px 0 0 36px;
+        border-radius: 15px 0 0 15px;
         border: 1px solid #c2a205;
         outline: none;
         width: 100%;
@@ -88,7 +89,7 @@ const NavBarStyled = styled.nav`
         font-weight: 400;
         border: none;
         outline: none;
-        border-radius: 0 36px 36px 0;
+        border-radius: 0 15px 15px 0;
         border: 1px solid #c2a205;
         cursor: pointer;
       }
@@ -112,5 +113,25 @@ const NavBarStyled = styled.nav`
       align-items: center;
       justify-content: center;
     }
+  }
+  @media (max-width: 1024px) {
+    width: calc(100% - 180px);
+    left: 180px;
+    height: 55px;
+    form {
+      .form-input {
+        height: 35px;
+        input {
+          border-radius: 12px 0 0 12px;
+        }
+        .search-btn {
+          border-radius: 0 12px 12px 0;
+        }
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
   }
 `;

@@ -15,7 +15,7 @@ export default function ToDoHeader() {
       <h4>Liste des devoirs</h4>
       <input
         type="text"
-        placeholder="Rechercher"
+        placeholder="Rechercher..."
         onChange={(e) => handleChange(e)}
       />
     </ToDoHeaderStyled>
@@ -27,21 +27,26 @@ const ToDoHeaderStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   font-weight: 500;
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 10px 10px 0 0;
   h4 {
-    padding: 5px 20px;
-    font-weight: 400;
-    border-radius: 20px;
+    padding: 3px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 10px;
     border: 1px solid #d9d7d7;
   }
   input {
     width: 15%;
-    height: 30px;
+    min-width: 150px;
+    height: 27px;
     padding: 0 10px;
     text-align: center;
-    border-radius: 20px;
-    border: 1px solid #c2a205;
+    border-radius: 10px;
+    border: 1px solid #d9d7d7;
     outline: none;
+    &::placeholder {
+      font-size: 0.8rem;
+    }
   }
 `;

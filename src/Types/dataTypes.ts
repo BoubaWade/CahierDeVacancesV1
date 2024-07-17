@@ -14,6 +14,7 @@ export type Exercise = {
   number: number;
   limitDate: string;
   isCompleted: boolean;
+  scoreAverage: number;
   statements: string;
   questionsSolutions: QuestionSolutions[];
 };

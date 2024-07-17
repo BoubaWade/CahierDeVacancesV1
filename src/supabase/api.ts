@@ -1,3 +1,4 @@
+// import { exercisesTroisieme } from "../Datas/Troisieme/exercises";
 import { Exercise } from "../Types/dataTypes";
 import { addToDoExercise } from "../features/Dashboard/dashboardSlice";
 import { supabase } from "./config";
@@ -40,6 +41,7 @@ export const insertData = async (exercises: Exercise[], tableName: string) => {
     }
   }
 };
+// insertData(exercisesTroisieme, "troisieme_exercises");
 
 export const deleteAllRows = async (tableName: string) => {
   const { data, error } = await supabase.from(tableName).delete().neq("id", "");
@@ -49,6 +51,7 @@ export const deleteAllRows = async (tableName: string) => {
     console.log("Lignes supprimées :", data);
   }
 };
+// deleteAllRows("troisieme_exercises");
 //---------------------------------------------------------------
 export const handleSignUp = async (
   emailValue: string,
@@ -99,6 +102,19 @@ export const updateUserName = async (newName: string) => {
 
   if (error) {
     console.error("Erreur lors de la mise à jour du nom:", error.message);
+  }
+};
+
+export const updatePhoneNumber = async (phoneNumber: string) => {
+  const { error } = await supabase.auth.updateUser({
+    data: { phone: phoneNumber },
+  });
+
+  if (error) {
+    console.error(
+      "Erreur lors de la mise à jour du numéro de téléphone:",
+      error.message
+    );
   }
 };
 

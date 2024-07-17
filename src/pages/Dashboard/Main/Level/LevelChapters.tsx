@@ -7,12 +7,14 @@ type LevelChaptersProps = {
 };
 
 export default function LevelChapters({ name, title }: LevelChaptersProps) {
+  const chapters = getChaptersOfLevel(datasOfChapters, name);
+
   return (
     <LevelChaptersStyled>
       <h2>les chapitres</h2>
       <h3>{title}</h3>
       <ul>
-        {getChaptersOfLevel(datasOfChapters, name).map((lesson, index) => (
+        {chapters.map((lesson, index) => (
           <li key={index}>{lesson}</li>
         ))}
       </ul>
@@ -20,8 +22,6 @@ export default function LevelChapters({ name, title }: LevelChaptersProps) {
   );
 }
 const LevelChaptersStyled = styled.div`
-  background: #fbfafa;
-  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px 25px;
   border-radius: 12px;
   h2 {
@@ -44,6 +44,11 @@ const LevelChaptersStyled = styled.div`
   ul {
     background: #fff;
     width: 60%;
+    min-width: 570px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
     margin: 0 auto;
     padding: 10px;
     border: 1px dashed rgba(0, 0, 0, 0.8);
@@ -53,6 +58,8 @@ const LevelChaptersStyled = styled.div`
       font-size: 0.9rem;
       font-weight: 500;
       padding: 5px;
+      list-style-type: disc;
+      transform: translateX(15px);
     }
   }
 `;

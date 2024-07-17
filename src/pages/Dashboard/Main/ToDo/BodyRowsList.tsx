@@ -5,6 +5,7 @@ import ColumnLimitDate from "./ColumnLimitDate";
 import ColumnStatus from "./ColumnStatus";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
 import PreviewToDoExercise from "./PreviewToDoExercise";
+import ColumnScore from "./ColumnScore";
 
 type BodyRow = {
   id: string;
@@ -13,6 +14,7 @@ type BodyRow = {
   level: string;
   limitDate: string;
   isCompleted: boolean;
+  scoreAverage: number;
   statements: string;
   questionsSolutions: QuestionSolutions[];
 };
@@ -29,6 +31,7 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
     level,
     limitDate,
     isCompleted,
+    scoreAverage,
     statements,
     questionsSolutions,
   } = todo;
@@ -36,6 +39,7 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
   const [inputValue, setInputValue] = useState<string | undefined>("");
   const [isEditing, setIsEditing] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const scorePercentage = Math.ceil(scoreAverage * 100);
 
   return (
     <BodyRowsListStyled>
@@ -51,6 +55,7 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
         setIsEditing={setIsEditing}
       />
       <ColumnStatus isCompleted={isCompleted} />
+      <ColumnScore isCompleted={isCompleted} score={scorePercentage} />
       <UpdateToDo
         id={id}
         isCompleted={isCompleted}
@@ -59,6 +64,7 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
       />
       <PreviewToDoExercise
         questionsSolutions={questionsSolutions}
+        isCompleted={isCompleted}
         level={level}
         lesson={lesson}
         number={number}
@@ -86,16 +92,36 @@ const BodyRowsListStyled = styled.tr`
   }
   td {
     text-align: center;
-    padding: 12px 0;
-    font-size: 0.9rem;
+    padding: 10px 0;
+    font-size: 0.85rem;
     &:first-child {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 4px;
+      font-weight: 500;
       cursor: pointer;
     }
     &:nth-child(2) {
       cursor: pointer;
+    }
+  }
+  .good-score,
+  .bad-score {
+    font-weight: 500;
+    span {
+      color: #949292;
+    }
+  }
+  .good-score {
+    color: #4c7f43;
+  }
+  .bad-score {
+    color: #ca2c10;
+  }
+  @media (max-width: 1130px) {
+    td {
+      font-size: 0.8rem;
     }
   }
 `;

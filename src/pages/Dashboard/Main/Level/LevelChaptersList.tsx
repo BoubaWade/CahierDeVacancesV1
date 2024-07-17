@@ -7,14 +7,20 @@ type LevelChaptersListProps = {
 export default function LevelChaptersList({ state }: LevelChaptersListProps) {
   const {
     isSixiemeActive,
+    isCinquiemeActive,
+    isQuatriemeActive,
     isTroisiemeActive,
+    isSecondeActive,
     isPremiereActive,
     isTerminaleActive,
   } = state;
 
   const levels = [
     { name: "sixieme", isActive: isSixiemeActive, title: "Sixieme" },
+    { name: "cinquieme", isActive: isCinquiemeActive, title: "Cinquième" },
+    { name: "quatrieme", isActive: isQuatriemeActive, title: "Quatrième" },
     { name: "troisieme", isActive: isTroisiemeActive, title: "Troisième" },
+    { name: "seconde", isActive: isSecondeActive, title: "Seconde" },
     { name: "premiere", isActive: isPremiereActive, title: "Première" },
     { name: "terminale", isActive: isTerminaleActive, title: "Términale" },
   ];
@@ -29,9 +35,8 @@ export default function LevelChaptersList({ state }: LevelChaptersListProps) {
   );
 }
 const LevelChaptersListStyled = styled.div`
-  max-width: 600px;
+  /* max-width: 600px; */
   width: 100%;
-  grid-area: 2 / 1 / 3 / 2;
   border-radius: 12px;
-  box-shadow: 0px -3px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px -3px 15px rgba(0, 0, 0, 0.1); */
 `;

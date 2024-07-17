@@ -32,4 +32,12 @@ const MainDashboardStyled = styled.main`
     radial-gradient(#2d6a4f 0.75px, #ffffff 0.75px);
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
+  @media (max-width: 1024px) {
+    width: calc(100% - 180px);
+    left: 180px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
+  }
 `;

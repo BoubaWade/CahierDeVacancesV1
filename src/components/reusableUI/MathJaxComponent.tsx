@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 type MathJaxComponentProps = {
   latex: string;
+  className?: string;
 };
 
 export const processLatex = (text: string) => {
@@ -22,7 +23,7 @@ export const processLatex = (text: string) => {
     }
   });
 };
-const MathJaxComponent = ({ latex }: MathJaxComponentProps) => {
+const MathJaxComponent = ({ latex, className }: MathJaxComponentProps) => {
   // Fonction pour traiter le texte et formater les formules mathématiques
 
   useEffect(() => {
@@ -31,7 +32,7 @@ const MathJaxComponent = ({ latex }: MathJaxComponentProps) => {
     }
   }, [latex]);
 
-  return <div className="math-container">{processLatex(latex)}</div>;
+  return <div className={className}>{processLatex(latex)}</div>;
 };
 
 export default MathJaxComponent;
