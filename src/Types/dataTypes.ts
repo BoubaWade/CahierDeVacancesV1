@@ -13,6 +13,7 @@ export type Exercise = {
   lesson: string;
   number: number;
   limitDate: string;
+  validationDate: string;
   isCompleted: boolean;
   scoreAverage: number;
   statements: string;

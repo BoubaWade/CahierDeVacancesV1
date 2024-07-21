@@ -7,28 +7,34 @@ import {
 } from "../../../../utils/utilsFunctions";
 
 export default function Header() {
-  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-  const { user } = useSelector((state: RootState) => state.auth);
-  const userName = user?.user_metadata?.name
-    ? user?.user_metadata?.name
-    : user?.email?.split("@")[0];
+  const { toDoExercisesByLevel } = useSelector(
+    (state: RootState) => state.dashboard
+  );
 
-  const todosCompleted = getTodosCompleted(toDoExercises);
-  const todosIncompleted = getTodosIncompleted(toDoExercises);
+  const todosCompleted = getTodosCompleted(toDoExercisesByLevel);
+  const todosIncompleted = getTodosIncompleted(toDoExercisesByLevel);
+  const scoreArray = todosCompleted.map((todo) => todo.scoreAverage);
+  // const bestScore = Math.max(...scoreArray);
+  const bestScore = scoreArray.reduce((max, current) => {
+    return current > max ? current : max;
+  }, scoreArray[0]);
 
   return (
     <HeaderStyled>
       <div className="welcome">
-        <h3>{userName}</h3>
+        <h3>
+          Meilleur score :
+          <span>{bestScore ? `${bestScore * 100}%` : "--"}</span>
+        </h3>
       </div>
       <div className="courses-status">
         <div className="courses-inProgress">
           <span>{todosIncompleted.length}</span>
-          <p>Exercice(s) restant(s)</p>
+          <p>Devoir(s) restant(s)</p>
         </div>
         <div className="courses-completed">
           <span>{todosCompleted.length}</span>
-          <p>Exercice(s) términé(s)</p>
+          <p>Devoir(s) términé(s)</p>
         </div>
       </div>
     </HeaderStyled>
@@ -58,8 +64,15 @@ const HeaderStyled = styled.header`
       box-shadow: none;
     }
     h3 {
+      font-size: 1rem;
       margin-bottom: 5px;
       font-weight: 600;
+      span {
+        font-size: 1.2rem;
+        color: #008000;
+        display: block;
+        margin-top: 5px;
+      }
     }
     p {
       font-size: 0.9rem;
@@ -116,7 +129,10 @@ const HeaderStyled = styled.header`
     margin-bottom: 10px;
     .welcome {
       width: 500px;
-      height: 70px;
+      height: 80px;
+      h3 {
+        margin-bottom: 0;
+      }
     }
     .courses-status {
       width: 500px;

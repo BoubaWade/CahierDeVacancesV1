@@ -7,8 +7,15 @@ import { getTodosIncompleted } from "../../utils/utilsFunctions";
 import { RootState } from "../../app/store";
 
 export default function NavBar() {
-  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-  const todosIncompleted = getTodosIncompleted(toDoExercises);
+  const { toDoExercisesByLevel } = useSelector(
+    (state: RootState) => state.dashboard
+  );
+  const { user } = useSelector((state: RootState) => state.auth);
+  const userName = user?.user_metadata?.name
+    ? user?.user_metadata?.name
+    : user?.email?.split("@")[0];
+
+  const todosIncompleted = getTodosIncompleted(toDoExercisesByLevel);
   const numberOfTodosIncomp = todosIncompleted.length;
 
   return (
@@ -20,6 +27,7 @@ export default function NavBar() {
           <SecondaryButton label="Valider" className="search-btn" />
         </div>
       </form>
+      <span className="user-name">{userName}</span>
       <div className="notif">
         {numberOfTodosIncomp !== 0 ? (
           <span className="count">{numberOfTodosIncomp}</span>
@@ -94,6 +102,9 @@ const NavBarStyled = styled.nav`
         cursor: pointer;
       }
     }
+  }
+  .user-name {
+    font-weight: 500;
   }
   .notif {
     font-size: 20px;

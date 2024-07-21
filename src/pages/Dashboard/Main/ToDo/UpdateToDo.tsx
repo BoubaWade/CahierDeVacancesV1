@@ -27,9 +27,10 @@ export default function UpdateToDo({
   setIsEditing,
   isCompleted,
 }: Props) {
-  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const { todoFilteredBySelect } = useSelector(
+    (state: RootState) => state.dashboard
+  );
   const { user } = useSelector((state: RootState) => state.auth);
-
   const dispatch = useDispatch();
 
   const handleDeleteToDo = async () => {
@@ -38,7 +39,9 @@ export default function UpdateToDo({
   };
 
   const handleUpdateToDoDate = () => {
-    const date = toDoExercises?.find((todo) => todo.id === id)?.limitDate;
+    const date = todoFilteredBySelect?.find(
+      (todo) => todo.id === id
+    )?.limitDate;
     const dateFormated = convertToISODate(date);
     setInputValue(dateFormated);
     setIsEditing(true);

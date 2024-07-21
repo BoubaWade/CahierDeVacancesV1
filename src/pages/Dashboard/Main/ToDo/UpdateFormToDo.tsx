@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../../../app/store";
 import { setLimitDateProperty } from "../../../../utils/utilsFunctions";
-import { addToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
+import {
+  addToDoExercise,
+  setTodoFilteredBySelect,
+} from "../../../../features/Dashboard/dashboardSlice";
 import SecondaryButton from "../../../../components/reusableUI/SecondaryButton";
 import { updateToDoDateFromDatabase } from "../../../../supabase/api";
 
@@ -27,7 +30,9 @@ export default function UpdateFormToDo({
   setInputValue,
   setIsEditing,
 }: UpdateFormToDoProps) {
-  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
+  const { todoFilteredBySelect } = useSelector(
+    (state: RootState) => state.dashboard
+  );
   const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
 
@@ -35,14 +40,20 @@ export default function UpdateFormToDo({
     e.preventDefault();
     setIsEditing(false);
 
-    const toDoFinded = toDoExercises?.find((todo) => todo.id === id);
+    const toDoFinded = todoFilteredBySelect?.find((todo) => todo.id === id);
     const deepCopyToDoFinded = structuredClone(toDoFinded);
 
     if (deepCopyToDoFinded && inputValue) {
       const dateFormated = formatDate(inputValue);
       if (dateFormated) setLimitDateProperty(deepCopyToDoFinded, dateFormated);
 
-      dispatch(addToDoExercise(deepCopyToDoFinded));
+      const updatedTodos = todoFilteredBySelect.map((todo) =>
+        todo.id === id ? deepCopyToDoFinded : todo
+      );
+
+      dispatch(setTodoFilteredBySelect(updatedTodos));
+      // dispatch(addToDoExercise(deepCopyToDoFinded));
+
       updateToDoDateFromDatabase(deepCopyToDoFinded, dateFormated, user);
     }
   };

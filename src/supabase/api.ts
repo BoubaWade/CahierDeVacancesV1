@@ -195,11 +195,11 @@ export const updateToDoDateFromDatabase = async (
   if (error) console.error("Error updating todo:", error);
 };
 
-export const fetchTodos = async (user: any, dispatch: any) => {
-  const todosFromDatabase = await getToDosFromDatabase(user);
-  if (todosFromDatabase) {
-    for (let todo of todosFromDatabase) {
-      dispatch(addToDoExercise(todo));
-    }
-  }
-};
+// export const fetchTodos = async (user: any, dispatch: any) => {
+//   const todosFromDatabase = await getToDosFromDatabase(user);
+//   if (todosFromDatabase) {
+//     for (let todo of todosFromDatabase) {
+//       dispatch(addToDoExercise(todo));
+//     }
+//   }
+// };

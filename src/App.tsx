@@ -1,5 +1,5 @@
 import "./css/App.css";
-import "./css/Katex.css";
+// import "./css/Katex.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Courses from "./pages/Sixieme/Courses";

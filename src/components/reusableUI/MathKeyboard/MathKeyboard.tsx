@@ -121,6 +121,11 @@ const MathKeyboardStyled = styled.div`
   /* math-field::part(virtual-keyboard-toggle visible) {
     display: block;
   } */
+  math-field::part(menu-toggle) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   /* .ML__virtual-keyboard-toggle.visible {
     display: block;

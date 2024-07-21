@@ -8,6 +8,7 @@ export const exercisesTroisieme = [
     lesson: "Calcul Littéral",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
@@ -54,6 +55,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
@@ -85,6 +87,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements:
       "Développer, réduire et ordonner les expressions suivantes sans étape de calcul :",
     questionsSolutions: [
@@ -129,6 +132,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "Développer, réduire et ordonner les expressions suivantes :",
     questionsSolutions: [
       {
@@ -163,6 +167,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "Compléter les expressions suivantes :",
     questionsSolutions: [
       {
@@ -194,6 +199,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 6,
     limitDate: "",
+    validationDate: "",
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
       {
@@ -225,6 +231,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 7,
     limitDate: "",
+    validationDate: "",
     statements: "Factoriser les expressions suivantes :",
     questionsSolutions: [
       {
@@ -256,6 +263,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 8,
     limitDate: "",
+    validationDate: "",
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
       {
@@ -287,6 +295,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 9,
     limitDate: "",
+    validationDate: "",
     statements: "Résoudre les équations suivantes :",
     questionsSolutions: [
       {
@@ -324,6 +333,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 10,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -348,6 +358,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
@@ -385,6 +396,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
@@ -422,6 +434,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
@@ -459,6 +472,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "Diviseurs, multiples, critères de divisibilité.",
     questionsSolutions: [
       {
@@ -500,6 +514,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "Nombres premiers et fractions irréductibles.",
     questionsSolutions: [
       {
@@ -537,6 +552,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 6,
     limitDate: "",
+    validationDate: "",
     statements: "Nombres premiers et fractions irréductibles.",
     questionsSolutions: [
       {
@@ -574,6 +590,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 7,
     limitDate: "",
+    validationDate: "",
     statements: "Nombres premiers et fractions irréductibles.",
     questionsSolutions: [
       {
@@ -601,6 +618,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 8,
     limitDate: "",
+    validationDate: "",
     statements:
       "Rendre irréductible les fractions suivantes en décomposant leur numérateur et dénominateur en produit de facteurs premiers :",
     questionsSolutions: [
@@ -639,6 +657,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 9,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -671,6 +690,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 10,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -696,6 +716,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -727,6 +748,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -760,6 +782,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -799,6 +822,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -837,6 +861,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -871,6 +896,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -909,6 +935,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -943,6 +970,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -978,6 +1006,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1017,6 +1046,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1050,6 +1080,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1084,6 +1115,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1118,6 +1150,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1151,6 +1184,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1178,6 +1212,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "Proportionnalité:",
     questionsSolutions: [
       {
@@ -1203,6 +1238,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "Proportionnalité:",
     questionsSolutions: [
       {
@@ -1236,6 +1272,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "Proportionnalité:",
     questionsSolutions: [
       {
@@ -1270,6 +1307,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "Pourcentages:",
     questionsSolutions: [
       {
@@ -1304,6 +1342,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "Pourcentages:",
     questionsSolutions: [
       {
@@ -1337,6 +1376,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 6,
     limitDate: "",
+    validationDate: "",
     statements: "Pourcentages:",
     questionsSolutions: [
       {
@@ -1369,6 +1409,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 7,
     limitDate: "",
+    validationDate: "",
     statements: "Pourcentages:",
     questionsSolutions: [
       {
@@ -1402,6 +1443,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1431,6 +1473,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1463,6 +1506,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1498,6 +1542,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1533,6 +1578,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1570,6 +1616,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 6,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1605,6 +1652,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 7,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1640,6 +1688,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 1,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1665,6 +1714,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 2,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1690,6 +1740,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 3,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1715,6 +1766,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 4,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1740,6 +1792,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 5,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1765,6 +1818,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 6,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {
@@ -1790,6 +1844,7 @@ export const exercisesTroisieme = [
     level: "Troisième",
     number: 7,
     limitDate: "",
+    validationDate: "",
     statements: "",
     questionsSolutions: [
       {

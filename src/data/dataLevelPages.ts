@@ -1,14 +1,42 @@
 export const datasOfChapters = [
   {
     id: "sixieme",
-    level: "Sixieme",
+    level: "Sixième",
     lessons: [
       {
         lessonId: "",
         title: "Calcul de pourcentage",
-        level: "Sixieme",
+        level: "Sixième",
         duration: "2h30",
         tag: "Calcul",
+        stars: ["✦", "✦", "✦", "✦"],
+      },
+    ],
+  },
+  {
+    id: "cinquieme",
+    level: "Cinquième",
+    lessons: [
+      {
+        lessonId: "",
+        title: "",
+        level: "Cinquième",
+        duration: "2h30",
+        tag: "",
+        stars: ["✦", "✦", "✦", "✦"],
+      },
+    ],
+  },
+  {
+    id: "quatrieme",
+    level: "Quatrième",
+    lessons: [
+      {
+        lessonId: "",
+        title: "",
+        level: "Quatrième",
+        duration: "2h30",
+        tag: "",
         stars: ["✦", "✦", "✦", "✦"],
       },
     ],
@@ -104,6 +132,20 @@ export const datasOfChapters = [
         duration: "2h",
         tag: "Géometrie",
         stars: ["✦", "✦", "✦"],
+      },
+    ],
+  },
+  {
+    id: "seconde",
+    level: "Seconde",
+    lessons: [
+      {
+        lessonId: "",
+        title: "",
+        level: "Seconde",
+        duration: "2h30",
+        tag: "",
+        stars: ["✦", "✦", "✦", "✦"],
       },
     ],
   },

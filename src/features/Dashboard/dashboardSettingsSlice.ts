@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { SideBarState } from "../../Types/layoutTypes";
 
 const initialState: SideBarState = {
-  isHomeActive: true,
+  isModalChoiceLevelActive: true,
+  isHomeActive: false,
   isClassesActive: false,
   isToDoActive: false,
   isSettingsActive: false,

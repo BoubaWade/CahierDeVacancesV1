@@ -16,6 +16,7 @@ export type LevelState = {
   isTerminaleActive: boolean;
 };
 export type SideBarState = {
+  isModalChoiceLevelActive: boolean;
   isHomeActive: boolean;
   isClassesActive: boolean;
   isToDoActive: boolean;
@@ -26,4 +27,14 @@ export type SideBarItem = {
   stateKey: string;
   icon: string;
   label: string;
+};
+
+type SubOptions = {
+  label: string;
+  value: string;
+};
+export type OptionSelect = {
+  label: string;
+  value: string;
+  subOptions?: SubOptions[];
 };

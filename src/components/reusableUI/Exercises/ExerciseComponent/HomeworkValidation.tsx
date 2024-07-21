@@ -4,8 +4,10 @@ import { useState } from "react";
 import { RootState } from "../../../../app/store";
 import { useSelector } from "react-redux";
 import {
+  formatDate,
   setIncompletedProperty,
   setScoreAverageProperty,
+  setValidationDateProperty,
 } from "../../../../utils/utilsFunctions";
 import { Exercise } from "../../../../Types/dataTypes";
 
@@ -21,12 +23,13 @@ export default function HomeworkValidation({
   exercise,
   addTodo,
 }: HomeworkValidationProps) {
-  const { isSubsribted, toDoExercises } = useSelector(
+  const { isSubsribted, toDoExercisesByLevel } = useSelector(
     (state: RootState) => state.dashboard
   );
   const [successPercentage, setSuccessPercentage] = useState<number>();
   const [isDisplaySuccessPercentage, setIsDisplaySuccessPercentage] =
     useState(false);
+  const validationDate = formatDate(new Date().toString());
 
   const handleValidateHomework = () => {
     const totalScore = localStorage.getItem("total-score");
@@ -36,19 +39,24 @@ export default function HomeworkValidation({
     setSuccessPercentage(Math.ceil(scoreAverage * 100));
     setIsDisplaySuccessPercentage(true);
 
-    const todoFinded = toDoExercises?.find((todo) => todo.id === exercise.id);
+    const todoFinded = toDoExercisesByLevel?.find(
+      (todo) => todo.id === exercise.id
+    );
     const deepCopyToDoFinded = structuredClone(todoFinded);
     if (deepCopyToDoFinded) {
       setIncompletedProperty(deepCopyToDoFinded, true);
       setScoreAverageProperty(deepCopyToDoFinded, scoreAverage);
+      setValidationDateProperty(deepCopyToDoFinded, validationDate);
       addTodo(deepCopyToDoFinded);
     } else {
       const deepCopyCurrentExercise = structuredClone(exercise);
       setIncompletedProperty(deepCopyCurrentExercise, true);
       setScoreAverageProperty(deepCopyCurrentExercise, scoreAverage);
+      setValidationDateProperty(deepCopyCurrentExercise, validationDate);
       addTodo(deepCopyCurrentExercise);
     }
   };
+
   return (
     <HomeworkValidationStyled>
       {totalQuestions !== 0 && (

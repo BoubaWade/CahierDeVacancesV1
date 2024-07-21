@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../components/reusableUI/PrimaryButton";
 import { normalizeString } from "../../../../utils/utilsFunctions";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../app/store";
 
 type Action = {
   type: string;
@@ -15,10 +18,38 @@ type LevelCardProps = {
 export default function LevelCard({ data, dispatch }: LevelCardProps) {
   const { title, isActive, bgImage, icon, navigateTo, handleClickArg } = data;
   const navigate = useNavigate();
+  const { level } = useSelector((state: RootState) => state.dashboard);
 
   const handleActiveCard = (section: string) => {
     dispatch({ type: "SET_ACTIVE", payload: section });
   };
+  useEffect(() => {
+    switch (level) {
+      case "Sixième":
+        handleActiveCard("isSixiemeActive");
+        break;
+      case "Cinquième":
+        handleActiveCard("isCinquiemeActive");
+        break;
+      case "Quatrième":
+        handleActiveCard("isQuatriemeActive");
+        break;
+      case "Troisième":
+        handleActiveCard("isTroisiemeActive");
+        break;
+      case "Seconde":
+        handleActiveCard("isSecondeActive");
+        break;
+      case "Première":
+        handleActiveCard("isPremiereActive");
+        break;
+      case "Términale":
+        handleActiveCard("isTerminaleActive");
+        break;
+      default:
+        break;
+    }
+  }, []);
 
   return (
     <LevelCardStyled

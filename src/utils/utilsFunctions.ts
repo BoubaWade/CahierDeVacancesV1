@@ -2,10 +2,10 @@ import { DatasChapters, Exercise, QuestionSolutions } from "../Types/dataTypes";
 
 export const getChaptersOfLevel = (
   datas: DatasChapters,
-  level: string
+  levelName: string
 ): string[] => {
-  const levelDatas = datas.filter((data) => data.id === level);
-  const chapters = levelDatas
+  const chapters = datas
+    .filter((data) => data.level === levelName)
     ?.map((data) => data.lessons)[0]
     ?.map((data) => data.title);
   return chapters;
@@ -45,6 +45,10 @@ export const getCurrentExercise = (
   return exercises.find((exercise) => exercise.id === id);
 };
 
+export const getTodosByLevel = (todos: Exercise[], levelValue: string) => {
+  return todos.filter((todo) => todo.level === levelValue);
+};
+
 export const getTodosCompleted = (todos: Exercise[]): Exercise[] => {
   return todos.filter((todo) => todo.isCompleted);
 };
@@ -71,6 +75,16 @@ export const setLimitDateProperty = (todo: Exercise, date: string): void => {
     }
   }
 };
+export const setValidationDateProperty = (
+  todo: Exercise,
+  date: string
+): void => {
+  for (let key in todo) {
+    if (key === "validationDate") {
+      todo[key] = date;
+    }
+  }
+};
 
 export const setScoreAverageProperty = (
   todo: Exercise,
@@ -83,7 +97,7 @@ export const setScoreAverageProperty = (
   }
 };
 
-const formatString = (input: string): string => {
+export const formatString = (input: string): string => {
   return input
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -106,7 +120,7 @@ const convertToDate = (dateStr: string): Date => {
 };
 
 export const sortTodosByDate = (todos: Exercise[]) => {
-  const todoSorted = structuredClone(todos).sort((a, b) => {
+  const todoSorted = structuredClone(todos)?.sort((a, b) => {
     return (
       convertToDate(a.limitDate).getTime() -
       convertToDate(b.limitDate).getTime()
@@ -157,4 +171,30 @@ export const getTotalQuestions = (questionsSolutions: QuestionSolutions[]) => {
     .map((res) => res.length - 1);
   const totalQuestions = Questions.reduce((curr, acc) => curr + acc);
   return totalQuestions;
+};
+
+export const getGlobalScoreRate = (todos: Exercise[]) => {
+  if (todos.length === 0) return 0;
+  const completedTodos = getTodosCompleted(todos);
+  const totalScore = completedTodos
+    .map((todo) => todo.scoreAverage)
+    .reduce((acc, curr) => acc + curr, 0);
+  const globalRate = Math.ceil((totalScore / completedTodos.length) * 100);
+  return globalRate;
+};
+
+export const handleFilterTodos = (
+  todos: Exercise[],
+  value: string
+): Exercise[] => {
+  switch (value) {
+    case "0":
+      return todos;
+    case "1":
+      return todos.filter((todo) => todo.isCompleted);
+    case "2":
+      return todos.filter((todo) => !todo.isCompleted);
+    default:
+      return todos;
+  }
 };

@@ -6,8 +6,13 @@ import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 
 export default function useSideBar() {
-  const { isHomeActive, isClassesActive, isToDoActive, isSettingsActive } =
-    useSelector((state: RootState) => state.dashboardSettings);
+  const {
+    isModalChoiceLevelActive,
+    isHomeActive,
+    isClassesActive,
+    isToDoActive,
+    isSettingsActive,
+  } = useSelector((state: RootState) => state.dashboardSettings);
 
   const menuItems = [
     {
@@ -33,6 +38,12 @@ export default function useSideBar() {
       stateKey: "isSettingsActive",
       icon: settings,
       label: "Réglages",
+    },
+    {
+      isActive: isModalChoiceLevelActive,
+      stateKey: "isModalChoiceLevelActive",
+      icon: "",
+      label: "Changer de classe",
     },
   ];
 

@@ -1,44 +1,11 @@
 import styled from "styled-components";
 import LevelCardList from "./LevelCardList";
 import LevelChaptersList from "./LevelChaptersList";
-import { useReducer } from "react";
-import { LevelState } from "../../../../Types/layoutTypes";
 import ExamplesExercises from "./ExamplesExercises";
-
-type Action = {
-  type: string;
-  payload: string;
-};
-const initialLevelState = {
-  isSixiemeActive: false,
-  isCinquiemeActive: false,
-  isQuatriemeActive: false,
-  isTroisiemeActive: true,
-  isSecondeActive: false,
-  isPremiereActive: false,
-  isTerminaleActive: false,
-};
-
-function levelReducer(state: LevelState, action: Action) {
-  switch (action.type) {
-    case "SET_ACTIVE":
-      return {
-        isSixiemeActive: false,
-        isCinquiemeActive: false,
-        isQuatriemeActive: false,
-        isTroisiemeActive: false,
-        isSecondeActive: false,
-        isPremiereActive: false,
-        isTerminaleActive: false,
-        [action.payload]: true,
-      };
-    default:
-      return state;
-  }
-}
+import useLevel from "../../../../hooks/useLevel";
 
 export default function Level() {
-  const [state, dispatch] = useReducer(levelReducer, initialLevelState);
+  const { state, dispatch } = useLevel();
 
   return (
     <LevelStyled>

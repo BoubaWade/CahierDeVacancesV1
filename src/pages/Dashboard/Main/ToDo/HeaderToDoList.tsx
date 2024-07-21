@@ -2,26 +2,43 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { AppDispatch } from "../../../../app/store";
 import { setSearchToDoValue } from "../../../../features/Dashboard/dashboardSlice";
+import MenuFilter from "./MenuFilter";
+import { OptionSelect } from "../../../../Types/layoutTypes";
 
-export default function ToDoHeader() {
+type HeaderToDoListProps = {
+  options: OptionSelect[];
+  selectedValue: string;
+  onChange: (value: string) => void;
+};
+
+export default function HeaderToDoList({
+  options,
+  selectedValue,
+  onChange,
+}: HeaderToDoListProps) {
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setSearchToDoValue(e.target.value));
   };
 
   return (
-    <ToDoHeaderStyled>
+    <HeaderToDoListStyled>
       <h4>Liste des devoirs</h4>
       <input
         type="text"
         placeholder="Rechercher..."
-        onChange={(e) => handleChange(e)}
+        onChange={(e) => handleInputChange(e)}
       />
-    </ToDoHeaderStyled>
+      <MenuFilter
+        options={options}
+        selectedValue={selectedValue}
+        onChange={onChange}
+      />
+    </HeaderToDoListStyled>
   );
 }
-const ToDoHeaderStyled = styled.div`
+const HeaderToDoListStyled = styled.div`
   background: #f1f2f3;
   display: flex;
   justify-content: space-between;
@@ -38,15 +55,26 @@ const ToDoHeaderStyled = styled.div`
   }
   input {
     width: 15%;
-    min-width: 150px;
+    min-width: 140px;
     height: 27px;
     padding: 0 10px;
     text-align: center;
     border-radius: 10px;
     border: 1px solid #d9d7d7;
     outline: none;
+    box-shadow: 0px 5px 10px -10px rgba(0, 0, 0, 0.8);
     &::placeholder {
       font-size: 0.8rem;
+    }
+    &:focus {
+      box-shadow: 0px 5px 15px -10px rgba(0, 0, 0, 0.8);
+      border: 1.5px solid #4c7f43;
+    }
+  }
+  @media (max-width: 1024px) {
+    h4 {
+      font-size: 0.85rem;
+      padding: 3px 10px;
     }
   }
 `;

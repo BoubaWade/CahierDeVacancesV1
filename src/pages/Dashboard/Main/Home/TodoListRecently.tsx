@@ -3,8 +3,10 @@ import styled from "styled-components";
 import { RootState } from "../../../../app/store";
 
 export default function TodoListRecently() {
-  const { toDoExercises } = useSelector((state: RootState) => state.dashboard);
-  const todoRecentlyDatas = toDoExercises.slice(0, 5);
+  const { toDoExercisesByLevel } = useSelector(
+    (state: RootState) => state.dashboard
+  );
+  const todoRecentlyDatas = toDoExercisesByLevel.slice(0, 5);
 
   return (
     <TodoListRecentlyStyled>

@@ -1,18 +1,16 @@
-import { useEffect, useRef, useState } from "react";
-import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
-import { datasOfChapters } from "../../data/dataLevelPages";
-import {
-  getChaptersOfLevel,
-  normalizeString,
-} from "../../utils/utilsFunctions";
-import backward from "../../assets/icons/backward.svg";
+import { useEffect, useRef, useState } from "react";
+import { normalizeString } from "../../utils/utilsFunctions";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 export default function DropdownMenu() {
-  const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(0);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { level, chaptersOfLevel } = useSelector(
+    (state: RootState) => state.dashboard
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,62 +20,25 @@ export default function DropdownMenu() {
     }
   }, []);
 
-  function calcHeight(el: any) {
-    const height = el.offsetHeight;
-    setMenuHeight(height);
-  }
+  const handleNavigate = (chapter: string) => {
+    navigate(
+      `/${normalizeString(level)}/exercices/${normalizeString(chapter)}`
+    );
+  };
 
   return (
     <DropdownMenuStyled style={{ height: menuHeight }} ref={dropdownRef}>
-      <CSSTransition
-        in={activeMenu === "main"}
-        timeout={500}
-        classNames="menu-primary"
-        unmountOnExit
-        onEnter={calcHeight}
-      >
-        <div className="menu level">
-          <h3>Les classes</h3>
-          {datasOfChapters.map((data) => (
-            <p key={data.id} onClick={() => setActiveMenu(data.id)}>
-              {data.level}
-            </p>
-          ))}
+      <div className="menu">
+        <div className="menu-header">
+          <h3>{level}</h3>
+          <h4>Les chapitres</h4>
         </div>
-      </CSSTransition>
-
-      {datasOfChapters.map(({ id, level }) => (
-        <CSSTransition
-          key={id}
-          in={activeMenu === id}
-          timeout={500}
-          classNames="menu-secondary"
-          unmountOnExit
-          onEnter={calcHeight}
-        >
-          <div className="menu">
-            <div className="menu-header">
-              <img src={backward} onClick={() => setActiveMenu("main")} />
-              <h3>{level}</h3>
-              <h4>Les chapitres</h4>
-            </div>
-            {getChaptersOfLevel(datasOfChapters, id)?.map((chapter, index) => (
-              <p
-                key={index}
-                onClick={() =>
-                  navigate(
-                    `/${normalizeString(level)}/exercices/${normalizeString(
-                      chapter
-                    )}`
-                  )
-                }
-              >
-                {index + 1}. {chapter}
-              </p>
-            ))}
-          </div>
-        </CSSTransition>
-      ))}
+        {chaptersOfLevel.map((chapter, index) => (
+          <p key={index} onClick={() => handleNavigate(chapter)}>
+            {index + 1}. {chapter}
+          </p>
+        ))}
+      </div>
     </DropdownMenuStyled>
   );
 }
@@ -91,7 +52,7 @@ const DropdownMenuStyled = styled.div`
   box-sizing: content-box;
   border-radius: 7px;
   overflow: scroll;
-  transition: height 300ms ease;
+  transition: height 500ms ease-out;
   .menu {
     width: 100%;
     display: flex;
@@ -101,24 +62,18 @@ const DropdownMenuStyled = styled.div`
     overflow: hidden;
     padding: 10px;
     .menu-header {
-      img {
-        height: 35px;
-        position: absolute;
-        left: 0;
-        padding: 7px 15px;
-        cursor: pointer;
-      }
       h4 {
+        text-align: center;
         margin-bottom: 15px;
         text-decoration: underline;
       }
-    }
-    h3 {
-      background: #fde047;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-      padding: 5px 15px;
-      border-radius: 5px;
+      h3 {
+        background: #fde047;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        padding: 5px 15px;
+        border-radius: 5px;
+      }
     }
     p {
       width: 100%;
@@ -132,44 +87,5 @@ const DropdownMenuStyled = styled.div`
         background: #c2a205;
       }
     }
-    &.level {
-      h3 {
-        margin-top: 5px;
-      }
-      p {
-        font-size: 1rem;
-        font-weight: 700;
-      }
-    }
-  }
-
-  .menu-primary-enter {
-    position: absolute;
-    transform: translateX(-110%);
-  }
-  .menu-primary-enter-active {
-    transform: translateX(0%);
-    transition: all 300ms ease;
-  }
-  .menu-primary-exit {
-    position: absolute;
-  }
-  .menu-primary-exit-active {
-    transform: translateX(-110%);
-    transition: all 300ms ease;
-  }
-
-  .menu-secondary-enter {
-    transform: translateX(110%);
-  }
-  .menu-secondary-enter-active {
-    transform: translateX(0%);
-    transition: all 300ms ease;
-  }
-  .menu-secondary-exit {
-  }
-  .menu-secondary-exit-active {
-    transform: translateX(110%);
-    transition: all 300ms ease;
   }
 `;

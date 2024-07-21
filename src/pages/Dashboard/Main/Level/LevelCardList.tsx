@@ -81,6 +81,7 @@ const LevelCardListStyled = styled.div`
     }
   }
   @media (max-width: 1024px) {
+    width: 450px;
     h2 {
       margin-bottom: 20px;
     }

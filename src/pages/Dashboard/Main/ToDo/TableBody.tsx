@@ -1,24 +1,32 @@
 import BodyRowsList from "./BodyRowsList";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../app/store";
-import {
-  filterTodosBySearch,
-  sortTodosByDate,
-} from "../../../../utils/utilsFunctions";
+import { Exercise } from "../../../../Types/dataTypes";
+import styled from "styled-components";
 
-export default function TableBody() {
-  const { toDoExercises, searchToDoValue } = useSelector(
-    (state: RootState) => state.dashboard
-  );
+type TableBodyProps = {
+  todosToDisplay: Exercise[];
+};
 
-  const todoSorted = sortTodosByDate(toDoExercises);
-  const todosToDisplay = filterTodosBySearch(todoSorted, searchToDoValue);
-
+export default function TableBody({ todosToDisplay }: TableBodyProps) {
   return (
-    <tbody>
-      {todosToDisplay.map((todo) => (
-        <BodyRowsList key={todo.id} todo={todo} />
-      ))}
-    </tbody>
+    <TableBodyStyled>
+      {todosToDisplay.length !== 0 ? (
+        todosToDisplay.map((todo) => <BodyRowsList key={todo.id} todo={todo} />)
+      ) : (
+        <tr className="empty-todos">
+          <td>Je ne trouve pas de devoirs !</td>
+        </tr>
+      )}
+    </TableBodyStyled>
   );
 }
+const TableBodyStyled = styled.tbody`
+  .empty-todos {
+    td {
+      display: block;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 70px auto;
+      font-weight: 500;
+    }
+  }
+`;

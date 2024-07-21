@@ -210,7 +210,8 @@ const PaymentFormStyled = styled.form`
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  background-color: #fde047;
+  background-color: #f2e087;
+  background: #f0c907;
   /* background: linear-gradient(to right, #fde047, #c2a205); */
   h1 {
     font-size: 30px;

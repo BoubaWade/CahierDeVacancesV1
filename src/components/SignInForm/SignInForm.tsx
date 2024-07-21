@@ -7,8 +7,8 @@ import { setUser } from "../../features/Sign/authSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../app/store";
 import Cookies from "js-cookie";
-import { fetchTodos } from "../../supabase/api";
 import PasswordRecovery from "./PasswordRecovery";
+import { fetchTodos } from "../../features/Dashboard/dashboardSlice";
 
 export default function SignInForm() {
   const [errorCredentials, setErrorCredentials] = useState("");
@@ -46,7 +46,7 @@ export default function SignInForm() {
         setErrorCredentials("Email et/ou mot de passe non valide");
       } else {
         dispatch(setUser(data.user));
-        fetchTodos(data.user, dispatch);
+        dispatch(fetchTodos(data.user));
         localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard");
         if (rememberMe) {

@@ -14,9 +14,8 @@ export default function LevelChapters({ name, title }: LevelChaptersProps) {
       <h2>les chapitres</h2>
       <h3>{title}</h3>
       <ul>
-        {chapters.map((lesson, index) => (
-          <li key={index}>{lesson}</li>
-        ))}
+        {chapters &&
+          chapters.map((lesson, index) => <li key={index}>{lesson}</li>)}
       </ul>
     </LevelChaptersStyled>
   );

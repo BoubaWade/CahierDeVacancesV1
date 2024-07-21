@@ -8,6 +8,17 @@ import schooldesk from "../assets/school-desk.jpg";
 import emc2 from "../assets/emc2.jpg";
 import { LevelState } from "../Types/layoutTypes";
 
+export const optionsLevelChoice = [
+  "Choisir une classe",
+  "Sixième",
+  "Cinquième",
+  "Quatrième",
+  "Troisième",
+  "Seconde",
+  "Première",
+  "Términale",
+];
+
 export const getLevelCardsData = (state: LevelState) => {
   return [
     {
@@ -68,3 +79,19 @@ export const getLevelCardsData = (state: LevelState) => {
     },
   ];
 };
+
+export const optionsFilterByStatus = [
+  { label: "Tout", value: "0" },
+  { label: "Complet(s)", value: "1" },
+  { label: "En attente(s)", value: "2" },
+];
+
+// export const levelMenuFilter: { [key: string]: string } = {
+//   "11": "Sixième",
+//   "12": "Cinquième",
+//   "13": "Quatrième",
+//   "14": "Troisième",
+//   "15": "Seconde",
+//   "16": "Première",
+//   "17": "Términale",
+// };

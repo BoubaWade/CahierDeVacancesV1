@@ -37,7 +37,7 @@ export default function QuestionsList({
   );
 }
 
-const QuestionsListStyled = styled.section`
+const QuestionsListStyled = styled.div`
   li {
     position: relative;
     width: 100%;

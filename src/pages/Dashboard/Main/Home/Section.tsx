@@ -17,7 +17,7 @@ export default function Section() {
     </SectionStyled>
   );
 }
-const SectionStyled = styled.section`
+const SectionStyled = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
