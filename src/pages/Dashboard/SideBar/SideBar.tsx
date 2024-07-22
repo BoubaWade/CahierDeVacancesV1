@@ -16,6 +16,7 @@ export default function SideBar() {
     if (error) throw Error;
     dispatch(setUser(null));
     localStorage.removeItem("user");
+    localStorage.removeItem("level");
     navigate("/");
   };
 

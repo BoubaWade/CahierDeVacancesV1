@@ -38,3 +38,12 @@ export type OptionSelect = {
   value: string;
   subOptions?: SubOptions[];
 };
+
+export type Level =
+  | "Sixième"
+  | "Cinquième"
+  | "Quatrième"
+  | "Troisième"
+  | "Seconde"
+  | "Première"
+  | "Términale";

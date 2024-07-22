@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { RootState } from "../../../../app/store";
 import { setLimitDateProperty } from "../../../../utils/utilsFunctions";
 import {
-  addToDoExercise,
+  setToDoExercisesByLevel,
   setTodoFilteredBySelect,
 } from "../../../../features/Dashboard/dashboardSlice";
 import SecondaryButton from "../../../../components/reusableUI/SecondaryButton";
@@ -52,6 +52,7 @@ export default function UpdateFormToDo({
       );
 
       dispatch(setTodoFilteredBySelect(updatedTodos));
+      dispatch(setToDoExercisesByLevel(updatedTodos));
       // dispatch(addToDoExercise(deepCopyToDoFinded));
 
       updateToDoDateFromDatabase(deepCopyToDoFinded, dateFormated, user);

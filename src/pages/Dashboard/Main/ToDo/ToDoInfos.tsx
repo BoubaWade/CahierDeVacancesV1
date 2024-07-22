@@ -35,7 +35,12 @@ export default function ToDoInfos() {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" fontSize={13} />
           <Tooltip content={<CustomTooltip />} />
-          <Legend iconSize={0} payload={[{ value: "Les derniers devoirs" }]} />
+          <Legend
+            iconSize={0}
+            payload={[
+              { value: "Les derniers devoirs complets", color: "#585a58" },
+            ]}
+          />
           <Bar dataKey="note" fill="#008000" barSize={20} radius={5} />
         </BarChart>
       </ResponsiveContainer>

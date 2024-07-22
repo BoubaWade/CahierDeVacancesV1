@@ -16,20 +16,20 @@ export default function LevelChaptersList({ state }: LevelChaptersListProps) {
   } = state;
 
   const levels = [
-    { name: "sixieme", isActive: isSixiemeActive, title: "Sixieme" },
-    { name: "cinquieme", isActive: isCinquiemeActive, title: "Cinquième" },
-    { name: "quatrieme", isActive: isQuatriemeActive, title: "Quatrième" },
-    { name: "troisieme", isActive: isTroisiemeActive, title: "Troisième" },
-    { name: "seconde", isActive: isSecondeActive, title: "Seconde" },
-    { name: "premiere", isActive: isPremiereActive, title: "Première" },
-    { name: "terminale", isActive: isTerminaleActive, title: "Términale" },
+    { name: "Sixième", isActive: isSixiemeActive },
+    { name: "Cinquième", isActive: isCinquiemeActive },
+    { name: "Quatrième", isActive: isQuatriemeActive },
+    { name: "Troisième", isActive: isTroisiemeActive },
+    { name: "Seconde", isActive: isSecondeActive },
+    { name: "Première", isActive: isPremiereActive },
+    { name: "Términale", isActive: isTerminaleActive },
   ];
 
   return (
     <LevelChaptersListStyled className="chapters-container">
       {levels.map(
-        ({ name, isActive, title }, index) =>
-          isActive && <LevelChapters key={index} name={name} title={title} />
+        ({ name, isActive }, index) =>
+          isActive && <LevelChapters key={index} name={name} />
       )}
     </LevelChaptersListStyled>
   );

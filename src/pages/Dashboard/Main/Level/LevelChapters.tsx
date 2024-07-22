@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { datasOfChapters } from "../../../../data/dataLevelPages";
 import { getChaptersOfLevel } from "../../../../utils/utilsFunctions";
+
 type LevelChaptersProps = {
   name: string;
-  title: string;
 };
 
-export default function LevelChapters({ name, title }: LevelChaptersProps) {
+export default function LevelChapters({ name }: LevelChaptersProps) {
   const chapters = getChaptersOfLevel(datasOfChapters, name);
 
   return (
     <LevelChaptersStyled>
       <h2>les chapitres</h2>
-      <h3>{title}</h3>
+      <h3>{name}</h3>
       <ul>
         {chapters &&
           chapters.map((lesson, index) => <li key={index}>{lesson}</li>)}

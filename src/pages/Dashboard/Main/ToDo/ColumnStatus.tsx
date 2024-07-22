@@ -8,7 +8,7 @@ export default function ColumnStatus({ isCompleted }: ColumnStatusProps) {
   return (
     <ColumnStatusStyled>
       {isCompleted ? (
-        <span className="status completed">Complète</span>
+        <span className="status completed">Complet</span>
       ) : (
         <span className="status pending">En attente</span>
       )}

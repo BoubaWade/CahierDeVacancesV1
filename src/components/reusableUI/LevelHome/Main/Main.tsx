@@ -8,12 +8,18 @@ type MainProps = {
 };
 
 export default function Main({ lessons, id }: MainProps) {
+  const condition = lessons?.length !== 0;
+
   return (
     <MainStyled>
       <div className="cards-container">
-        {lessons?.map((lesson, index) => (
-          <LessonCard key={index} lesson={lesson} id={id} />
-        ))}
+        {condition ? (
+          lessons?.map((lesson, index) => (
+            <LessonCard key={index} lesson={lesson} id={id} />
+          ))
+        ) : (
+          <p> Pas de chapitre(s) trouvé(s)</p>
+        )}
       </div>
     </MainStyled>
   );
@@ -53,5 +59,9 @@ const MainStyled = styled.main`
     position: relative;
     z-index: 1;
     animation: ${animCard} 500ms ease;
+    p {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
   }
 `;

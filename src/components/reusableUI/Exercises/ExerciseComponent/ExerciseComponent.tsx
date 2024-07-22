@@ -6,11 +6,11 @@ import useExercise from "../../../../hooks/useExercise";
 import { getTotalQuestions } from "../../../../utils/utilsFunctions";
 import BorderBeam from "../../BorderBeam";
 import Modal from "../../Modal/Modal";
-import SecondaryButton from "../../SecondaryButton";
 import ExerciseHeader from "./ExerciseHeader";
 import MainExercise from "./MainExercise";
 import ModalContent from "./ModalContent";
 import HomeworkValidation from "./HomeworkValidation";
+import HomeWorkAddition from "./HomeWorkAddition";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -40,13 +40,11 @@ export default function ExerciseComponent({
         displayNextExercise={displayNextExercise}
         displayPreviousExercise={displayPreviousExercise}
       />
-      {totalQuestions !== 0 && (
-        <SecondaryButton
-          label={`Ajouter à : DEVOIR À FAIRE `}
-          className="add-homework"
-          onClick={() => setIsOpenModal(true)}
-        />
-      )}
+      <HomeWorkAddition
+        totalQuestions={totalQuestions}
+        setIsOpenModal={setIsOpenModal}
+        exercise={exercise}
+      />
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
         <ModalContent
           exercise={exercise}
@@ -81,17 +79,6 @@ const ExerciseComponentStyled = styled.div`
   border-radius: 15px;
   margin-bottom: 50px;
   background-color: #f8f8fa;
-  .add-homework {
-    background-color: #201f1fe7;
-    font-size: 0.7rem;
-    font-weight: 500;
-    margin-top: 20px;
-    border-radius: 5px;
-    padding: 7px 10px;
-    &:hover {
-      background-color: #fff;
-    }
-  }
   .border-beam {
     z-index: -1;
     transform: translate(3px, -3px);

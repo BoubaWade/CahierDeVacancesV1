@@ -20,7 +20,7 @@ export default function PrivateRoutes() {
       if (session) {
         setSession(session);
       } else {
-        navigate("/");
+        navigate("/sign");
       }
     });
 

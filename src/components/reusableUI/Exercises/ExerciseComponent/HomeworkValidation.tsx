@@ -23,12 +23,16 @@ export default function HomeworkValidation({
   exercise,
   addTodo,
 }: HomeworkValidationProps) {
-  const { isSubsribted, toDoExercisesByLevel } = useSelector(
+  const { level, isSubsribted, toDoExercisesByLevel } = useSelector(
     (state: RootState) => state.dashboard
   );
   const [successPercentage, setSuccessPercentage] = useState<number>();
   const [isDisplaySuccessPercentage, setIsDisplaySuccessPercentage] =
     useState(false);
+
+  const levelFounded = level || localStorage.getItem("level");
+  if (exercise.level !== levelFounded) return;
+
   const validationDate = formatDate(new Date().toString());
 
   const handleValidateHomework = () => {

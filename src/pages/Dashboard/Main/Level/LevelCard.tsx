@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
+import { levelToCardMap } from "../../../../data/datasConfig";
+import { Level } from "../../../../Types/layoutTypes";
 
 type Action = {
   type: string;
@@ -17,38 +19,22 @@ type LevelCardProps = {
 
 export default function LevelCard({ data, dispatch }: LevelCardProps) {
   const { title, isActive, bgImage, icon, navigateTo, handleClickArg } = data;
-  const navigate = useNavigate();
   const { level } = useSelector((state: RootState) => state.dashboard);
+  const navigate = useNavigate();
 
   const handleActiveCard = (section: string) => {
     dispatch({ type: "SET_ACTIVE", payload: section });
   };
-  useEffect(() => {
-    switch (level) {
-      case "Sixième":
-        handleActiveCard("isSixiemeActive");
-        break;
-      case "Cinquième":
-        handleActiveCard("isCinquiemeActive");
-        break;
-      case "Quatrième":
-        handleActiveCard("isQuatriemeActive");
-        break;
-      case "Troisième":
-        handleActiveCard("isTroisiemeActive");
-        break;
-      case "Seconde":
-        handleActiveCard("isSecondeActive");
-        break;
-      case "Première":
-        handleActiveCard("isPremiereActive");
-        break;
-      case "Términale":
-        handleActiveCard("isTerminaleActive");
-        break;
-      default:
-        break;
+
+  const handleLevelChange = (level: Level) => {
+    const card = levelToCardMap[level];
+    if (card) {
+      handleActiveCard(card);
     }
+  };
+
+  useEffect(() => {
+    handleLevelChange(level as Level);
   }, []);
 
   return (

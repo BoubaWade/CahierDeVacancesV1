@@ -1,6 +1,5 @@
 // import { exercisesTroisieme } from "../Datas/Troisieme/exercises";
 import { Exercise } from "../Types/dataTypes";
-import { addToDoExercise } from "../features/Dashboard/dashboardSlice";
 import { supabase } from "./config";
 
 export const getUser = async () => {
@@ -25,10 +24,12 @@ export const insertData = async (exercises: Exercise[], tableName: string) => {
         id: exercise.id,
         chapterName: exercise.chapterName,
         isCompleted: exercise.isCompleted,
+        scoreAverage: exercise.scoreAverage,
         level: exercise.level,
         lesson: exercise.lesson,
         number: exercise.number,
         limitDate: exercise.limitDate,
+        validationDate: exercise.validationDate,
         statements: exercise.statements,
         questionsSolutions: exercise.questionsSolutions,
       },
@@ -194,12 +195,3 @@ export const updateToDoDateFromDatabase = async (
     .eq("user_id", user.id);
   if (error) console.error("Error updating todo:", error);
 };
-
-// export const fetchTodos = async (user: any, dispatch: any) => {
-//   const todosFromDatabase = await getToDosFromDatabase(user);
-//   if (todosFromDatabase) {
-//     for (let todo of todosFromDatabase) {
-//       dispatch(addToDoExercise(todo));
-//     }
-//   }
-// };

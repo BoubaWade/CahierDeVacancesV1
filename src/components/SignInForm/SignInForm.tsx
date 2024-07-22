@@ -9,6 +9,7 @@ import { AppDispatch } from "../../app/store";
 import Cookies from "js-cookie";
 import PasswordRecovery from "./PasswordRecovery";
 import { fetchTodos } from "../../features/Dashboard/dashboardSlice";
+import { setMainDashboardActive } from "../../features/Dashboard/dashboardSettingsSlice";
 
 export default function SignInForm() {
   const [errorCredentials, setErrorCredentials] = useState("");
@@ -43,11 +44,12 @@ export default function SignInForm() {
         password: password,
       });
       if (error) {
-        setErrorCredentials("Email et/ou mot de passe non valide");
+        setErrorCredentials("Email ou mot de passe non valide !");
       } else {
         dispatch(setUser(data.user));
         dispatch(fetchTodos(data.user));
         localStorage.setItem("user", JSON.stringify(data.user));
+        dispatch(setMainDashboardActive("isModalChoiceLevelActive"));
         navigate("/dashboard");
         if (rememberMe) {
           Cookies.set("rememberMe", "true", { expires: 7 });
