@@ -1,6 +1,6 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { stripePromise } from "./config";
-import PaymentForm from "./PaymentForm";
+import PaymentForm from "../components/PaymentForm/PaymentForm";
 import styled from "styled-components";
 import PrimaryButton from "../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";

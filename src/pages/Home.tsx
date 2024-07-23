@@ -23,5 +23,4 @@ const HomeStyled = styled.div`
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  border-radius: 0.5rem;
 `;

@@ -3,7 +3,7 @@ import racine from "../../assets/racine.svg";
 import infinity from "../../assets/infinity-solid.svg";
 import percent from "../../assets/percent.svg";
 import functionFI from "../../assets/functionFI.svg";
-import SignInWithGoogle from "../SignInForm/SignInWithGoogle";
+import SignInWithGoogle from "../SignInFormContainer/SignInWithGoogle";
 
 type Props = {
   title: string;

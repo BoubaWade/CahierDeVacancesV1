@@ -183,6 +183,17 @@ export const deleteToDoFromDatabase = async (user: any, todoId: string) => {
     if (error) console.error("Error deleting todo:", error);
   }
 };
+
+export const deleteAllToDosFromDatabaseByUser = async (user: any) => {
+  if (user) {
+    const { error } = await supabase
+      .from("todo_exercises")
+      .delete()
+      .eq("user_id", user.id);
+    if (error) console.error("Error deleting all todos by user:", error);
+  }
+};
+
 export const updateToDoDateFromDatabase = async (
   todo: Exercise,
   limitDate: string | undefined,

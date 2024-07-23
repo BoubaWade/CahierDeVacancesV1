@@ -6,7 +6,6 @@ import SubscriptionButtons from "./SubscriptionButtons";
 
 export default function Settings() {
   const [openModal, setOpenModal] = useState(false);
-
   return (
     <SettingsStyled>
       <h2>Modifier vos paramètres</h2>

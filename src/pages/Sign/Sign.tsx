@@ -1,18 +1,16 @@
 import styled from "styled-components";
-import SignUpForm from "../../components/SignUpForm/SignUpForm";
-import SignInForm from "../../components/SignInForm/SignInForm";
-import SignFormRightSide from "../../components/reusableUI/SignFormRightSide";
 import PrimaryButton from "../../components/reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { BackgroundHome } from "../../components/BackgroundHome";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { setIsSignInForm } from "../../features/Sign/authSlice";
+import SignForm from "./SignForm";
 
 export default function Sign() {
+  const { isSignInForm } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isSignInForm } = useSelector((state: RootState) => state.auth);
 
   return (
     <SignStyled>
@@ -28,25 +26,7 @@ export default function Sign() {
       />
       <div className="background-filter"></div>
       <BackgroundHome />
-      <div className="container">
-        {isSignInForm ? (
-          <>
-            <SignInForm />
-            <SignFormRightSide
-              title="Mathématiques !"
-              text="Les maths, c'est comme le sport : plus tu en fais, plus tu deviens fort."
-            />
-          </>
-        ) : (
-          <>
-            <SignUpForm />
-            <SignFormRightSide
-              title="Confiance !"
-              text="La confiance, c'est comme un chemin : plus tu avances, plus tu vas loin."
-            />
-          </>
-        )}
-      </div>
+      <SignForm />
     </SignStyled>
   );
 }
@@ -61,11 +41,13 @@ const SignStyled = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
-  border-radius: 0.5rem;
   .home-return,
   .switch-button {
     background-color: #fff;
+    font-size: 0.7rem;
     border: none;
+    padding: 6px 20px;
+    border-radius: 3px;
     &:hover {
       background: linear-gradient(to right, #fde047, #c2a205);
     }
@@ -75,15 +57,5 @@ const SignStyled = styled.div`
   }
   .home-return {
     margin-top: 30px;
-  }
-  .container {
-    background-color: #fff;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
   }
 `;

@@ -1,3 +1,9 @@
+import {
+  StripeCardCvcElementChangeEvent,
+  StripeCardExpiryElementChangeEvent,
+  StripeCardNumberElementChangeEvent,
+} from "@stripe/stripe-js";
+
 export type lessonCard = {
   title: string;
   level: string;
@@ -47,3 +53,8 @@ export type Level =
   | "Seconde"
   | "Première"
   | "Términale";
+
+export type Event =
+  | StripeCardNumberElementChangeEvent
+  | StripeCardExpiryElementChangeEvent
+  | StripeCardCvcElementChangeEvent;

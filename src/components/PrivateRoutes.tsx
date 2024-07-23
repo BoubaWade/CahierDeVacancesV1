@@ -27,14 +27,6 @@ export default function PrivateRoutes() {
     return () => subscription.unsubscribe();
   }, []);
 
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem("user");
-  //   if (storedUser) {
-  //     dispatch(setUser(JSON.parse(storedUser)));
-  //     fetchTodos(JSON.parse(storedUser), dispatch);
-  //   }
-  // }, []);
-
   useEffect(() => {
     const checkSubscription = async () => {
       const user = await getUser();

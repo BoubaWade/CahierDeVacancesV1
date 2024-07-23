@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../PrimaryButton";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../app/store";
 
 type HeaderProps = {
   level: string | undefined;
@@ -13,15 +15,19 @@ export default function Header({
   searchValue,
   onChangeValue,
 }: HeaderProps) {
+  const { user } = useSelector((state: RootState) => state.auth);
   const navigate = useNavigate();
+  const userFinded = user || localStorage.getItem("user");
 
   return (
     <HeaderStyled>
-      <PrimaryButton
-        label="Aller au tableau de bord"
-        className="dashboard-return-btn"
-        onClick={() => navigate("/dashboard")}
-      />
+      {userFinded && (
+        <PrimaryButton
+          label="Aller au tableau de bord"
+          className="dashboard-return-btn"
+          onClick={() => navigate("/dashboard")}
+        />
+      )}
       <div className="info">
         <h1>Classe de {level}</h1>
       </div>
@@ -52,13 +58,14 @@ const HeaderStyled = styled.header`
     height: 33px;
     font-size: 0.8rem;
     padding: 0 15px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border-radius: 5px;
   }
   h1 {
     font-size: 1.9rem;
     position: relative;
     z-index: 1;
+    margin-top: 30px;
   }
   .search {
     position: relative;

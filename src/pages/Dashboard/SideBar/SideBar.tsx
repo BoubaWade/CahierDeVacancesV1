@@ -17,6 +17,7 @@ export default function SideBar() {
     dispatch(setUser(null));
     localStorage.removeItem("user");
     localStorage.removeItem("level");
+    localStorage.removeItem("total-score");
     navigate("/");
   };
 
