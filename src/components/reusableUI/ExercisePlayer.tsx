@@ -61,7 +61,7 @@ export default function ExercisePlayer({
       {timeLeft !== 0 && (
         <div className="info">
           {!isRunning ? (
-            <p className="message">Play pour déclencher l'aide</p>
+            <p className="message">Appuyer pour déclencher l'aide</p>
           ) : (
             <p className="message">L'aide sera disponible dans</p>
           )}

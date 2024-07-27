@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
 import { getImgUrl } from "../../../../utils/utilsFunctions";
 import QuestionsList from "./QuestionsList";
+import EditableTableContainer from "./EditableTableContainer";
 
 type ExerciseStatementProps = {
+  level: string;
   exerciseNumber: number;
   questionSolution: QuestionSolutions;
   timeLeft: number;
@@ -11,25 +13,34 @@ type ExerciseStatementProps = {
 };
 
 export default function ExerciseStatement({
+  level,
   exerciseNumber,
   questionSolution,
   timeLeft,
   handleUpdateScore,
 }: ExerciseStatementProps) {
-  const { question, imgName } = questionSolution;
-  const imageUrl = getImgUrl(imgName);
+  const { question, imgName, editTableData } = questionSolution;
+  const imageUrl = getImgUrl(level, imgName);
 
   return (
     <ExerciseStatementStyled>
       <ul>
         <span className="exercise-number">Exercice {exerciseNumber}</span>
-        {imageUrl && <img src={imageUrl} className="graphic" />}
+        {editTableData ? (
+          <EditableTableContainer
+            imageUrl={imageUrl}
+            editTableData={editTableData}
+          />
+        ) : (
+          imageUrl && <img src={imageUrl} className="graphic" />
+        )}
         {question[0] && <li className="first-question-item">{question[0]}</li>}
         <QuestionsList
           questionSolution={questionSolution}
           timeLeft={timeLeft}
           exerciseNumber={exerciseNumber}
           updateResponseScore={handleUpdateScore}
+          editTableData={editTableData}
         />
       </ul>
     </ExerciseStatementStyled>
@@ -37,7 +48,7 @@ export default function ExerciseStatement({
 }
 const ExerciseStatementStyled = styled.div`
   background: #fff;
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;

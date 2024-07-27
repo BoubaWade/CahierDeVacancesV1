@@ -24,7 +24,7 @@ export default function ToDoInfos() {
       date: todo.validationDate,
       lesson: todo.lesson,
       exercise: todo.number,
-      note: todo.scoreAverage * 100,
+      note: Math.ceil(todo.scoreAverage * 100),
     };
   });
 

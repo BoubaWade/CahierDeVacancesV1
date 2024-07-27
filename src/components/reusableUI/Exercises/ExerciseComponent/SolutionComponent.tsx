@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import Modal from "../../Modal/Modal";
-import MathKeyboard from "../../MathKeyboard/MathKeyboard";
 import ButtonsContainer from "./ButtonsContainer";
 import useSolution from "../../../../hooks/useSolution";
 import SolutionContainer from "./SolutionContainer";
+import { RadioOption, TableCell } from "../../../../Types/dataTypes";
+import InputsResponse from "./InputsResponse";
 
 type SolutionComponentProps = {
   timeLeft: number;
@@ -13,6 +14,9 @@ type SolutionComponentProps = {
   exerciseNumber: number;
   questionNumber: number;
   updateResponseScore: (scoreToAdd: number) => void;
+  radio: boolean | undefined;
+  options: RadioOption[] | undefined;
+  editTableData: TableCell[][] | undefined;
 };
 
 export default function SolutionComponent({
@@ -21,6 +25,9 @@ export default function SolutionComponent({
   exerciseNumber,
   questionNumber,
   updateResponseScore,
+  radio,
+  options,
+  editTableData,
 }: SolutionComponentProps) {
   const {
     getSolutionValue,
@@ -49,10 +56,14 @@ export default function SolutionComponent({
 
   return (
     <SolutionComponentStyled>
-      <MathKeyboard
-        getSolutionValue={getSolutionValue}
-        handleFocus={handleFocus}
-      />
+      {!editTableData && (
+        <InputsResponse
+          radio={radio}
+          getSolutionValue={getSolutionValue}
+          handleFocus={handleFocus}
+          options={options}
+        />
+      )}
       <SolutionContainer
         solution={solution}
         displayHelp={displayHelp}

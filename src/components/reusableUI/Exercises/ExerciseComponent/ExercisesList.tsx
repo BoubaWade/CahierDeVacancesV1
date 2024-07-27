@@ -4,10 +4,12 @@ import Exercise from "./Exercise";
 import { useState } from "react";
 
 type ExercisesListProps = {
+  level: string;
   questionsSolutions: QuestionSolutions[];
 };
 
 export default function ExercisesList({
+  level,
   questionsSolutions,
 }: ExercisesListProps) {
   const [responseScore, setResponseScore] = useState(0);
@@ -22,6 +24,7 @@ export default function ExercisesList({
       {questionsSolutions.map((questionSolution, index) => (
         <Exercise
           key={index}
+          level={level}
           questionSolution={questionSolution}
           exerciseNumber={index + 1}
           handleUpdateScore={handleUpdateScore}

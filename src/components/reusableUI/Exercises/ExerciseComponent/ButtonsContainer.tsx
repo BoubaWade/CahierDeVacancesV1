@@ -58,6 +58,7 @@ const ButtonsContainerStyled = styled.div`
   max-width: 480px;
   display: flex;
   justify-content: flex-end;
+  margin-top: 10px;
   button {
     background-color: #ebeaea;
     border-color: #ebeaea;

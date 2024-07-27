@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { QuestionSolutions } from "../../../../Types/dataTypes";
+import { QuestionSolutions, TableCell } from "../../../../Types/dataTypes";
 import MathJaxComponent from "../../MathJaxComponent";
 import SolutionComponent from "./SolutionComponent";
 
@@ -8,14 +8,16 @@ type QuestionsListProps = {
   timeLeft: number;
   exerciseNumber: number;
   updateResponseScore: (scoreToAdd: number) => void;
+  editTableData: TableCell[][] | undefined;
 };
 export default function QuestionsList({
   questionSolution,
   timeLeft,
   exerciseNumber,
   updateResponseScore,
+  editTableData,
 }: QuestionsListProps) {
-  const { question, solution } = questionSolution;
+  const { question, solution, radio, options } = questionSolution;
 
   const questionsToDisplay = question.slice(1, question.length);
 
@@ -30,6 +32,9 @@ export default function QuestionsList({
             exerciseNumber={exerciseNumber}
             questionNumber={index + 1}
             updateResponseScore={updateResponseScore}
+            radio={radio}
+            options={options}
+            editTableData={editTableData}
           />
         </li>
       ))}

@@ -5,12 +5,14 @@ import ExercisePlayer from "../../ExercisePlayer";
 import ExerciseStatement from "./ExerciseStatement";
 
 type ExerciseProps = {
+  level: string;
   questionSolution: QuestionSolutions;
   exerciseNumber: number;
   handleUpdateScore: (scoreToAdd: number) => void;
 };
 
 export default function Exercise({
+  level,
   questionSolution,
   exerciseNumber,
   handleUpdateScore,
@@ -21,6 +23,7 @@ export default function Exercise({
   return (
     <ExerciseStyled>
       <ExerciseStatement
+        level={level}
         exerciseNumber={exerciseNumber}
         questionSolution={questionSolution}
         timeLeft={timeLeft}

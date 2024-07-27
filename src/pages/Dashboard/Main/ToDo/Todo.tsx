@@ -3,16 +3,6 @@ import ToDoList from "./ToDoList";
 import ToDoInfos from "./ToDoInfos";
 
 export default function Todo() {
-  // const dispatch = useDispatch<AppDispatch>();
-
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem("user");
-  //   if (storedUser) {
-  //     dispatch(setUser(JSON.parse(storedUser)));
-  //     dispatch(fetchTodos(JSON.parse(storedUser)));
-  //   }
-  // }, []);
-
   return (
     <TodoStyled>
       <ToDoInfos />

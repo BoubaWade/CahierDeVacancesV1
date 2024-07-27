@@ -14,13 +14,14 @@ export default function GlobalScore({ todosCompleted }: GlobalScoreProps) {
   );
 
   const globalScoreRate = getGlobalScoreRate(todoFilteredBySelect);
+  const isRateExist = globalScoreRate || globalScoreRate === 0;
 
   return (
     <GlobalScoreStyled>
       <h3>Résultat global</h3>
       <p>Taux de réussite global :</p>
       <span className={`${globalScoreRate >= 50 ? "good" : "bad"}`}>
-        {globalScoreRate ? `${globalScoreRate} %` : "--"}
+        {isRateExist ? `${globalScoreRate} %` : "--"}
       </span>
       <p>Devoir(s) complet(s) :</p>
       <span>{todosCompleted.length}</span>

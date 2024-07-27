@@ -29,9 +29,11 @@ export const formatDate = (date: string): string => {
   return `${day}/${month}/${year}`;
 };
 
-export const getImgUrl = (imgName: string) => {
+export const getImgUrl = (level: string, imgName: string) => {
   const imageUrl = imgName
-    ? `${import.meta.env.VITE_IMAGES_PATH}${imgName}.png`
+    ? `${import.meta.env.VITE_IMAGES_PATH}${normalizeString(
+        level
+      )}/${imgName}.png`
     : null;
   if (imageUrl) {
     return imageUrl;

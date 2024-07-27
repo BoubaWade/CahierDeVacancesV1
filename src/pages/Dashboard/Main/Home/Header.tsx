@@ -14,17 +14,18 @@ export default function Header() {
   const todosCompleted = getTodosCompleted(toDoExercisesByLevel);
   const todosIncompleted = getTodosIncompleted(toDoExercisesByLevel);
   const scoreArray = todosCompleted.map((todo) => todo.scoreAverage);
-  // const bestScore = Math.max(...scoreArray);
+
   const bestScore = scoreArray.reduce((max, current) => {
     return current > max ? current : max;
   }, scoreArray[0]);
+  const isBestScore = bestScore || bestScore === 0;
 
   return (
     <HeaderStyled>
       <div className="welcome">
         <h3>
           Meilleur score :
-          <span>{bestScore ? `${bestScore * 100}%` : "--"}</span>
+          <span>{isBestScore ? `${Math.ceil(bestScore * 100)}%` : "--"}</span>
         </h3>
       </div>
       <div className="courses-status">

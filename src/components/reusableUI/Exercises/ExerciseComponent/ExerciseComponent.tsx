@@ -25,7 +25,7 @@ export default function ExerciseComponent({
   displayNextExercise,
   displayPreviousExercise,
 }: ExerciseComponentProps) {
-  const { number, statements, questionsSolutions } = exercise;
+  const { level, number, statements, questionsSolutions } = exercise;
   const { isSubsribted } = useSelector((state: RootState) => state.dashboard);
   const { isOpenModal, setIsOpenModal, addIsSuccessful, addTodo } =
     useExercise();
@@ -54,6 +54,7 @@ export default function ExerciseComponent({
         />
       </Modal>
       <MainExercise
+        level={level}
         statements={statements}
         questionsSolutions={questionsSolutions}
       />

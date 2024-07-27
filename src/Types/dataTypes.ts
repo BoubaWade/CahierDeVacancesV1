@@ -1,9 +1,24 @@
+export type RadioOption = {
+  label: string;
+  value: string;
+};
+type EditTableHeader = (string | number)[];
+
+export type TableCell = {
+  value: string | number;
+  locked: boolean;
+};
+
 export type QuestionSolutions = {
   time: number;
   question: string[];
   imgName: string;
   graph?: boolean;
   solution: string[];
+  radio?: boolean;
+  options?: RadioOption[] | undefined;
+  editTableHeader?: EditTableHeader;
+  editTableData?: TableCell[][];
 };
 
 export type Exercise = {

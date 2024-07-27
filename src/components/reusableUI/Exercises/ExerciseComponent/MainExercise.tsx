@@ -3,18 +3,20 @@ import styled from "styled-components";
 import ExercisesList from "./ExercisesList";
 
 type MainExerciseProps = {
+  level: string;
   statements: string;
   questionsSolutions: QuestionSolutions[];
 };
 
 export default function MainExercise({
+  level,
   statements,
   questionsSolutions,
 }: MainExerciseProps) {
   return (
     <MainExerciseStyled>
       {statements && <p className="statement">{statements}</p>}
-      <ExercisesList questionsSolutions={questionsSolutions} />
+      <ExercisesList questionsSolutions={questionsSolutions} level={level} />
     </MainExerciseStyled>
   );
 }
