@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { datasOfChapters } from "../../data/dataLevelPages";
-import BorderBeam from "../reusableUI/BorderBeam";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import { setIsSignInForm } from "../../features/Sign/authSlice";
+import Levels from "./Levels";
 
-export default function Navigation() {
+export default function NavBarHome() {
   const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,25 +21,18 @@ export default function Navigation() {
   };
 
   return (
-    <NavigationStyled>
+    <NavBarHomeStyled>
       <h2>Math.max</h2>
-      <ul>
-        {datasOfChapters.map(({ id, level }) => (
-          <div key={id}>
-            <li onClick={() => navigate(`/${id}`)}>{level}</li>
-            <BorderBeam className="border-beam" />
-          </div>
-        ))}
-      </ul>
+      <Levels />
       <PrimaryButton
         label="Tableau de bord"
         className="dashboard-button"
         onClick={() => handleClick()}
       />
-    </NavigationStyled>
+    </NavBarHomeStyled>
   );
 }
-const NavigationStyled = styled.nav`
+const NavBarHomeStyled = styled.nav`
   background-color: #000205;
   color: #ffff;
   width: 100%;
@@ -54,27 +46,6 @@ const NavigationStyled = styled.nav`
     font-size: 1.5rem;
     font-weight: 500;
     cursor: pointer;
-  }
-  ul {
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    padding: 5px;
-    li {
-      position: relative;
-      z-index: 30;
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      transition: 200ms;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-    .border-beam {
-      z-index: 0;
-    }
   }
   .dashboard-button {
     margin-top: 0;

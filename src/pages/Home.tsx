@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Navigation from "../components/Navigation/Navigation";
+import NavBarHome from "../components/NavBarHome/NavBarHome";
 import MainHome from "../components/MainHome/MainHome";
 import { BackgroundHome } from "../components/BackgroundHome";
 
@@ -8,7 +8,7 @@ export default function Home() {
     <HomeStyled>
       <div className="background-filter"></div>
       <BackgroundHome />
-      <Navigation />
+      <NavBarHome />
       <MainHome />
     </HomeStyled>
   );
