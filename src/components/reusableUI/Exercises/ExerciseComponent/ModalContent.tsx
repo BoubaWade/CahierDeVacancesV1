@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { formatDate, setLimitDateProperty } from "../../../../utils/functions";
-import CalendarComponent from "../../CalendarComponent";
 import NotSubscribedMessage from "../../NotSubscribedMessage";
-import PrimaryButton from "../../PrimaryButton";
-import { DateValue, Exercise } from "../../../../Types/dataTypes";
+import { Exercise } from "../../../../Types/dataTypes";
 import styled from "styled-components";
+import CalendarContainer from "./CalendarContainer";
 
 type ModalContentProps = {
   exercise: Exercise;
@@ -19,33 +16,14 @@ export default function ModalContent({
   isSubsribted,
   addIsSuccessful,
 }: ModalContentProps) {
-  const [value, onChange] = useState<DateValue>(new Date());
-
-  const handleAddTodo = () => {
-    const deepCopyExercise = structuredClone(exercise);
-    if (value) {
-      setLimitDateProperty(deepCopyExercise, formatDate(value.toString()));
-      addTodo(deepCopyExercise);
-    }
-  };
-
   return (
     <ModalContentStyled>
       {isSubsribted ? (
-        <>
-          <p className="text-date-choice">Choisir une date</p>
-          <CalendarComponent
-            className="calendar"
-            value={value}
-            onChange={onChange}
-          />
-          <PrimaryButton
-            id={exercise.id}
-            className="add-button"
-            label={!addIsSuccessful ? "Ajouter le devoir" : "Ajouté !"}
-            onClick={() => handleAddTodo()}
-          />
-        </>
+        <CalendarContainer
+          exercise={exercise}
+          addTodo={addTodo}
+          addIsSuccessful={addIsSuccessful}
+        />
       ) : (
         <NotSubscribedMessage />
       )}
@@ -54,18 +32,4 @@ export default function ModalContent({
 }
 const ModalContentStyled = styled.div`
   margin: 0 auto;
-  .text-date-choice {
-    text-align: center;
-    color: #fff;
-    font-weight: 500;
-    margin: 25px auto;
-  }
-  .calendar {
-    margin: 0 auto;
-  }
-  .add-button {
-    display: block;
-    border-radius: 5px;
-    margin: 25px auto;
-  }
 `;
