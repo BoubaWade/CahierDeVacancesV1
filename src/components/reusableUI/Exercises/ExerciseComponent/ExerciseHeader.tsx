@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import backward from "../../../../assets/icons/backward.svg";
 import nextward from "../../../../assets/icons/nextward.svg";
+import TertiaryButton from "../../TertiaryButton";
 
 type ExerciseHeaderProps = {
   number: number;
@@ -15,15 +16,19 @@ export default function ExerciseHeader({
 }: ExerciseHeaderProps) {
   return (
     <ExerciseHeaderStyled>
-      <div className="back" onClick={displayPreviousExercise}>
-        <img src={backward} />
-        <span>préc.</span>
-      </div>
+      <TertiaryButton
+        src={backward}
+        label="préc."
+        className="back"
+        onClick={displayPreviousExercise}
+      />
       <h3>{number}</h3>
-      <div className="next" onClick={displayNextExercise}>
-        <span>suiv.</span>
-        <img src={nextward} />
-      </div>
+      <TertiaryButton
+        src={nextward}
+        label="suiv."
+        className="next"
+        onClick={displayNextExercise}
+      />
     </ExerciseHeaderStyled>
   );
 }
@@ -40,32 +45,11 @@ const ExerciseHeaderStyled = styled.div`
     color: #fff;
     font-weight: 500;
   }
-  .back,
-  .next {
-    background-color: #f8f8fa;
-    background: linear-gradient(to right, #fde047, #c2a205);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 45px;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    img {
-      width: 15px;
-      margin: 0 10px;
-    }
-    span {
-      font-size: 0.8rem;
-    }
-    &:hover {
-      transform: scale(1.05);
-    }
-  }
   .back {
     width: 65px;
   }
   .next {
     width: 60px;
+    flex-direction: row-reverse;
   }
 `;

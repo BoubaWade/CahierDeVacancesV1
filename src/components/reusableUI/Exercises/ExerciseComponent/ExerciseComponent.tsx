@@ -11,6 +11,7 @@ import MainExercise from "./MainExercise";
 import ModalContent from "./ModalContent";
 import HomeworkValidation from "./HomeworkValidation";
 import HomeWorkAddition from "./HomeWorkAddition";
+import Footer from "./Footer";
 
 type ExerciseComponentProps = {
   exercise: Exercise;
@@ -64,10 +65,9 @@ export default function ExerciseComponent({
         exercise={exercise}
         addTodo={addTodo}
       />
-      <ExerciseHeader
-        number={number}
-        displayNextExercise={displayNextExercise}
-        displayPreviousExercise={displayPreviousExercise}
+      <Footer
+        displayPrevious={displayPreviousExercise}
+        displayNext={displayNextExercise}
       />
       <BorderBeam className="border-beam" />
     </ExerciseComponentStyled>
