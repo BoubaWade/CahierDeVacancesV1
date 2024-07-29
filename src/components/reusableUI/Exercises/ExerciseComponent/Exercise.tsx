@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
-import ExercisePlayer from "../../ExercisePlayer";
+import ExercisePlayer from "../../ExercicePlayer/ExercisePlayer";
 import ExerciseStatement from "./ExerciseStatement";
 
 type ExerciseProps = {

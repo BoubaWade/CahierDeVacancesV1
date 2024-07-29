@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../../../../components/reusableUI/PrimaryButton";
-import { normalizeString } from "../../../../utils/utilsFunctions";
+import { normalizeString } from "../../../../utils/functions";
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";

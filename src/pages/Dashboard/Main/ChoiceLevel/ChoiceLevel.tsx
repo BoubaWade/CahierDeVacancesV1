@@ -7,7 +7,7 @@ import {
 import {
   getChaptersOfLevel,
   getTodosByLevel,
-} from "../../../../utils/utilsFunctions";
+} from "../../../../utils/functions";
 import { MenuSelect } from "react-menu-dropdown-list";
 import { RootState } from "../../../../app/store";
 import { useDispatch, useSelector } from "react-redux";

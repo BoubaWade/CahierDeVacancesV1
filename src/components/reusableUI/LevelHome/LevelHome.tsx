@@ -4,7 +4,7 @@ import { datasOfChapters } from "../../../data/dataLevelPages";
 import Header from "./Header";
 import Main from "./Main/Main";
 import { useState } from "react";
-import { normalizeString } from "../../../utils/utilsFunctions";
+import { normalizeString } from "../../../utils/functions";
 
 type LevelHomeProps = {
   id: string;

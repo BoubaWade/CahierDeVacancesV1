@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { RootState } from "../../../../app/store";
-import { setLimitDateProperty } from "../../../../utils/utilsFunctions";
+import { setLimitDateProperty } from "../../../../utils/functions";
 import {
   setToDoExercisesByLevel,
   setTodoFilteredBySelect,

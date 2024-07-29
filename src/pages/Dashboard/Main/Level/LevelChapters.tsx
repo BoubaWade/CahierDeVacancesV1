@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { datasOfChapters } from "../../../../data/dataLevelPages";
-import { getChaptersOfLevel } from "../../../../utils/utilsFunctions";
+import { getChaptersOfLevel } from "../../../../utils/functions";
 
 type LevelChaptersProps = {
   name: string;

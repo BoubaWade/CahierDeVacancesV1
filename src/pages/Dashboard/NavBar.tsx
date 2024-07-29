@@ -3,7 +3,7 @@ import bell from "../../assets/icons/bell.svg";
 import bars from "../../assets/icons/bars.svg";
 import SecondaryButton from "../../components/reusableUI/SecondaryButton";
 import { useSelector } from "react-redux";
-import { getTodosIncompleted } from "../../utils/utilsFunctions";
+import { getTodosIncompleted } from "../../utils/functions";
 import { RootState } from "../../app/store";
 
 export default function NavBar() {

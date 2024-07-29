@@ -1,5 +1,5 @@
 import ProgressBar from "./ProgressBar";
-import { formatTime } from "../../../utils/utilsFunctions";
+import { formatTime } from "../../../utils/functions";
 import styled from "styled-components";
 
 type InfosProps = {

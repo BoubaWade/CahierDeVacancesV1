@@ -29,6 +29,12 @@ export const formatDate = (date: string): string => {
   return `${day}/${month}/${year}`;
 };
 
+export const formatTime = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+};
+
 export const getImgUrl = (level: string, imgName: string) => {
   const imageUrl = imgName
     ? `${import.meta.env.VITE_IMAGES_PATH}${normalizeString(
@@ -99,6 +105,16 @@ export const setScoreAverageProperty = (
   }
 };
 
+export const setUpdateTodo = (
+  todos: Exercise,
+  scoreAverage: number | undefined
+) => {
+  setIncompletedProperty(todos, true);
+  if (scoreAverage) setScoreAverageProperty(todos, scoreAverage);
+  const validationDate = formatDate(new Date().toString());
+  setValidationDateProperty(todos, validationDate);
+};
+
 export const formatString = (input: string): string => {
   return input
     .normalize("NFD")
@@ -136,6 +152,10 @@ export const filterTodosBySearch = (todos: Exercise[], searchValue: string) => {
     getSearchIncludesToDo(todo, searchValue)
   );
   return toDoExercisesToDisplay;
+};
+
+export const findTodoById = (todos: Exercise[], id: string) => {
+  return todos?.find((todo) => todo.id === id);
 };
 
 const removeDollarSigns = (expression: string) => {

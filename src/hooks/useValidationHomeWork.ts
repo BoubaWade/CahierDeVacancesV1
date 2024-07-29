@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../app/store";
 import { useState } from "react";
-import { findTodoById, setUpdateTodo } from "../utils/utilsFunctions";
+import { findTodoById, setUpdateTodo } from "../utils/functions";
 import { Exercise } from "../Types/dataTypes";
 
 export default function useValidationHomeWork(

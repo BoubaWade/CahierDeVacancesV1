@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Exercise } from "../../../../Types/dataTypes";
 import { RootState } from "../../../../app/store";
 import useExercise from "../../../../hooks/useExercise";
-import { getTotalQuestions } from "../../../../utils/utilsFunctions";
+import { getTotalQuestions } from "../../../../utils/functions";
 import BorderBeam from "../../BorderBeam";
 import Modal from "../../Modal/Modal";
 import ExerciseHeader from "./ExerciseHeader";
@@ -63,6 +63,11 @@ export default function ExerciseComponent({
         addIsSuccessful={addIsSuccessful}
         exercise={exercise}
         addTodo={addTodo}
+      />
+      <ExerciseHeader
+        number={number}
+        displayNextExercise={displayNextExercise}
+        displayPreviousExercise={displayPreviousExercise}
       />
       <BorderBeam className="border-beam" />
     </ExerciseComponentStyled>

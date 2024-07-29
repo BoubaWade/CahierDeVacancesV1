@@ -4,7 +4,7 @@ import { RootState } from "../../../../app/store";
 import {
   getTodosCompleted,
   getTodosIncompleted,
-} from "../../../../utils/utilsFunctions";
+} from "../../../../utils/functions";
 
 export default function Header() {
   const { toDoExercisesByLevel } = useSelector(

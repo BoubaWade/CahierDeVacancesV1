@@ -9,7 +9,7 @@ import {
   Tooltip,
   XAxis,
 } from "recharts";
-import { getTodosCompleted } from "../../../../utils/utilsFunctions";
+import { getTodosCompleted } from "../../../../utils/functions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import CustomTooltip from "./CustomTooltip";

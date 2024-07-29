@@ -6,7 +6,7 @@ import { RootState } from "../../../../app/store";
 import {
   filterTodosBySearch,
   sortTodosByDate,
-} from "../../../../utils/utilsFunctions";
+} from "../../../../utils/functions";
 
 export default function ToDoTable() {
   const { searchToDoValue, todoFilteredBySelect } = useSelector(

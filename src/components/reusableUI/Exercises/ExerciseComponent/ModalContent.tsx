@@ -1,8 +1,5 @@
 import { useState } from "react";
-import {
-  formatDate,
-  setLimitDateProperty,
-} from "../../../../utils/utilsFunctions";
+import { formatDate, setLimitDateProperty } from "../../../../utils/functions";
 import CalendarComponent from "../../CalendarComponent";
 import NotSubscribedMessage from "../../NotSubscribedMessage";
 import PrimaryButton from "../../PrimaryButton";

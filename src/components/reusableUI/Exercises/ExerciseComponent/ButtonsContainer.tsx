@@ -24,7 +24,7 @@ export default function ButtonsContainer({
   success,
 }: ButtonsContainerProps) {
   const responseButtonId = `${exerciseNumber} - ${questionNumber}`;
-  const disabledCondition = validationCounter === 4 || success;
+  const disabledCondition = validationCounter === 3 || success;
 
   return (
     <ButtonsContainerStyled>

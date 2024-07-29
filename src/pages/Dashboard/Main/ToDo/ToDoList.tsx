@@ -8,7 +8,7 @@ import EmptyToDo from "./EmptyToDo";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { optionsFilterByStatus } from "../../../../data/datasConfig";
-import { handleFilterTodos } from "../../../../utils/utilsFunctions";
+import { handleFilterTodos } from "../../../../utils/functions";
 import { setTodoFilteredBySelect } from "../../../../features/Dashboard/dashboardSlice";
 
 export default function ToDoList() {

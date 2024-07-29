@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
-import { getImgUrl } from "../../../../utils/utilsFunctions";
+import { getImgUrl } from "../../../../utils/functions";
 import QuestionsList from "./QuestionsList";
 import Header from "./Header";
 

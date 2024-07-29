@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { getGlobalScoreRate } from "../../../../utils/utilsFunctions";
+import { getGlobalScoreRate } from "../../../../utils/functions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { Exercise } from "../../../../Types/dataTypes";

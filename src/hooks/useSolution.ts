@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { extractSolution } from "../utils/utilsFunctions";
+import { extractSolution } from "../utils/functions";
 
 export default function useSolution(
   solution: string[],

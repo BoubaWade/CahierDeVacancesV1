@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
-import { normalizeString } from "../../utils/utilsFunctions";
+import { normalizeString } from "../../utils/functions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
