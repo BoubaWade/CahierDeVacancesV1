@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Controls from "./Controls";
-import Infos from "./Infos";
 import useExercisePlayer from "../../../hooks/useExercisePlayer";
+import Player from "./Player";
 
 type ExercisePlayerProps = {
   totalTime: number;
@@ -21,22 +20,15 @@ export default function ExercisePlayer({
 
   return (
     <ExercisePlayerStyled>
-      {timeLeft !== 0 && (
-        <>
-          <Controls
-            isRunning={isRunning}
-            timeLeft={timeLeft}
-            setIsRunning={setIsRunning}
-            setTimeLeft={setTimeLeft}
-          />
-          <Infos
-            isRunning={isRunning}
-            totalTime={totalTime}
-            timeLeft={timeLeft}
-          />
-        </>
-      )}
-      {timeLeft === 0 && (
+      {timeLeft !== 0 ? (
+        <Player
+          isRunning={isRunning}
+          timeLeft={timeLeft}
+          setIsRunning={setIsRunning}
+          setTimeLeft={setTimeLeft}
+          totalTime={totalTime}
+        />
+      ) : (
         <p className="help-message">L'aide est maintenant disponible !</p>
       )}
     </ExercisePlayerStyled>
