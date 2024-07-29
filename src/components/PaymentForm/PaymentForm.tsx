@@ -7,18 +7,18 @@ import usePayment from "../../hooks/usePayment";
 import ConfirmSubscription from "../reusableUI/ConfirmSubscription";
 
 export default function PaymentForm() {
+  const { handlers, states, setters } = usePayment();
   const {
     user,
     isButtonDisabled,
-    isLoading,
-    error,
-    isSubscripted,
-    handleChange,
-    errorMessage,
-    setErrorMessage,
     formRef,
-    handleSubmit,
-  } = usePayment();
+    error,
+    errorMessage,
+    isLoading,
+    isSubscripted,
+  } = states;
+  const { handleChange, handleSubmit } = handlers;
+  const { setErrorMessage } = setters;
 
   if (isSubscripted)
     return <ConfirmSubscription label="Abonnement enregistré !" />;

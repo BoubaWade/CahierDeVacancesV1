@@ -80,7 +80,6 @@ export default function usePayment() {
           }
         );
         if (error) {
-          // setIsLoading(false);
           console.error("Error confirming card payment:", error);
           return;
         }
@@ -92,14 +91,12 @@ export default function usePayment() {
         );
         saveSubscription(user.id, subscriptionId);
         setIsSubscripted(true);
-        // navigate("/dashboard");
         navigate(-1);
       } catch (error) {
         console.error("Error subscription:", error);
         if (error === "Email déja utilisé") return true;
         setError(true);
         setErrorMessage("Email déja utilisé !");
-        // if (formRef.current) formRef.current.reset();
       } finally {
         setIsLoading(false);
         setCardNumberComplete(false);
@@ -111,15 +108,21 @@ export default function usePayment() {
     }
   };
   return {
-    formRef,
-    user,
-    handleChange,
-    setErrorMessage,
-    isButtonDisabled,
-    isLoading,
-    error,
-    errorMessage,
-    handleSubmit,
-    isSubscripted,
+    handlers: {
+      handleChange,
+      handleSubmit,
+    },
+    states: {
+      user,
+      isButtonDisabled,
+      formRef,
+      error,
+      errorMessage,
+      isLoading,
+      isSubscripted,
+    },
+    setters: {
+      setErrorMessage,
+    },
   };
 }
