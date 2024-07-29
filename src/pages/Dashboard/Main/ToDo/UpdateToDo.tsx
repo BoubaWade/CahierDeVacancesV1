@@ -5,14 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { deleteToDoExercise } from "../../../../features/Dashboard/dashboardSlice";
 import { deleteToDoFromDatabase } from "../../../../supabase/api";
-
-function convertToISODate(dateString: string | undefined) {
-  if (dateString) {
-    const [day, month, shortYear] = dateString.split("/");
-    const fullYear = "20" + shortYear;
-    return `${fullYear}-${month}-${day}`;
-  }
-}
+import Image from "../../../../components/reusableUI/Image";
+import { convertToISODate, findTodoById } from "../../../../utils/functions";
 
 type Props = {
   id: string;
@@ -39,9 +33,7 @@ export default function UpdateToDo({
   };
 
   const handleUpdateToDoDate = () => {
-    const date = todoFilteredBySelect?.find(
-      (todo) => todo.id === id
-    )?.limitDate;
+    const date = findTodoById(todoFilteredBySelect, id)?.limitDate;
     const dateFormated = convertToISODate(date);
     setInputValue(dateFormated);
     setIsEditing(true);
@@ -49,12 +41,12 @@ export default function UpdateToDo({
 
   return (
     <UpdateToDoStyled>
-      <img
+      <Image
         src={deleteIcon}
         className="delete-toDo"
         onClick={() => handleDeleteToDo()}
       />
-      <img
+      <Image
         src={pen}
         className={`update-toDo ${isCompleted ? "complete" : ""}`}
         onClick={() => handleUpdateToDoDate()}

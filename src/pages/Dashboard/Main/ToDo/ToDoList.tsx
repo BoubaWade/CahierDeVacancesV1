@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import HeaderToDoList from "./HeaderToDoList";
-import ToDoTable from "./ToDoTable";
 import DropDown from "../../../../components/DropDown/DropDown";
 import Modal from "../../../../components/reusableUI/Modal/Modal";
 import { useEffect, useState } from "react";
-import EmptyToDo from "./EmptyToDo";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { optionsFilterByStatus } from "../../../../data/datasConfig";
 import { handleFilterTodos } from "../../../../utils/functions";
 import { setTodoFilteredBySelect } from "../../../../features/Dashboard/dashboardSlice";
+import TableContainer from "./TableContainer";
 
 export default function ToDoList() {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -19,7 +18,6 @@ export default function ToDoList() {
   );
   const dispatch = useDispatch();
   const selectValueOfAllTodos = "0";
-  const isTodos = toDoExercisesByLevel.length !== 0;
 
   const handleSelectChange = async (value: string) => {
     setSelectedValue(value);
@@ -38,7 +36,7 @@ export default function ToDoList() {
         selectedValue={selectedValue}
         onChange={handleSelectChange}
       />
-      {isTodos ? <ToDoTable /> : <EmptyToDo setIsOpenModal={setIsOpenModal} />}
+      <TableContainer setIsOpenModal={setIsOpenModal} />
       <Modal
         open={isOpenModal}
         onClose={() => setIsOpenModal(false)}

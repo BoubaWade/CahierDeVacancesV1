@@ -24,31 +24,20 @@ type BodyRowsProps = {
 };
 
 export default function BodyRowsList({ todo }: BodyRowsProps) {
-  const {
-    id,
-    lesson,
-    number,
-    level,
-    limitDate,
-    isCompleted,
-    scoreAverage,
-    statements,
-    questionsSolutions,
-  } = todo;
-
+  const { id, level, lesson, number, isCompleted } = todo;
   const [inputValue, setInputValue] = useState<string | undefined>("");
   const [isEditing, setIsEditing] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const scorePercentage = Math.ceil(scoreAverage * 100);
+  const scorePercentage = Math.ceil(todo.scoreAverage * 100);
 
   return (
     <BodyRowsListStyled>
       <td onClick={() => setIsOpenModal(true)}>{lesson}</td>
       <td onClick={() => setIsOpenModal(true)}>{number}</td>
-      <td>{level}</td>
+      <td>{todo.level}</td>
       <ColumnLimitDate
         id={id}
-        limitDate={limitDate}
+        limitDate={todo.limitDate}
         inputValue={inputValue}
         setInputValue={setInputValue}
         isEditing={isEditing}
@@ -63,14 +52,14 @@ export default function BodyRowsList({ todo }: BodyRowsProps) {
         setIsEditing={setIsEditing}
       />
       <PreviewToDoExercise
-        questionsSolutions={questionsSolutions}
+        questionsSolutions={todo.questionsSolutions}
         isCompleted={isCompleted}
         level={level}
         lesson={lesson}
         number={number}
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
-        statements={statements}
+        statements={todo.statements}
       />
     </BodyRowsListStyled>
   );
