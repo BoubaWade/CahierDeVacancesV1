@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SideBar from "./SideBar/SideBar";
-import NavBar from "./NavBar";
+import NavBar from "./NavBar/NavBar";
 import MainDashboard from "./Main/MainDashboard";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
