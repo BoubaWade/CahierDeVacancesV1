@@ -1,15 +1,7 @@
 import styled from "styled-components";
 import SecondaryButton from "../../SecondaryButton";
-import { useState } from "react";
-import { RootState } from "../../../../app/store";
-import { useSelector } from "react-redux";
-import {
-  formatDate,
-  setIncompletedProperty,
-  setScoreAverageProperty,
-  setValidationDateProperty,
-} from "../../../../utils/utilsFunctions";
 import { Exercise } from "../../../../Types/dataTypes";
+import useValidationHomeWork from "../../../../hooks/useValidationHomeWork";
 
 type HomeworkValidationProps = {
   totalQuestions: number;
@@ -23,56 +15,30 @@ export default function HomeworkValidation({
   exercise,
   addTodo,
 }: HomeworkValidationProps) {
-  const { level, isSubsribted, toDoExercisesByLevel } = useSelector(
-    (state: RootState) => state.dashboard
+  const { handlers, states } = useValidationHomeWork(
+    totalQuestions,
+    exercise,
+    addTodo
   );
-  const [successPercentage, setSuccessPercentage] = useState<number>();
-  const [isDisplaySuccessPercentage, setIsDisplaySuccessPercentage] =
-    useState(false);
+  const { level, isSubsribted, successPercentage, isPercentageDisplayed } =
+    states;
+  const { handleValidateHomework } = handlers;
 
   const levelFounded = level || localStorage.getItem("level");
   if (exercise.level !== levelFounded) return;
-
-  const validationDate = formatDate(new Date().toString());
-
-  const handleValidateHomework = () => {
-    const totalScore = localStorage.getItem("total-score");
-    if (!totalScore) return;
-    const scoreAverage = parseFloat(totalScore) / totalQuestions;
-
-    setSuccessPercentage(Math.ceil(scoreAverage * 100));
-    setIsDisplaySuccessPercentage(true);
-
-    const todoFinded = toDoExercisesByLevel?.find(
-      (todo) => todo.id === exercise.id
-    );
-    const deepCopyToDoFinded = structuredClone(todoFinded);
-    if (deepCopyToDoFinded) {
-      setIncompletedProperty(deepCopyToDoFinded, true);
-      setScoreAverageProperty(deepCopyToDoFinded, scoreAverage);
-      setValidationDateProperty(deepCopyToDoFinded, validationDate);
-      addTodo(deepCopyToDoFinded);
-    } else {
-      const deepCopyCurrentExercise = structuredClone(exercise);
-      setIncompletedProperty(deepCopyCurrentExercise, true);
-      setScoreAverageProperty(deepCopyCurrentExercise, scoreAverage);
-      setValidationDateProperty(deepCopyCurrentExercise, validationDate);
-      addTodo(deepCopyCurrentExercise);
-    }
-  };
 
   return (
     <HomeworkValidationStyled>
       {totalQuestions !== 0 && (
         <SecondaryButton
           id={exercise.id}
-          label={!addIsSuccessful ? "Valider le devoir" : "Validé !"}
-          className={`valid-homework ${!isSubsribted ? "disabled" : ""}`}
+          label={addIsSuccessful ? "Validé !" : "Valider le devoir"}
+          className={`valid-homework ${isSubsribted ? "" : "disabled"}`}
           onClick={() => handleValidateHomework()}
           disabled={!isSubsribted}
         />
       )}
-      {isDisplaySuccessPercentage && (
+      {isPercentageDisplayed && (
         <p className="success-percentage">
           Pourcentage de réussite : <span>{successPercentage}%</span>
         </p>
