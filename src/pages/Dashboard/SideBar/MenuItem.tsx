@@ -94,6 +94,9 @@ const MenuItemStyled = styled.li`
     height: 30px;
     margin: 0 5px;
     padding: 5px 10px;
+    img {
+      display: none;
+    }
     &.active {
       border-radius: 7px;
 
