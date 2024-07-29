@@ -29,16 +29,13 @@ export default function SolutionComponent({
   options,
   editTableData,
 }: SolutionComponentProps) {
-  const {
-    getSolutionValue,
-    handleFocus,
-    displayHelp,
-    setDisplayHelp,
-    handleValidateResponse,
-    success,
-    failure,
-    validationCounter,
-  } = useSolution(solution, updateResponseScore);
+  const { handlers, states, setters } = useSolution(
+    solution,
+    updateResponseScore
+  );
+  const { getSolutionValue, handleValidateResponse, handleFocus } = handlers;
+  const { displayHelp, success, failure, validationCounter } = states;
+  const { setDisplayHelp } = setters;
 
   const [restSolutionDisplayed, setRestSolutionDisplayed] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -84,11 +81,7 @@ export default function SolutionComponent({
       {success && <span className="success">Bonne réponse !</span>}
       {failure && <span className="failure">Mauvaise réponse !</span>}
       <Modal open={isOpenModal} onClose={() => setIsOpenModal(false)}>
-        <ReactPlayer
-          url="https://www.youtube.com/watch?v=LXb3EKWsInQ"
-          controls={true}
-          style={{ margin: "0 auto" }}
-        />
+        <ReactPlayer url="" controls={true} style={{ margin: "0 auto" }} />
       </Modal>
     </SolutionComponentStyled>
   );

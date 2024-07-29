@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { QuestionSolutions } from "../../../../Types/dataTypes";
 import { getImgUrl } from "../../../../utils/utilsFunctions";
 import QuestionsList from "./QuestionsList";
-import EditableTableContainer from "./EditableTableContainer";
+import Header from "./Header";
 
 type ExerciseStatementProps = {
   level: string;
@@ -26,14 +26,7 @@ export default function ExerciseStatement({
     <ExerciseStatementStyled>
       <ul>
         <span className="exercise-number">Exercice {exerciseNumber}</span>
-        {editTableData ? (
-          <EditableTableContainer
-            imageUrl={imageUrl}
-            editTableData={editTableData}
-          />
-        ) : (
-          imageUrl && <img src={imageUrl} className="graphic" />
-        )}
+        <Header editTableData={editTableData} imageUrl={imageUrl} />
         {question[0] && <li className="first-question-item">{question[0]}</li>}
         <QuestionsList
           questionSolution={questionSolution}
@@ -48,7 +41,6 @@ export default function ExerciseStatement({
 }
 const ExerciseStatementStyled = styled.div`
   background: #fff;
-  /* width: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,12 +59,6 @@ const ExerciseStatementStyled = styled.div`
       margin: -15px auto 20px;
       padding: 0 10px;
       border-radius: 3px;
-    }
-    .graphic {
-      min-width: 250px;
-      width: 60%;
-      display: block;
-      margin: 0 auto 30px;
     }
     .first-question-item {
       margin: 0 0 30px;

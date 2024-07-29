@@ -25,7 +25,7 @@ export default function useSolution(
       setFailure(false);
 
       let scoreToAdd = 0;
-      if (validationCounter > 0 && validationCounter < 4) {
+      if (validationCounter > 0 && validationCounter < 3) {
         scoreToAdd = 1 / validationCounter;
       }
       if (displayHelp) {
@@ -38,7 +38,7 @@ export default function useSolution(
     }
   };
   const handleFocus = () => {
-    if (validationCounter > 3) return;
+    if (validationCounter > 2) return;
     setFailure(false);
   };
   const getSolutionValue = (value: string) => {
@@ -46,13 +46,27 @@ export default function useSolution(
   };
 
   return {
-    getSolutionValue,
-    handleValidateResponse,
-    handleFocus,
-    displayHelp,
-    setDisplayHelp,
-    success,
-    failure,
-    validationCounter,
+    // getSolutionValue,
+    // handleValidateResponse,
+    // handleFocus,
+    // displayHelp,
+    // setDisplayHelp,
+    // success,
+    // failure,
+    // validationCounter,
+    handlers: {
+      getSolutionValue,
+      handleValidateResponse,
+      handleFocus,
+    },
+    states: {
+      displayHelp,
+      success,
+      failure,
+      validationCounter,
+    },
+    setters: {
+      setDisplayHelp,
+    },
   };
 }

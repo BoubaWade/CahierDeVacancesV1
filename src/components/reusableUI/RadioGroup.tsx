@@ -5,8 +5,6 @@ import { useState } from "react";
 type RadioGroupProps = {
   options: RadioOption[] | undefined;
   name: string;
-  //   onChange: (value: string) => void;
-  //   selectedValue: string;
   getSolutionValue: (value: string) => void;
   handleFocus: () => void;
 };
@@ -16,9 +14,7 @@ export default function RadioGroup({
   name,
   getSolutionValue,
   handleFocus,
-}: //   onChange,
-//   selectedValue,
-RadioGroupProps) {
+}: RadioGroupProps) {
   const [selectedValue, setSelectedValue] = useState<string>("");
 
   const handleRadioChange = (value: string) => {
@@ -35,7 +31,6 @@ RadioGroupProps) {
             name={name}
             value={value}
             checked={selectedValue === value}
-            // onChange={() => onChange(value)}
             onChange={() => handleRadioChange(value)}
             onFocus={handleFocus}
           />
