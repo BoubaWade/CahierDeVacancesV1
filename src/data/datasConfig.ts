@@ -115,3 +115,16 @@ export const getInputsSettingsFields = (formState: FormState) => {
     },
   ];
 };
+
+export const getInputsResetPasswordFields = (
+  newPasswordRef: React.RefObject<HTMLInputElement>,
+  confirmPasswordRef: React.RefObject<HTMLInputElement>
+) => {
+  return [
+    { placeholder: "Nouveau mot de passe", ref: newPasswordRef },
+    {
+      placeholder: "Confirmer votre nouveau mot de passe",
+      ref: confirmPasswordRef,
+    },
+  ];
+};

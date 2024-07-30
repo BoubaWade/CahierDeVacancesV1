@@ -4,6 +4,7 @@ import { AppDispatch } from "../../../../app/store";
 import { setSearchToDoValue } from "../../../../features/Dashboard/dashboardSlice";
 import MenuFilter from "./MenuFilter";
 import { OptionSelect } from "../../../../Types/layoutTypes";
+import ControlledInput from "../../../../components/reusableUI/ControlledInput";
 
 type HeaderToDoListProps = {
   options: OptionSelect[];
@@ -25,8 +26,9 @@ export default function HeaderToDoList({
   return (
     <HeaderToDoListStyled>
       <h4>Liste des devoirs</h4>
-      <input
+      <ControlledInput
         type="text"
+        className="input-search"
         placeholder="Rechercher..."
         onChange={(e) => handleInputChange(e)}
       />
@@ -53,7 +55,7 @@ const HeaderToDoListStyled = styled.div`
     border-radius: 10px;
     border: 1px solid #d9d7d7;
   }
-  input {
+  .input-search {
     width: 15%;
     min-width: 140px;
     height: 27px;

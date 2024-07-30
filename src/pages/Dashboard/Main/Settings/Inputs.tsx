@@ -3,7 +3,7 @@ import {
   FormState,
   getInputsSettingsFields,
 } from "../../../../data/datasConfig";
-import InputControlled from "../../../../components/reusableUI/InputControlled";
+import ControlledInput from "../../../../components/reusableUI/ControlledInput";
 
 type Props = {
   formState: FormState;
@@ -26,7 +26,7 @@ export default function Inputs({ formState, setFormState }: Props) {
       {fields.map(({ label, type, id, value }) => (
         <div key={id}>
           <label htmlFor={id}>{label}</label>
-          <InputControlled
+          <ControlledInput
             type={type}
             id={id}
             className="input"

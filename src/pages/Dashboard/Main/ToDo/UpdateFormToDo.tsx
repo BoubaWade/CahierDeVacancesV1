@@ -8,6 +8,7 @@ import {
 } from "../../../../features/Dashboard/dashboardSlice";
 import SecondaryButton from "../../../../components/reusableUI/SecondaryButton";
 import { updateToDoDateFromDatabase } from "../../../../supabase/api";
+import ControlledInput from "../../../../components/reusableUI/ControlledInput";
 
 function formatDate(dateString: string) {
   if (dateString) {
@@ -62,11 +63,12 @@ export default function UpdateFormToDo({
   return (
     <UpdateFormToDoStyled>
       <form action="" onSubmit={(e) => handleSubmit(e)}>
-        <input
+        <ControlledInput
           type="date"
+          className="input-date"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-        ></input>
+        />
         <SecondaryButton label="Valider" className="submit-button" />
       </form>
     </UpdateFormToDoStyled>
@@ -74,7 +76,7 @@ export default function UpdateFormToDo({
 }
 const UpdateFormToDoStyled = styled.td`
   form {
-    input {
+    .input-date {
       text-align: center;
       border: 2px solid red;
       border-radius: 5px;

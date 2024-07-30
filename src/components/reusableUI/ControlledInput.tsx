@@ -1,4 +1,4 @@
-type InputControlledProps = {
+type ControlledInputProps = {
   type: string;
   className?: string;
   placeholder?: string;
@@ -9,7 +9,7 @@ type InputControlledProps = {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   onFocus?: React.FocusEventHandler<HTMLInputElement>;
 };
-export default function InputControlled({
+export default function ControlledInput({
   id,
   className,
   type,
@@ -19,7 +19,7 @@ export default function InputControlled({
   checked,
   onChange,
   onFocus,
-}: InputControlledProps) {
+}: ControlledInputProps) {
   return (
     <input
       id={id}
