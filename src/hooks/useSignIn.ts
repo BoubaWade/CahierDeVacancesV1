@@ -47,12 +47,8 @@ export default function useSignIn() {
     }
   };
   return {
-    handleSignIn,
-    errorCredentials,
-    setErrorCredentials,
-    rememberMe,
-    setRememberMe,
-    emailRef,
-    passwordRef,
+    states: { errorCredentials, rememberMe, emailRef, passwordRef },
+    setters: { setErrorCredentials, setRememberMe },
+    handlers: { handleSignIn },
   };
 }

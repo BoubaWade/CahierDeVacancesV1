@@ -1,33 +1,14 @@
 import styled from "styled-components";
-import SignFormRightSide from "../../components/reusableUI/SignFormRightSide";
-import SignInFormContainer from "../../components/SignInFormContainer/SignInFormContainer";
-import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 export default function SignForm() {
   const { isSignInForm } = useSelector((state: RootState) => state.auth);
 
   return (
-    <SignFormStyled>
-      {isSignInForm ? (
-        <>
-          <SignInFormContainer />
-          <SignFormRightSide
-            title="Mathématiques !"
-            text="Les maths, c'est comme le sport : plus tu en fais, plus tu deviens fort."
-          />
-        </>
-      ) : (
-        <>
-          <SignUpForm />
-          <SignFormRightSide
-            title="Confiance !"
-            text="La confiance, c'est comme un chemin : plus tu avances, plus tu vas loin."
-          />
-        </>
-      )}
-    </SignFormStyled>
+    <SignFormStyled>{isSignInForm ? <SignIn /> : <SignUp />}</SignFormStyled>
   );
 }
 const SignFormStyled = styled.div`

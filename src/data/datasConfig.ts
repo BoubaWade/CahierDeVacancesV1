@@ -128,3 +128,23 @@ export const getInputsResetPasswordFields = (
     },
   ];
 };
+
+export const getInputsSignUpFields = (
+  nameRef: React.RefObject<HTMLInputElement>,
+  emailRef: React.RefObject<HTMLInputElement>,
+  passwordRef: React.RefObject<HTMLInputElement>
+) => {
+  return [
+    { type: "text", placeholder: "Nom", ref: nameRef },
+    {
+      type: "email",
+      placeholder: "Email",
+      ref: emailRef,
+    },
+    {
+      type: "password",
+      placeholder: "Mot de passe",
+      ref: passwordRef,
+    },
+  ];
+};

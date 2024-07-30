@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import Cookies from "js-cookie";
+import ControlledInput from "../reusableUI/ControlledInput";
 
 type RememberMeProps = {
   emailRef: React.MutableRefObject<HTMLInputElement | null>;
@@ -30,7 +31,7 @@ export default function RememberMe({
   return (
     <RememberMeStyled>
       <label htmlFor="rememberMe">Se souvenir de moi</label>
-      <input
+      <ControlledInput
         type="checkbox"
         id="rememberMe"
         checked={rememberMe}
@@ -50,5 +51,13 @@ const RememberMeStyled = styled.div`
   }
   #rememberMe {
     width: 10%;
+    /* width: 100%; */
+    background-color: #eee;
+    font-size: 13px;
+    border: none;
+    margin: 8px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    outline: none;
   }
 `;

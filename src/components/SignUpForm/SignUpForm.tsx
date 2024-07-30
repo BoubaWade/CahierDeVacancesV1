@@ -2,6 +2,7 @@ import styled from "styled-components";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useRef } from "react";
 import { handleSignUp } from "../../supabase/api";
+import Inputs from "./Inputs";
 
 export default function SignUpForm() {
   const emailRef = useRef<HTMLInputElement | null>(null);
@@ -26,9 +27,7 @@ export default function SignUpForm() {
   return (
     <SignUpFormStyled onSubmit={(e) => handleSubmit(e)} ref={formRef}>
       <h1>Créer un compte</h1>
-      <input type="text" placeholder="Nom" ref={nameRef} />
-      <input type="email" placeholder="Email" ref={emailRef} />
-      <input type="password" placeholder="Mot de passe" ref={passwordRef} />
+      <Inputs emailRef={emailRef} passwordRef={passwordRef} nameRef={nameRef} />
       <PrimaryButton label="S'inscrire" className="connexion-button" />
     </SignUpFormStyled>
   );
@@ -48,16 +47,6 @@ const SignUpFormStyled = styled.form`
   width: 50%;
   h1 {
     margin-bottom: 30px;
-  }
-  input {
-    width: 100%;
-    background-color: #eee;
-    font-size: 13px;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    border-radius: 8px;
-    outline: none;
   }
   .remember-me-container {
     width: 100%;
