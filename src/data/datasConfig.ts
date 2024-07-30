@@ -95,3 +95,23 @@ export const optionsFilterByStatus = [
   { label: "Complet(s)", value: "1" },
   { label: "En attente(s)", value: "2" },
 ];
+
+export type FormState = {
+  name: string;
+  email: string;
+  password: string;
+};
+export const getInputsSettingsFields = (formState: FormState) => {
+  const { name, email, password } = formState;
+
+  return [
+    { label: "Nom", type: "text", id: "name", value: name },
+    { label: "Email", type: "email", id: "email", value: email },
+    {
+      label: "Mot de passe",
+      type: "password",
+      id: "password",
+      value: password,
+    },
+  ];
+};
