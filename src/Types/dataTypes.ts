@@ -35,17 +35,28 @@ export type Exercise = {
   questionsSolutions: QuestionSolutions[];
 };
 
+export type Lesson = {
+  title: string;
+  level: string;
+  duration: string;
+  tag: string;
+  stars: string[];
+  lessonId: string;
+};
+
+export type Lessons = {
+  lessonId: string;
+  title: string;
+  level: string;
+  duration: string;
+  tag: string;
+  stars: string[];
+}[];
+
 export type DatasChapters = {
   id: string;
   level: string;
-  lessons: {
-    lessonId: string;
-    title: string;
-    level: string;
-    duration: string;
-    tag: string;
-    stars: string[];
-  }[];
+  lessons: Lessons;
 }[];
 
 type ValuePiece = Date | null;

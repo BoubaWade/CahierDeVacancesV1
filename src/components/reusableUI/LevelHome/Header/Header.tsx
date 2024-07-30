@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import PrimaryButton from "../PrimaryButton";
+import PrimaryButton from "../../PrimaryButton";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../app/store";
+import { RootState } from "../../../../app/store";
+import Search from "./Search";
 
 type HeaderProps = {
   level: string | undefined;
@@ -28,17 +29,8 @@ export default function Header({
           onClick={() => navigate("/dashboard")}
         />
       )}
-      <div className="info">
-        <h1>Classe de {level}</h1>
-      </div>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Rechercher un chapitre de la classe ..."
-          value={searchValue}
-          onChange={(e) => onChangeValue(e.target.value)}
-        />
-      </div>
+      <h1>Classe de {level}</h1>
+      <Search searchValue={searchValue} onChangeValue={onChangeValue} />
     </HeaderStyled>
   );
 }
@@ -66,24 +58,5 @@ const HeaderStyled = styled.header`
     position: relative;
     z-index: 1;
     margin-top: 30px;
-  }
-  .search {
-    position: relative;
-    z-index: 1;
-    width: 30%;
-    min-width: 280px;
-    margin-top: 10px;
-    input {
-      width: 100%;
-      padding: 15px 20px;
-      border: none;
-      border-radius: 2rem;
-      box-shadow: 0px 2px 20px -5px rgba(0, 0, 0, 0.55);
-      outline: none;
-      &:focus {
-        box-shadow: 0px 4px 40px -10px rgba(0, 0, 0, 0.5);
-        border: 1.5px solid #c2a205;
-      }
-    }
   }
 `;

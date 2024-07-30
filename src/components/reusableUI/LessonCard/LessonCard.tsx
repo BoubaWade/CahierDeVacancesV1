@@ -2,11 +2,11 @@ import styled from "styled-components";
 import BorderBeam from "../BorderBeam";
 import CardTop from "./CardTop";
 import CardBottom from "./CardBottom";
-import { lessonCard } from "../../../Types/layoutTypes";
 import CardButtons from "../LevelHome/Main/CardButtons";
+import { Lesson } from "../../../Types/dataTypes";
 
 type LessonCardProps = {
-  lesson: lessonCard;
+  lesson: Lesson;
   id: string;
 };
 

@@ -1,40 +1,45 @@
 import styled from "styled-components";
 import Astro from "../../../assets//astro.png";
-import { datasOfChapters } from "../../../data/dataLevelPages";
-import Header from "./Header";
+import Header from "./Header/Header";
 import Main from "./Main/Main";
 import { useState } from "react";
-import { normalizeString } from "../../../utils/functions";
+import {
+  filterLessonsBySearch,
+  findLevelDataById,
+} from "../../../utils/functions";
+import { datasOfChapters } from "../../../data/dataLevelPages";
+import Image from "../Image";
 
 type LevelHomeProps = {
   id: string;
 };
+
 export default function LevelHome({ id }: LevelHomeProps) {
   const [searchValue, setSearchValue] = useState("");
 
-  const dataFinded = datasOfChapters?.find((data) => data.id === id);
-  const dataFiltered = dataFinded?.lessons.filter((data) =>
-    normalizeString(data.title).includes(normalizeString(searchValue))
-  );
-  const handleSearchChange = (value: string) => {
+  const dataFinded = findLevelDataById(datasOfChapters, id);
+  if (!dataFinded) return;
+  const lessons = filterLessonsBySearch(dataFinded?.lessons, searchValue);
+
+  const handleSearch = (value: string) => {
     setSearchValue(value);
   };
 
   return (
     <LevelHomeStyled>
       <Header
-        level={dataFinded?.level}
+        level={dataFinded.level}
         searchValue={searchValue}
-        onChangeValue={handleSearchChange}
+        onChangeValue={handleSearch}
       />
-      <Main lessons={dataFiltered} id={id} />
-      <img src={Astro} />
+      <Main lessons={lessons} id={id} />
+      <Image src={Astro} className="astro" />
     </LevelHomeStyled>
   );
 }
 const LevelHomeStyled = styled.div`
   overflow-x: hidden;
-  img {
+  .astro {
     display: block;
     position: fixed;
     width: 40vw;

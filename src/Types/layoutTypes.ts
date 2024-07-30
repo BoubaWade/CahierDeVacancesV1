@@ -4,14 +4,6 @@ import {
   StripeCardNumberElementChangeEvent,
 } from "@stripe/stripe-js";
 
-export type lessonCard = {
-  title: string;
-  level: string;
-  duration: string;
-  tag: string;
-  stars: string[];
-  lessonId: string;
-};
 export type LevelState = {
   isSixiemeActive: boolean;
   isCinquiemeActive: boolean;

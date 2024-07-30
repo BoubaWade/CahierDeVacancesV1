@@ -1,4 +1,9 @@
-import { DatasChapters, Exercise, QuestionSolutions } from "../Types/dataTypes";
+import {
+  DatasChapters,
+  Exercise,
+  Lessons,
+  QuestionSolutions,
+} from "../Types/dataTypes";
 
 export const getChaptersOfLevel = (
   datas: DatasChapters,
@@ -33,6 +38,14 @@ export const formatTime = (seconds: number) => {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
   return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+};
+
+export const convertToISODate = (dateString: string | undefined) => {
+  if (dateString) {
+    const [day, month, shortYear] = dateString.split("/");
+    const fullYear = "20" + shortYear;
+    return `${fullYear}-${month}-${day}`;
+  }
 };
 
 export const getImgUrl = (level: string, imgName: string) => {
@@ -152,6 +165,16 @@ export const filterTodosBySearch = (todos: Exercise[], searchValue: string) => {
     getSearchIncludesToDo(todo, searchValue)
   );
   return toDoExercisesToDisplay;
+};
+export const findLevelDataById = (datas: DatasChapters, id: string) => {
+  return datas?.find((data) => data.id === id);
+};
+
+export const filterLessonsBySearch = (datas: Lessons, searchValue: string) => {
+  const dataFiltered = datas?.filter((data) =>
+    normalizeString(data.title).includes(normalizeString(searchValue))
+  );
+  return dataFiltered;
 };
 
 export const findTodoById = (todos: Exercise[], id: string) => {

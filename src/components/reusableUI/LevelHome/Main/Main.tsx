@@ -1,24 +1,24 @@
 import styled, { keyframes } from "styled-components";
-import LessonCard from "../../LessonCard/LessonCard";
-import { lessonCard } from "../../../../Types/layoutTypes";
+import LessonsList from "./LessonsList";
+import { Lesson } from "../../../../Types/dataTypes";
+import EmptyResult from "../../EmptyResult";
 
 type MainProps = {
-  lessons: lessonCard[] | undefined;
+  lessons: Lesson[] | undefined;
   id: string;
 };
 
 export default function Main({ lessons, id }: MainProps) {
-  const condition = lessons?.length !== 0;
+  const hasALength = lessons?.length !== 0;
+  if (!lessons) return;
 
   return (
     <MainStyled>
       <div className="cards-container">
-        {condition ? (
-          lessons?.map((lesson, index) => (
-            <LessonCard key={index} lesson={lesson} id={id} />
-          ))
+        {hasALength ? (
+          <LessonsList lessons={lessons} id={id} />
         ) : (
-          <p> Pas de chapitre(s) trouvé(s)</p>
+          <EmptyResult text="Pas de chapitre(s) trouvé(s)" />
         )}
       </div>
     </MainStyled>
@@ -59,9 +59,5 @@ const MainStyled = styled.main`
     position: relative;
     z-index: 1;
     animation: ${animCard} 500ms ease;
-    p {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
   }
 `;
