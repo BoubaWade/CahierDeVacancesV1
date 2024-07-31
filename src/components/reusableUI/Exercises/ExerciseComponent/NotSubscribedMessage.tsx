@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import PrimaryButton from "./PrimaryButton";
+import PrimaryButton from "../../PrimaryButton";
 
 export default function NotSubscribedMessage() {
   const navigate = useNavigate();

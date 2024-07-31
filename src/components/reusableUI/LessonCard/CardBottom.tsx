@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Stars from "./Stars";
 
 type CardBottomProps = {
   tag?: string;
@@ -8,13 +9,9 @@ type CardBottomProps = {
 export default function CardBottom({ tag, stars }: CardBottomProps) {
   return (
     <CardBottomStyled>
-      <div className="stars-container">
+      <div>
         <h5>Importance</h5>
-        <div className="stars">
-          {stars?.map((star, index) => (
-            <p key={index}>{star}</p>
-          ))}
-        </div>
+        <Stars stars={stars} />
       </div>
       <h5 className="tag">{tag}</h5>
     </CardBottomStyled>
@@ -30,12 +27,4 @@ const CardBottomStyled = styled.div`
   border-radius: 15px;
   padding: 0.7rem 1.5rem;
   border-bottom: none;
-  .stars-container {
-    .stars {
-      display: flex;
-      p {
-        padding-right: 4px;
-      }
-    }
-  }
 `;

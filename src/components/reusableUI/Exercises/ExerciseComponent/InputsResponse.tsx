@@ -1,4 +1,4 @@
-import RadioGroup from "../../RadioGroup";
+import RadioGroup from "../../../RadioGroup/RadioGroup";
 import MathKeyboard from "../../MathKeyboard/MathKeyboard";
 import { RadioOption } from "../../../../Types/dataTypes";
 

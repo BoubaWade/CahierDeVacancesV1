@@ -1,4 +1,4 @@
-import NotSubscribedMessage from "../../NotSubscribedMessage";
+import NotSubscribedMessage from "./NotSubscribedMessage";
 import { Exercise } from "../../../../Types/dataTypes";
 import styled from "styled-components";
 import CalendarContainer from "./CalendarContainer";

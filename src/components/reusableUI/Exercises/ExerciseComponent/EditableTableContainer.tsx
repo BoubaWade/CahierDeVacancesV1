@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { TableCell } from "../../../../Types/dataTypes";
-import EditableTable from "../../EditableTable";
+import EditableTable from "../../EditableTable/EditableTable";
 
 type Props = {
   imageUrl: string | undefined;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { RadioOption } from "../../Types/dataTypes";
 import { useState } from "react";
+import ControlledInput from "../reusableUI/ControlledInput";
 
 type RadioGroupProps = {
   options: RadioOption[] | undefined;
@@ -26,7 +27,7 @@ export default function RadioGroup({
     <RadioGroupStyled>
       {options?.map(({ label, value }) => (
         <label key={value}>
-          <input
+          <ControlledInput
             type="radio"
             name={name}
             value={value}

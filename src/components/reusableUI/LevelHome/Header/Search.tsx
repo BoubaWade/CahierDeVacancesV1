@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ControlledInput from "../../ControlledInput";
 
 type SearchProps = {
   searchValue: string;
@@ -8,7 +9,7 @@ type SearchProps = {
 export default function Search({ searchValue, onChangeValue }: SearchProps) {
   return (
     <SearchStyled>
-      <input
+      <ControlledInput
         type="text"
         placeholder="Rechercher un chapitre de la classe ..."
         value={searchValue}

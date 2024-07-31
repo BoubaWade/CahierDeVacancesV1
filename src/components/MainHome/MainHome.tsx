@@ -3,7 +3,7 @@ import fibonacci from "../../assets/fibonacci.jpg";
 import emc2 from "../../assets/emc2.jpg";
 import calc from "../../assets/calc.jpg";
 import tableImage from "../../assets/table.jpg";
-import dashboard from "../../assets/dashboard.png";
+// import dashboard from "../../assets/dashboard.png";
 import exercise from "../../assets/exercise.png";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +59,7 @@ export default function MainHome() {
               et suivre les devoirs de l'élève.
             </p>
           </div>
-          <img src={dashboard} />
+          <img src="" />
         </div>
         <div className="texts-container">
           <img src={exercise} />
