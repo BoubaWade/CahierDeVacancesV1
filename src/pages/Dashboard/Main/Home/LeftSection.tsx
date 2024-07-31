@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import TodoListRecently from "./TodoListRecently";
+import TodosRecentlyContainer from "./TodosRecentlyContainer";
 import PrimaryButton from "../../../../components/reusableUI/PrimaryButton";
 
 type LeftSectionProps = {
@@ -9,7 +9,7 @@ type LeftSectionProps = {
 export default function LeftSection({ setIsOpenModal }: LeftSectionProps) {
   return (
     <LeftSectionStyled>
-      <TodoListRecently />
+      <TodosRecentlyContainer />
       <PrimaryButton
         label='"Click ici" : pour programmer des devoirs'
         className="indication"

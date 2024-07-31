@@ -7,6 +7,7 @@ import bg3eme from "../assets/workspace.jpg";
 import schooldesk from "../assets/school-desk.jpg";
 import emc2 from "../assets/emc2.jpg";
 import { Level, LevelState } from "../Types/layoutTypes";
+import { Exercise } from "../Types/dataTypes";
 
 export const optionsLevelChoice = [
   "Choisir une classe",
@@ -145,6 +146,24 @@ export const getInputsSignUpFields = (
       type: "password",
       placeholder: "Mot de passe",
       ref: passwordRef,
+    },
+  ];
+};
+
+export const getRecapTodosFields = (
+  todosCompleted: Exercise[],
+  todosIncompleted: Exercise[]
+) => {
+  return [
+    {
+      className: "todos incompleted",
+      length: todosIncompleted.length,
+      text: "Devoir(s) restant(s)",
+    },
+    {
+      className: "todos completed",
+      length: todosCompleted.length,
+      text: "Devoir(s) términé(s)",
     },
   ];
 };
