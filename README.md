@@ -1,30 +1,69 @@
-# React + TypeScript + Vite
+# Math-max
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Math-max est une application "réactive" d'exercices de mathématiques de la sixième à la terminale, offrant des suggestions de réponses et des réponses intégrales.
+On peut aussi programmer et enregistrer des " devoirs à faire plus tard " avec un tableau de bord intuitif et simple à utiliser. Après chaque validation d'un devoir on reçoit la note finale.
 
-Currently, two official plugins are available:
+## Table des matières
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Prérequis](#prérequis)
+- [Installation](#installation)
+- [Lancer le projet](#lancer-le-projet)
+- [Structure du projet](#structure-du-projet)
 
-## Expanding the ESLint configuration
+## Prérequis
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur votre machine :
 
-- Configure the top-level `parserOptions` property like this:
+- [Node.js](https://nodejs.org/) (version 20.6.0 ou supérieure)
+- [npm](https://www.npmjs.com/)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Installation
+
+1. Clonez le repository sur votre machine locale en utilisant git :
+
+```bash
+git clone https://github.com/BoubaWade/math-max.git
+cd math-max
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Installez les dépendances du projet avec npm :
+
+```bash
+npm install
+```
+
+## Lancer le projet
+
+Pour lancer le projet en mode développement, utilisez le script suivant :
+
+```bash
+npm run dev
+```
+
+## Structure du projet
+
+```bash
+math-max/
+├── public/
+│   └── images
+├── src/
+│   ├── app/
+│   ├── assets/
+│   ├── components/
+│   ├── css/
+│   ├── features/
+│   ├── hooks/
+│   ├── pages/
+│   ├── stripe/
+│   ├── supabase/
+│   ├── Types/
+│   ├── utils/
+│   ├── App.tsx
+│   └── main.tsx
+├── .gitignore
+├── index.html
+├── package.json
+├── README.md
+├── tsconfig.json
+└── vite.config.ts
+```
