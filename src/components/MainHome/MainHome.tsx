@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import fibonacci from "../../assets/fibonacci.jpg";
-import emc2 from "../../assets/emc2.jpg";
-import calc from "../../assets/calc.jpg";
-import tableImage from "../../assets/table.jpg";
-// import dashboard from "../../assets/dashboard.png";
-import exercise from "../../assets/exercise.png";
+import logo from "../../../public/logo.png";
 import PrimaryButton from "../reusableUI/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setIsSignInForm } from "../../features/Sign/authSlice";
+import Image from "../reusableUI/Image";
 
 export default function MainHome() {
   const navigate = useNavigate();
@@ -26,6 +22,7 @@ export default function MainHome() {
   return (
     <MainHomeStyled>
       <div className="title-container">
+        <Image src={logo} className="logo" />
         <h1>
           Rejoindre
           <br /> <span> Les mathématiques de Math.Max </span> <br />
@@ -62,7 +59,6 @@ export default function MainHome() {
           <img src="" />
         </div>
         <div className="texts-container">
-          <img src={exercise} />
           <div className="texts">
             <h2>
               Élevez votre niveau en mathématiques : débloquez votre plein
@@ -149,6 +145,11 @@ const MainHomeStyled = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    .logo {
+      position: relative;
+      width: 100px;
+      border-radius: 30%;
+    }
     h1 {
       width: 70%;
       font-weight: 500;
