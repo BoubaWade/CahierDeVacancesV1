@@ -8,9 +8,9 @@ export default function Levels() {
 
   return (
     <LevelsStyled>
-      {datasOfChapters.map(({ id, level }) => (
+      {datasOfChapters.map(({ id, abbrevLevel }) => (
         <div key={id}>
-          <li onClick={() => navigate(`/${id}`)}>{level}</li>
+          <li onClick={() => navigate(`/${id}`)}>{abbrevLevel}</li>
         </div>
       ))}
       <BorderBeam className="border-beam" />
@@ -36,5 +36,13 @@ const LevelsStyled = styled.ul`
   }
   .border-beam {
     z-index: 0;
+  }
+  @media (max-width: 1024px) {
+    li {
+      font-size: 0.9rem;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
   }
 `;
