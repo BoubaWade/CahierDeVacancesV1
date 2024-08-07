@@ -5,10 +5,25 @@ On peut aussi programmer et enregistrer des " devoirs à faire plus tard " avec 
 
 ## Table des matières
 
+- [L'application](#l'application)
 - [Prérequis](#prérequis)
 - [Installation](#installation)
 - [Lancer le projet](#lancer-le-projet)
 - [Structure du projet](#structure-du-projet)
+
+## L'application
+
+### L'accueil
+
+![La page d'accueil](./src/assets/img_home.png)
+
+### Tableau de bord
+
+![Le tableau de bord](./src/assets/img_dashboard.png)
+
+### Exemple d'exercice
+
+![Exemple d'exercice](./src/assets/img_exercise.png)
 
 ## Prérequis
 
