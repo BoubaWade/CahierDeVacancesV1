@@ -5,9 +5,18 @@ import TitleAndEmail from "./TitleAndEmail";
 import FormFooter from "./FormFooter";
 import usePayment from "../../hooks/usePayment";
 import ConfirmSubscription from "../reusableUI/ConfirmSubscription";
+import SecondaryButton from "../reusableUI/SecondaryButton";
+import { setIsMonthly } from "../../features/Sign/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 
 export default function PaymentForm() {
-  const { handlers, states, setters } = usePayment();
+  const { isMonthly } = useSelector((state: RootState) => state.auth);
+  const priceId = isMonthly
+    ? "price_1PX08gC6VxkdBWjhSnn48Lwe"
+    : "price_1PkCdmC6VxkdBWjhC1EPNRUZ";
+  const dispatch = useDispatch();
+  const { handlers, states, setters } = usePayment(priceId);
   const {
     user,
     isButtonDisabled,
@@ -25,7 +34,19 @@ export default function PaymentForm() {
 
   return (
     <PaymentFormStyled onSubmit={handleSubmit} ref={formRef}>
-      <TitleAndEmail user={user} />
+      <SecondaryButton
+        label="Mensuel"
+        className={isMonthly ? "active button" : "button"}
+        type="button"
+        onClick={() => dispatch(setIsMonthly(true))}
+      />
+      <SecondaryButton
+        label="Annuel"
+        className={!isMonthly ? "active button" : "button"}
+        type="button"
+        onClick={() => dispatch(setIsMonthly(false))}
+      />
+      <TitleAndEmail user={user} isMonthly={isMonthly} />
       <CardNumber onChange={handleChange} setErrorMessage={setErrorMessage} />
       <CardExpiryCvc
         onChange={handleChange}
@@ -48,4 +69,14 @@ const PaymentFormStyled = styled.form`
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
+  .button {
+    width: calc(50% - 10px);
+    margin: 0 5px;
+    padding: 7px 35px;
+    border-radius: 5px;
+  }
+  .active {
+    background: #f9f9f9;
+    color: #000;
+  }
 `;

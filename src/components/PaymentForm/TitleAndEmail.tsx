@@ -2,14 +2,22 @@ import styled from "styled-components";
 
 type TitleAndEmailProps = {
   user: any;
+  isMonthly: boolean;
 };
 
-export default function TitleAndEmail({ user }: TitleAndEmailProps) {
+export default function TitleAndEmail({ user, isMonthly }: TitleAndEmailProps) {
   return (
     <TitleAndEmailStyled>
-      <h1>
-        <span>S'abonner à Premium</span> <br /> 15,90 € <span>par mois</span>
-      </h1>
+      {isMonthly ? (
+        <h1>
+          <span>S'abonner à Premium</span> <br /> 15,90€<span> par mois</span>
+        </h1>
+      ) : (
+        <h1>
+          <span>S'abonner pour toute l'année scolaire</span> <br /> 149€
+          <span> par an</span>
+        </h1>
+      )}
       <label htmlFor="email">Votre email</label>
       <input
         type="email"

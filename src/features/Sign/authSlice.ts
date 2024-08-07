@@ -4,12 +4,14 @@ type AuthState = {
   isSignInForm: boolean;
   user: any;
   isPasswordRecovery: boolean;
+  isMonthly: boolean;
 };
 
 const initialState: AuthState = {
   isSignInForm: true,
   user: null,
   isPasswordRecovery: false,
+  isMonthly: true,
 };
 
 const authSlice = createSlice({
@@ -25,9 +27,12 @@ const authSlice = createSlice({
     setIsPasswordRecovery(state, { payload }) {
       state.isPasswordRecovery = payload;
     },
+    setIsMonthly(state, { payload }) {
+      state.isMonthly = payload;
+    },
   },
 });
 
-export const { setIsSignInForm, setUser, setIsPasswordRecovery } =
+export const { setIsSignInForm, setUser, setIsPasswordRecovery, setIsMonthly } =
   authSlice.actions;
 export default authSlice.reducer;

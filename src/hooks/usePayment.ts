@@ -16,10 +16,9 @@ import { RootState } from "../app/store";
 import { Event } from "../Types/layoutTypes";
 import { useNavigate } from "react-router-dom";
 
-export default function usePayment() {
+export default function usePayment(priceId: string) {
   const stripe = useStripe();
   const elements = useElements();
-  const priceId = "price_1PX08gC6VxkdBWjhSnn48Lwe";
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [cardNumberComplete, setCardNumberComplete] = useState(false);
   const [expiryComplete, setExpiryComplete] = useState(false);
